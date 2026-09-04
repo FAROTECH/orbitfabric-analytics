@@ -12,15 +12,18 @@ The project is intentionally structured so that collection, configuration, analy
 
 ## Current status
 
-**M0 - Data Retention: in progress**
+**M0 - Data Retention: complete**
 
-The initial baseline provides:
+The baseline now provides:
 
 - centralized multi-repository traffic collection;
 - repository enable/disable policy in `config/repositories.yml`;
 - separation between collected repositories and repositories included in ecosystem rollups;
 - daily historical snapshots through `github-repo-stats`;
-- a lightweight event registry for future traffic/event correlation.
+- a lightweight event registry for future traffic/event correlation;
+- a validated `github-repo-stats` data branch populated by a successful end-to-end run.
+
+**Next: M1 - Ecosystem Dashboard.**
 
 ## Architecture
 
@@ -85,7 +88,7 @@ Contents: Read and write
 
 `Administration: Read-only` is required by GitHub's repository traffic endpoints. `Contents: Read and write` allows `github-repo-stats` to clone this private data repository and push snapshots and generated reports to the `github-repo-stats` branch.
 
-For a least-privilege initial setup, select only `FAROTECH/orbitfabric-analytics` plus the repositories currently enabled for collection. If another repository is enabled later, remember to grant the token access to it as well.
+For a least-privilege setup, select only `FAROTECH/orbitfabric-analytics` plus the repositories currently enabled for collection. If another repository is enabled later, remember to grant the token access to it as well.
 
 Add the token under:
 
@@ -98,8 +101,6 @@ using the name:
 ```text
 GHRS_GITHUB_API_TOKEN
 ```
-
-After the secret is configured, run **Collect GitHub traffic** manually once to establish the first snapshot.
 
 ## Configuration
 
