@@ -4,7 +4,7 @@ OrbitFabric Analytics grows in stages. The first priority is preserving data. Hi
 
 ## M0 - Data Retention
 
-**Status: in progress**
+**Status: complete**
 
 Goal: stop losing GitHub traffic history.
 
@@ -14,9 +14,11 @@ Goal: stop losing GitHub traffic history.
 - [x] Separate inclusion policy for future ecosystem rollups defined.
 - [x] Dynamic GitHub Actions matrix generated from repository configuration.
 - [x] Daily `github-repo-stats` collector configured.
-- [ ] `GHRS_GITHUB_API_TOKEN` repository secret configured.
-- [ ] First successful collection run completed.
-- [ ] `github-repo-stats` data branch verified.
+- [x] `GHRS_GITHUB_API_TOKEN` repository secret configured.
+- [x] First successful collection run completed.
+- [x] `github-repo-stats` data branch verified.
+
+M0 was validated with a successful end-to-end collection across all repositories enabled at the time of the first run.
 
 ## M1 - Ecosystem Dashboard
 
