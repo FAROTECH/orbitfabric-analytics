@@ -74,14 +74,29 @@ The collector needs one repository secret:
 GHRS_GITHUB_API_TOKEN
 ```
 
-The token must be able to read traffic statistics for every repository with `collect: true` and push the generated data back to this private repository.
+Use a **fine-grained personal access token** with access to this analytics repository and to every repository where `collect: true`.
 
-For the initial setup, use a GitHub personal access token belonging to an account with access to all monitored FAROTECH repositories. The `github-repo-stats` documentation recommends a token with `repo` scope.
+Required repository permissions:
 
-Add it under:
+```text
+Administration: Read-only
+Contents: Read and write
+```
+
+`Administration: Read-only` is required by GitHub's repository traffic endpoints. `Contents: Read and write` allows `github-repo-stats` to clone this private data repository and push snapshots and generated reports to the `github-repo-stats` branch.
+
+For a least-privilege initial setup, select only `FAROTECH/orbitfabric-analytics` plus the repositories currently enabled for collection. If another repository is enabled later, remember to grant the token access to it as well.
+
+Add the token under:
 
 ```text
 Settings -> Secrets and variables -> Actions -> New repository secret
+```
+
+using the name:
+
+```text
+GHRS_GITHUB_API_TOKEN
 ```
 
 After the secret is configured, run **Collect GitHub traffic** manually once to establish the first snapshot.
