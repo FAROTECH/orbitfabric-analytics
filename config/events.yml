@@ -1,0 +1,13 @@
+version: 1
+
+# Timeline of relevant OrbitFabric ecosystem events.
+#
+# These events will later be overlaid on traffic and engagement charts.
+# They are context markers only: temporal correlation must not be interpreted
+# automatically as proof that an event caused a traffic change.
+
+events:
+  - date: 2026-09-04
+    type: analytics
+    project: ecosystem
+    label: OrbitFabric Analytics baseline collection begins

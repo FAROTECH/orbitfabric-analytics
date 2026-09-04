@@ -1,0 +1,72 @@
+version: 1
+
+# Repository inventory and analytics policy.
+#
+# collect:
+#   true  -> fetch and retain traffic data every day
+#   false -> ignore the repository entirely
+#
+# include_in_rollups:
+#   true  -> include in future aggregate OrbitFabric KPIs
+#   false -> retain data, when collect=true, but exclude from aggregate KPIs
+
+repositories:
+  - id: core
+    repo: FAROTECH/orbitfabric
+    category: core
+    collect: true
+    include_in_rollups: true
+
+  - id: studio
+    repo: FAROTECH/orbitfabric-studio
+    category: product
+    collect: true
+    include_in_rollups: true
+
+  - id: reference-mission
+    repo: FAROTECH/orbitfabric-reference-mission
+    category: product
+    collect: true
+    include_in_rollups: true
+
+  - id: openobsw-opensvf-adapter
+    repo: FAROTECH/orbitfabric-openobsw-opensvf-adapter
+    category: adapter
+    collect: true
+    include_in_rollups: true
+
+  - id: openc3-cosmos-adapter
+    repo: FAROTECH/orbitfabric-openc3-cosmos-adapter
+    category: adapter
+    collect: true
+    include_in_rollups: true
+
+  - id: fprime-adapter
+    repo: FAROTECH/orbitfabric-fprime-adapter
+    category: adapter
+    collect: true
+    include_in_rollups: true
+
+  - id: adapter-template
+    repo: FAROTECH/orbitfabric-adapter-template
+    category: ecosystem
+    collect: true
+    include_in_rollups: false
+
+  - id: adapter-catalog
+    repo: FAROTECH/orbitfabric-adapter-catalog
+    category: ecosystem
+    collect: true
+    include_in_rollups: false
+
+  - id: github-release-source
+    repo: FAROTECH/orbitfabric-github-release-source
+    category: infrastructure
+    collect: true
+    include_in_rollups: false
+
+  - id: openobsw-poc
+    repo: FAROTECH/OrbitFabric-OpenOBSW-PoC
+    category: legacy
+    collect: false
+    include_in_rollups: false
