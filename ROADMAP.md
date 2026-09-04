@@ -22,18 +22,18 @@ M0 was validated with a successful end-to-end collection across all repositories
 
 ## M1 - Ecosystem Dashboard
 
-**Status: planned**
+**Status: in progress**
 
 Goal: turn retained traffic data into a coherent OrbitFabric ecosystem view.
 
-Planned capabilities:
-
-- cross-repository aggregation;
-- Core vs Studio vs adapters comparison;
-- awareness metrics;
-- evaluation signals;
-- adoption proxies;
-- category-level rollups driven by `include_in_rollups`.
+- [x] Define the normalized repository-day dataset.
+- [x] Implement the first cross-repository normalization tool.
+- [x] Document metric semantics and non-additive unique-count rules.
+- [ ] Automate normalized dataset generation after collection.
+- [ ] Define explicit ecosystem and category rollups.
+- [ ] Add Core vs Studio vs adapters comparison.
+- [ ] Define awareness, evaluation and adoption-proxy views.
+- [ ] Build the first ecosystem dashboard.
 
 ## M2 - Event Correlation
 
