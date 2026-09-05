@@ -61,7 +61,7 @@ Current baseline:
 - [x] Repository delta implemented as current rolling comparison window vs previous complete snapshot of the same window length.
 - [x] Repository-scoped unique deltas kept explicitly separate from user identity semantics.
 - [x] Snapshot delta UI implemented for Overview and Repository Comparison.
-- [ ] First automated snapshot-delta payload and deployment validated end to end.
+- [x] First automated snapshot-delta payload and deployment validated end to end.
 - [ ] PWA / mobile validation completed.
 
 Cloudflare Access is intentionally deferred. It can be introduced later if dashboard confidentiality becomes a requirement. Until then the Pages URL is public but intentionally unlisted; anti-indexing controls reduce discoverability but are not treated as security.
