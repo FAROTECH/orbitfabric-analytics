@@ -33,7 +33,7 @@ Curated releases, outreach and upstream discussion events are normalized, projec
 
 **M3 - Community Signals: in progress**
 
-The first M3 increment adds a daily repository-scoped GitHub community snapshot for the official OrbitFabric repositories.
+M3 now retains a daily repository-scoped GitHub community baseline for the official OrbitFabric repositories and builds absolute latest-vs-previous stock comparisons when a previous snapshot exists.
 
 ## Architecture
 
@@ -89,6 +89,12 @@ analytics/community.py
         |
         v
 analytics/community_daily.csv
+        |
+        v
+analytics/community_compare.py
+        |
+        v
+analytics/community_comparison_latest.csv
 ```
 
 `main` contains source code, configuration, documentation and dashboard source.
@@ -128,9 +134,9 @@ See [docs/event-correlation.md](docs/event-correlation.md).
 
 ## Community signal policy
 
-`config/community-signals.yml` defines the first M3 stock-snapshot policy.
+`config/community-signals.yml` defines M3 community stock policy.
 
-The initial retained signals are:
+The retained stock signals are:
 
 ```text
 stars_total
@@ -140,7 +146,13 @@ open_pull_requests_total
 contributors_repo_count
 ```
 
-These are repository-state snapshots, not counts of new events and not counts of unique ecosystem users. Event-oriented community activity is introduced separately in later M3 increments.
+These are repository-state snapshots, not counts of new events and not counts of unique ecosystem users.
+
+M3b compares the latest available snapshot with the previous available snapshot for each repository. It exposes absolute deltas only and records `snapshot_gap_days` explicitly. When no previous snapshot exists, the row is marked non-comparable and delta fields remain empty.
+
+Percentage deltas are intentionally omitted from the initial low-cardinality community baseline.
+
+Event-oriented community activity is introduced separately in later M3 increments.
 
 See [docs/community-signals.md](docs/community-signals.md).
 
@@ -148,7 +160,7 @@ See [docs/community-signals.md](docs/community-signals.md).
 
 Traffic collection uses [`jgehrcke/github-repo-stats`](https://github.com/jgehrcke/github-repo-stats), pinned to `v1.4.2`.
 
-The workflow also executes the M3 community snapshot collector after the traffic jobs complete.
+The workflow also executes the M3 community snapshot collector and latest stock comparison after the traffic jobs complete.
 
 The workflow runs once per day and can also be started manually from GitHub Actions.
 
@@ -186,10 +198,11 @@ If it is not configured, the collector reuses `GHRS_GITHUB_API_TOKEN`. Public co
 - `config/repositories.yml`: authoritative repository inventory and collection / rollup policy.
 - `config/events.yml`: authoritative event timeline.
 - `config/event-taxonomy.yml`: event type, channel and confidence policy.
-- `config/community-signals.yml`: M3 community snapshot policy.
+- `config/community-signals.yml`: M3 community stock and comparison policy.
 - `tools/build_repository_matrix.py`: validates repository configuration and emits the GitHub Actions matrix.
 - `analytics/events.py`: validates and normalizes event context for M2.
 - `analytics/community.py`: collects and retains repository-scoped M3 community snapshots.
+- `analytics/community_compare.py`: builds latest-vs-previous absolute stock comparisons.
 
 ## Roadmap
 
