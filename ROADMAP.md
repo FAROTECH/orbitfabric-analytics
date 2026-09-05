@@ -53,13 +53,22 @@ Current baseline:
 - [x] Cloudflare Pages project configured.
 - [x] Public-unlisted deployment policy selected; `noindex` / `robots.txt` controls configured.
 - [x] `dashboard-site` deployment branch automation configured.
-- [ ] First automated `dashboard-site` refresh validated end to end.
-- [ ] Cloudflare production branch switched to `dashboard-site`.
-- [ ] First deployed ecosystem dashboard validated on desktop and mobile.
+- [x] First automated `dashboard-site` refresh validated end to end.
+- [x] Cloudflare production branch switched to `dashboard-site`.
+- [x] First deployed ecosystem dashboard validated on desktop.
+- [x] Snapshot delta semantics defined.
+- [x] Overview delta implemented as latest complete day vs previous complete day.
+- [x] Repository delta implemented as current rolling comparison window vs previous complete snapshot of the same window length.
+- [x] Repository-scoped unique deltas kept explicitly separate from user identity semantics.
+- [x] Snapshot delta UI implemented for Overview and Repository Comparison.
+- [ ] First automated snapshot-delta payload and deployment validated end to end.
+- [ ] PWA / mobile validation completed.
 
 Cloudflare Access is intentionally deferred. It can be introduced later if dashboard confidentiality becomes a requirement. Until then the Pages URL is public but intentionally unlisted; anti-indexing controls reduce discoverability but are not treated as security.
 
 Repository-level unique values will not be treated as ecosystem-wide unique users. Rollups expose only explicitly named sums of repository-scoped unique values. Repository comparisons use a common recent window anchored to the latest complete ecosystem day.
+
+Snapshot deltas are directional activity changes, not quality scores. An increase is not automatically positive and a decrease is not automatically negative. Percentage deltas are omitted when the previous value is zero and the current value is non-zero; that state is represented as `new`.
 
 The dashboard remains downstream of metric semantics and consumes generated presentation data. It does not access GitHub credentials or infer external adoption inside the browser.
 
