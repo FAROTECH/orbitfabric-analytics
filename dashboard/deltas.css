@@ -38,7 +38,9 @@
   color: var(--muted);
 }
 
-.metric-delta.compact {
+.metric-delta.compact,
+#clones-unique-delta,
+#views-unique-delta {
   min-height: auto;
   margin: 0;
   padding: 0;
@@ -74,7 +76,9 @@
     font-size: 0.68rem;
   }
 
-  .metric-delta.compact {
+  .metric-delta.compact,
+  #clones-unique-delta,
+  #views-unique-delta {
     font-size: 0.66rem;
   }
 }
