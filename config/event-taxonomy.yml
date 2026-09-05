@@ -1,0 +1,23 @@
+version: 1
+
+types:
+  - release
+  - outreach
+  - upstream-discussion
+  - documentation
+  - milestone
+  - internal
+
+channels:
+  - github
+  - linkedin
+  - reddit
+  - hackaday
+  - libre-space
+  - website
+  - analytics
+  - other
+
+confidence_levels:
+  - confirmed
+  - approximate
