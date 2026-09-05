@@ -9,6 +9,29 @@ version: 1
 # Use confidence: approximate when the date is intentionally not exact.
 
 events:
+  - id: fprime-upstream-deployment-identity-discussion
+    date: 2026-09-04
+    type: upstream-discussion
+    channel: github
+    scope:
+      - fprime-adapter
+      - ecosystem
+    confidence: confirmed
+    label: F´ upstream discussion on deployment-resolved identity and COSMOS generation
+    url: https://github.com/nasa/fprime/issues/5353#issuecomment-5539882345
+    notes: OrbitFabric F´ adapter evidence introduced into the upstream discussion, focusing on generated-dictionary provenance, deployment-resolved identity across native layout refactors, and explicit diagnostics for lossy COSMOS mappings.
+
+  - id: libre-space-phasma-xtce-serializer-alignment
+    date: 2026-09-05
+    type: upstream-discussion
+    channel: libre-space
+    scope:
+      - ecosystem
+    confidence: confirmed
+    label: Libre Space PHASMA discussion on XTCE and C serializer contract alignment
+    url: https://community.libre.space/t/phasma-keeping-xtce-packet-layouts-aligned-with-c-serializers/15277
+    notes: Technical discussion around PHASMA as an interoperability case, highlighting the risk of packet-contract drift when XTCE layouts and C serializers evolve as separate representations.
+
   - id: analytics-baseline-collection
     date: 2026-09-04
     type: internal
