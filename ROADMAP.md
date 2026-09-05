@@ -45,15 +45,19 @@ Current baseline:
 - [x] `analytics/compare.py` implemented with unit coverage.
 - [x] Post-collection generation of `analytics/repository_comparison_latest.csv` configured.
 - [x] First automated `repository_comparison_latest.csv` generation validated end to end.
-- [x] Dashboard deployment architecture selected: static PWA on Cloudflare Pages behind Cloudflare Access.
 - [x] Dashboard presentation payload contract defined.
 - [x] `analytics/dashboard_data.py` implemented with unit coverage.
 - [x] Post-collection generation of `analytics/dashboard_data.json` configured.
 - [x] First automated `analytics/dashboard_data.json` generation validated end to end.
 - [x] Initial responsive static PWA source implemented under `dashboard/`.
-- [ ] Cloudflare Pages project configured.
-- [ ] Cloudflare Access configured.
+- [x] Cloudflare Pages project configured.
+- [x] Public-unlisted deployment policy selected; `noindex` / `robots.txt` controls configured.
+- [x] `dashboard-site` deployment branch automation configured.
+- [ ] First automated `dashboard-site` refresh validated end to end.
+- [ ] Cloudflare production branch switched to `dashboard-site`.
 - [ ] First deployed ecosystem dashboard validated on desktop and mobile.
+
+Cloudflare Access is intentionally deferred. It can be introduced later if dashboard confidentiality becomes a requirement. Until then the Pages URL is public but intentionally unlisted; anti-indexing controls reduce discoverability but are not treated as security.
 
 Repository-level unique values will not be treated as ecosystem-wide unique users. Rollups expose only explicitly named sums of repository-scoped unique values. Repository comparisons use a common recent window anchored to the latest complete ecosystem day.
 
