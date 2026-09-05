@@ -27,9 +27,13 @@ The current dashboard provides:
 - public-unlisted deployment with anti-indexing controls;
 - validated desktop and mobile usage.
 
-**M2 - Event Correlation: in progress**
+**M2 - Event Correlation: complete**
 
-The current M2 increment formalizes the event registry that will later be projected onto traffic timelines.
+Curated releases, outreach and upstream discussion events are normalized, projected into the dashboard and inspectable against traffic through a mobile-first interactive event rail.
+
+**M3 - Community Signals: in progress**
+
+The first M3 increment adds a daily repository-scoped GitHub community snapshot for the official OrbitFabric repositories.
 
 ## Architecture
 
@@ -59,7 +63,7 @@ dashboard-site branch
 Cloudflare Pages PWA
 ```
 
-Event correlation adds a parallel contextual input:
+Event correlation adds a contextual input:
 
 ```text
 config/events.yml
@@ -71,6 +75,20 @@ analytics/events.py
         |
         v
 analytics/events_normalized.json
+```
+
+M3 community collection adds a second retained evidence stream:
+
+```text
+config/community-signals.yml
+        +
+config/repositories.yml
+        |
+        v
+analytics/community.py
+        |
+        v
+analytics/community_daily.csv
 ```
 
 `main` contains source code, configuration, documentation and dashboard source.
@@ -94,6 +112,8 @@ include_in_rollups: true
 
 This allows a repository to be monitored without affecting ecosystem KPIs.
 
+The first M3 community baseline intentionally follows `include_in_rollups: true`, so community interpretation starts from the same six official repositories used by ecosystem rollups.
+
 ## Event policy
 
 `config/events.yml` is the authoritative event timeline.
@@ -106,15 +126,35 @@ Historical events are added only when their date and meaning are known well enou
 
 See [docs/event-correlation.md](docs/event-correlation.md).
 
+## Community signal policy
+
+`config/community-signals.yml` defines the first M3 stock-snapshot policy.
+
+The initial retained signals are:
+
+```text
+stars_total
+forks_total
+open_issues_total
+open_pull_requests_total
+contributors_repo_count
+```
+
+These are repository-state snapshots, not counts of new events and not counts of unique ecosystem users. Event-oriented community activity is introduced separately in later M3 increments.
+
+See [docs/community-signals.md](docs/community-signals.md).
+
 ## Collector
 
-Collection uses [`jgehrcke/github-repo-stats`](https://github.com/jgehrcke/github-repo-stats), pinned to `v1.4.2`.
+Traffic collection uses [`jgehrcke/github-repo-stats`](https://github.com/jgehrcke/github-repo-stats), pinned to `v1.4.2`.
+
+The workflow also executes the M3 community snapshot collector after the traffic jobs complete.
 
 The workflow runs once per day and can also be started manually from GitHub Actions.
 
 ## Required secret
 
-The collector needs one repository secret:
+The traffic collector needs one repository secret:
 
 ```text
 GHRS_GITHUB_API_TOKEN
@@ -122,7 +162,7 @@ GHRS_GITHUB_API_TOKEN
 
 Use a fine-grained personal access token with access to this analytics repository and to every repository where `collect: true`.
 
-Required repository permissions:
+Required repository permissions for the traffic baseline:
 
 ```text
 Administration: Read-only
@@ -133,13 +173,23 @@ Contents: Read and write
 
 For a least-privilege setup, select only `FAROTECH/orbitfabric-analytics` plus the repositories currently enabled for collection. If another repository is enabled later, grant the token access to it as well.
 
+M3 can optionally use a separate secret:
+
+```text
+COMMUNITY_GITHUB_TOKEN
+```
+
+If it is not configured, the collector reuses `GHRS_GITHUB_API_TOKEN`. Public community endpoints can fall back to anonymous access when the fine-grained token does not expose the required permission. A dedicated least-privilege community token can be introduced later when M3 expands to discussions, comments and reactions.
+
 ## Configuration
 
 - `config/repositories.yml`: authoritative repository inventory and collection / rollup policy.
 - `config/events.yml`: authoritative event timeline.
 - `config/event-taxonomy.yml`: event type, channel and confidence policy.
+- `config/community-signals.yml`: M3 community snapshot policy.
 - `tools/build_repository_matrix.py`: validates repository configuration and emits the GitHub Actions matrix.
 - `analytics/events.py`: validates and normalizes event context for M2.
+- `analytics/community.py`: collects and retains repository-scoped M3 community snapshots.
 
 ## Roadmap
 
