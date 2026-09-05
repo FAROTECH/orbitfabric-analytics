@@ -1,0 +1,944 @@
+{
+  "comparison": {
+    "repositories": [
+      {
+        "category": "core",
+        "clone_active_days": 14,
+        "clone_only_days": 6,
+        "clone_to_view_ratio": 33.78,
+        "clones_per_repo_day_unique": 3.43,
+        "clones_total": 4696,
+        "clones_unique_repo_day_sum": 1371,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "days_available": 14,
+        "days_expected": 14,
+        "inactive_days": 0,
+        "mixed_days": 8,
+        "repository": "FAROTECH/orbitfabric",
+        "repository_id": "core",
+        "view_active_days": 8,
+        "view_only_days": 0,
+        "views_per_repo_day_unique": 11.58,
+        "views_total": 139,
+        "views_unique_repo_day_sum": 12,
+        "window_days": 14,
+        "window_end": "2026-09-04",
+        "window_start": "2026-08-22"
+      },
+      {
+        "category": "adapter",
+        "clone_active_days": 2,
+        "clone_only_days": 1,
+        "clone_to_view_ratio": 9.02,
+        "clones_per_repo_day_unique": 19.95,
+        "clones_total": 379,
+        "clones_unique_repo_day_sum": 19,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "days_available": 14,
+        "days_expected": 14,
+        "inactive_days": 12,
+        "mixed_days": 1,
+        "repository": "FAROTECH/orbitfabric-fprime-adapter",
+        "repository_id": "fprime-adapter",
+        "view_active_days": 1,
+        "view_only_days": 0,
+        "views_per_repo_day_unique": 21.0,
+        "views_total": 42,
+        "views_unique_repo_day_sum": 2,
+        "window_days": 14,
+        "window_end": "2026-09-04",
+        "window_start": "2026-08-22"
+      },
+      {
+        "category": "adapter",
+        "clone_active_days": 2,
+        "clone_only_days": 1,
+        "clone_to_view_ratio": 16.0,
+        "clones_per_repo_day_unique": 10.29,
+        "clones_total": 144,
+        "clones_unique_repo_day_sum": 14,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "days_available": 14,
+        "days_expected": 14,
+        "inactive_days": 12,
+        "mixed_days": 1,
+        "repository": "FAROTECH/orbitfabric-openc3-cosmos-adapter",
+        "repository_id": "openc3-cosmos-adapter",
+        "view_active_days": 1,
+        "view_only_days": 0,
+        "views_per_repo_day_unique": 9.0,
+        "views_total": 9,
+        "views_unique_repo_day_sum": 1,
+        "window_days": 14,
+        "window_end": "2026-09-04",
+        "window_start": "2026-08-22"
+      },
+      {
+        "category": "adapter",
+        "clone_active_days": 3,
+        "clone_only_days": 2,
+        "clone_to_view_ratio": 37.31,
+        "clones_per_repo_day_unique": 10.85,
+        "clones_total": 597,
+        "clones_unique_repo_day_sum": 55,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "days_available": 14,
+        "days_expected": 14,
+        "inactive_days": 11,
+        "mixed_days": 1,
+        "repository": "FAROTECH/orbitfabric-openobsw-opensvf-adapter",
+        "repository_id": "openobsw-opensvf-adapter",
+        "view_active_days": 1,
+        "view_only_days": 0,
+        "views_per_repo_day_unique": 5.33,
+        "views_total": 16,
+        "views_unique_repo_day_sum": 3,
+        "window_days": 14,
+        "window_end": "2026-09-04",
+        "window_start": "2026-08-22"
+      },
+      {
+        "category": "product",
+        "clone_active_days": 6,
+        "clone_only_days": 3,
+        "clone_to_view_ratio": 0.94,
+        "clones_per_repo_day_unique": 1.11,
+        "clones_total": 30,
+        "clones_unique_repo_day_sum": 27,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "days_available": 14,
+        "days_expected": 14,
+        "inactive_days": 7,
+        "mixed_days": 3,
+        "repository": "FAROTECH/orbitfabric-reference-mission",
+        "repository_id": "reference-mission",
+        "view_active_days": 4,
+        "view_only_days": 1,
+        "views_per_repo_day_unique": 8.0,
+        "views_total": 32,
+        "views_unique_repo_day_sum": 4,
+        "window_days": 14,
+        "window_end": "2026-09-04",
+        "window_start": "2026-08-22"
+      },
+      {
+        "category": "product",
+        "clone_active_days": 14,
+        "clone_only_days": 8,
+        "clone_to_view_ratio": 10.88,
+        "clones_per_repo_day_unique": 5.26,
+        "clones_total": 1142,
+        "clones_unique_repo_day_sum": 217,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "days_available": 14,
+        "days_expected": 14,
+        "inactive_days": 0,
+        "mixed_days": 6,
+        "repository": "FAROTECH/orbitfabric-studio",
+        "repository_id": "studio",
+        "view_active_days": 6,
+        "view_only_days": 0,
+        "views_per_repo_day_unique": 17.5,
+        "views_total": 105,
+        "views_unique_repo_day_sum": 6,
+        "window_days": 14,
+        "window_end": "2026-09-04",
+        "window_start": "2026-08-22"
+      }
+    ],
+    "window_days": 14,
+    "window_end": "2026-09-04",
+    "window_start": "2026-08-22"
+  },
+  "latest_categories": [
+    {
+      "clones_total": 262,
+      "clones_unique_repo_sum": 30,
+      "coverage_complete": true,
+      "coverage_pct": 100.0,
+      "repositories_available": 3,
+      "repositories_expected": 3,
+      "scope_id": "adapter",
+      "views_total": 67,
+      "views_unique_repo_sum": 6
+    },
+    {
+      "clones_total": 1305,
+      "clones_unique_repo_sum": 456,
+      "coverage_complete": true,
+      "coverage_pct": 100.0,
+      "repositories_available": 1,
+      "repositories_expected": 1,
+      "scope_id": "core",
+      "views_total": 24,
+      "views_unique_repo_sum": 2
+    },
+    {
+      "clones_total": 3,
+      "clones_unique_repo_sum": 3,
+      "coverage_complete": true,
+      "coverage_pct": 100.0,
+      "repositories_available": 2,
+      "repositories_expected": 2,
+      "scope_id": "product",
+      "views_total": 15,
+      "views_unique_repo_sum": 2
+    }
+  ],
+  "latest_complete_day": "2026-09-04",
+  "overview": {
+    "clones_total": 1570,
+    "clones_unique_repo_sum": 489,
+    "coverage_complete": true,
+    "coverage_pct": 100.0,
+    "repositories_available": 6,
+    "repositories_expected": 6,
+    "scope_id": "ecosystem",
+    "views_total": 106,
+    "views_unique_repo_sum": 10
+  },
+  "schema_version": 1,
+  "timeline": [
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "product": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        }
+      },
+      "date": "2026-08-21",
+      "ecosystem": {
+        "clones_total": 0,
+        "clones_unique_repo_sum": 0,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 0,
+        "views_unique_repo_sum": 0
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 80,
+          "clones_unique_repo_sum": 1,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "product": {
+          "clones_total": 243,
+          "clones_unique_repo_sum": 1,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        }
+      },
+      "date": "2026-08-22",
+      "ecosystem": {
+        "clones_total": 323,
+        "clones_unique_repo_sum": 2,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 0,
+        "views_unique_repo_sum": 0
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 24,
+          "clones_unique_repo_sum": 1,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 3,
+          "views_unique_repo_sum": 1
+        },
+        "product": {
+          "clones_total": 81,
+          "clones_unique_repo_sum": 1,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        }
+      },
+      "date": "2026-08-23",
+      "ecosystem": {
+        "clones_total": 105,
+        "clones_unique_repo_sum": 2,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 3,
+        "views_unique_repo_sum": 1
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 33,
+          "clones_unique_repo_sum": 2,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "product": {
+          "clones_total": 100,
+          "clones_unique_repo_sum": 7,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 17,
+          "views_unique_repo_sum": 1
+        }
+      },
+      "date": "2026-08-24",
+      "ecosystem": {
+        "clones_total": 133,
+        "clones_unique_repo_sum": 9,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 17,
+        "views_unique_repo_sum": 1
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 3,
+          "clones_unique_repo_sum": 2,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "product": {
+          "clones_total": 41,
+          "clones_unique_repo_sum": 11,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        }
+      },
+      "date": "2026-08-25",
+      "ecosystem": {
+        "clones_total": 44,
+        "clones_unique_repo_sum": 13,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 0,
+        "views_unique_repo_sum": 0
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 289,
+          "clones_unique_repo_sum": 65,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 15,
+          "views_unique_repo_sum": 1
+        },
+        "product": {
+          "clones_total": 159,
+          "clones_unique_repo_sum": 37,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 24,
+          "views_unique_repo_sum": 1
+        }
+      },
+      "date": "2026-08-26",
+      "ecosystem": {
+        "clones_total": 448,
+        "clones_unique_repo_sum": 102,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 39,
+        "views_unique_repo_sum": 2
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 152,
+          "clones_unique_repo_sum": 23,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "product": {
+          "clones_total": 277,
+          "clones_unique_repo_sum": 92,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        }
+      },
+      "date": "2026-08-27",
+      "ecosystem": {
+        "clones_total": 429,
+        "clones_unique_repo_sum": 115,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 0,
+        "views_unique_repo_sum": 0
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 207,
+          "clones_unique_repo_sum": 37,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 84,
+          "views_unique_repo_sum": 1
+        },
+        "product": {
+          "clones_total": 112,
+          "clones_unique_repo_sum": 49,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 66,
+          "views_unique_repo_sum": 2
+        }
+      },
+      "date": "2026-08-28",
+      "ecosystem": {
+        "clones_total": 319,
+        "clones_unique_repo_sum": 86,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 150,
+        "views_unique_repo_sum": 3
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 8,
+          "clones_unique_repo_sum": 5,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 2,
+          "views_unique_repo_sum": 2
+        },
+        "product": {
+          "clones_total": 19,
+          "clones_unique_repo_sum": 11,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 2,
+          "views_unique_repo_sum": 1
+        }
+      },
+      "date": "2026-08-29",
+      "ecosystem": {
+        "clones_total": 27,
+        "clones_unique_repo_sum": 16,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 4,
+        "views_unique_repo_sum": 3
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 1,
+          "clones_unique_repo_sum": 1,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 2,
+          "views_unique_repo_sum": 2
+        },
+        "product": {
+          "clones_total": 3,
+          "clones_unique_repo_sum": 3,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 6,
+          "views_unique_repo_sum": 1
+        }
+      },
+      "date": "2026-08-30",
+      "ecosystem": {
+        "clones_total": 4,
+        "clones_unique_repo_sum": 4,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 8,
+        "views_unique_repo_sum": 3
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 11,
+          "clones_unique_repo_sum": 3,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 8,
+          "views_unique_repo_sum": 2
+        },
+        "product": {
+          "clones_total": 7,
+          "clones_unique_repo_sum": 6,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 7,
+          "views_unique_repo_sum": 2
+        }
+      },
+      "date": "2026-08-31",
+      "ecosystem": {
+        "clones_total": 18,
+        "clones_unique_repo_sum": 9,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 15,
+        "views_unique_repo_sum": 4
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 0,
+          "clones_unique_repo_sum": 0,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 55,
+          "clones_unique_repo_sum": 10,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 1,
+          "views_unique_repo_sum": 1
+        },
+        "product": {
+          "clones_total": 52,
+          "clones_unique_repo_sum": 10,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        }
+      },
+      "date": "2026-09-01",
+      "ecosystem": {
+        "clones_total": 107,
+        "clones_unique_repo_sum": 20,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 1,
+        "views_unique_repo_sum": 1
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 142,
+          "clones_unique_repo_sum": 2,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 910,
+          "clones_unique_repo_sum": 230,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "product": {
+          "clones_total": 71,
+          "clones_unique_repo_sum": 11,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        }
+      },
+      "date": "2026-09-02",
+      "ecosystem": {
+        "clones_total": 1123,
+        "clones_unique_repo_sum": 243,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 0,
+        "views_unique_repo_sum": 0
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 716,
+          "clones_unique_repo_sum": 56,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "core": {
+          "clones_total": 1618,
+          "clones_unique_repo_sum": 535,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        },
+        "product": {
+          "clones_total": 4,
+          "clones_unique_repo_sum": 2,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 0,
+          "views_unique_repo_sum": 0
+        }
+      },
+      "date": "2026-09-03",
+      "ecosystem": {
+        "clones_total": 2338,
+        "clones_unique_repo_sum": 593,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 0,
+        "views_unique_repo_sum": 0
+      }
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 262,
+          "clones_unique_repo_sum": 30,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 67,
+          "views_unique_repo_sum": 6
+        },
+        "core": {
+          "clones_total": 1305,
+          "clones_unique_repo_sum": 456,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 24,
+          "views_unique_repo_sum": 2
+        },
+        "product": {
+          "clones_total": 3,
+          "clones_unique_repo_sum": 3,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 15,
+          "views_unique_repo_sum": 2
+        }
+      },
+      "date": "2026-09-04",
+      "ecosystem": {
+        "clones_total": 1570,
+        "clones_unique_repo_sum": 489,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 106,
+        "views_unique_repo_sum": 10
+      }
+    }
+  ]
+}
