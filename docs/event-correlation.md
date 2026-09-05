@@ -1,6 +1,6 @@
 # Event correlation
 
-Status: M2 foundation in progress.
+Status: M2 in progress.
 
 ## Goal
 
@@ -87,12 +87,39 @@ analytics/events_normalized.json
 
 on the `github-repo-stats` data branch.
 
-The normalized dataset is sorted by date and stable event ID and is the downstream source for future dashboard correlation views.
+The normalized dataset is sorted by date and stable event ID.
+
+## Dashboard projection
+
+`analytics/dashboard_events.py` projects normalized events into the generated dashboard payload after the normal traffic payload has been built.
+
+The projection adds:
+
+```text
+events
+event_context
+timeline[].events
+```
+
+`event_context` explicitly separates three cases:
+
+```text
+events_in_timeline
+    event date has retained traffic data and can be inspected in context
+
+events_pending
+    event is newer than the latest complete traffic day
+
+events_before_timeline
+    event predates the currently retained dashboard window
+```
+
+This distinction is important. A newly authored event can appear in the dashboard immediately without pretending that traffic correlation is already available for that day.
+
+The dashboard renders an event rail alongside the Activity Timeline and a curated event list with date, type, channel, scope, confidence, notes and source link where available.
 
 ## Current M2 boundary
 
-The first M2 increment establishes the event contract and normalized data pipeline only.
-
-The next increment will project these events into the dashboard timeline and then add correlation-oriented views around traffic changes.
+The event registry, normalization pipeline and dashboard context projection are now implemented. The next increment is the direct traffic/event overlay used for correlation inspection.
 
 No historical outreach event should be invented merely to populate the dashboard. Events are added only when their date and meaning are known well enough to be useful.
