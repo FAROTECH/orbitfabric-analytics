@@ -90,8 +90,10 @@ Current baseline:
 - [x] First automated `analytics/events_normalized.json` generation validated end to end.
 - [x] Normalized events projected into `dashboard_data.json`.
 - [x] Event context rendered alongside the dashboard activity timeline.
-- [ ] First automated event-projection payload and deployment validated end to end.
-- [ ] Traffic/event overlay implemented for correlation inspection.
+- [x] First automated event-projection payload and deployment validated end to end.
+- [x] Mobile-first event rail with on-demand traffic-chart guide implemented.
+- [x] Traffic/event overlay implemented for correlation inspection.
+- [ ] First automated interactive traffic/event overlay deployment validated end to end.
 - [x] Initial set of confirmed public OrbitFabric events curated.
 - [ ] First traffic/event correlation review completed.
 
@@ -100,6 +102,8 @@ Planned event classes include releases, outreach, upstream discussions, document
 Historical events are not invented merely to populate the dashboard. When a date is uncertain but still useful, it is explicitly marked `approximate`; confirmed day-level correlation uses `confirmed` events.
 
 The event context distinguishes events already inside the retained traffic window from events awaiting a future complete traffic day and events older than the retained timeline. This keeps the dashboard explicit about whether correlation can actually be inspected yet.
+
+The traffic/event overlay is intentionally interaction-driven: the rail is always visible, while a thin guide is drawn across both traffic charts only when an in-window event day is selected. This avoids permanently cluttering the charts and keeps the interaction usable on small screens.
 
 Correlation will be treated as temporal evidence, not proof of causation.
 
