@@ -126,6 +126,12 @@ jobs:
             --policy app/config/community-signals.yml \
             --output data/analytics/community_daily.csv
 
+      - name: Build latest community stock comparison
+        run: |
+          python app/analytics/community_compare.py \
+            --input data/analytics/community_daily.csv \
+            --output data/analytics/community_comparison_latest.csv
+
       - name: Build normalized repository-day dataset
         run: |
           python app/analytics/aggregate.py \
@@ -171,6 +177,7 @@ jobs:
           git add \
             analytics/events_normalized.json \
             analytics/community_daily.csv \
+            analytics/community_comparison_latest.csv \
             analytics/ecosystem_daily.csv \
             analytics/ecosystem_rollups_daily.csv \
             analytics/repository_comparison_latest.csv \
