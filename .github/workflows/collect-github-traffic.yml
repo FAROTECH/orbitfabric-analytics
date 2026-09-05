@@ -130,6 +130,7 @@ jobs:
         run: |
           python app/analytics/community_compare.py \
             --input data/analytics/community_daily.csv \
+            --policy app/config/community-signals.yml \
             --output data/analytics/community_comparison_latest.csv
 
       - name: Build normalized repository-day dataset
