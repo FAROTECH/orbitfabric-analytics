@@ -96,7 +96,7 @@ repositories:
             self.assertEqual(studio["views_total"], 7)
             self.assertEqual(studio["view_only_days"], 1)
             self.assertEqual(studio["inactive_days"], 0)
-            self.assertIsNone(studio["clone_to_view_ratio"])
+            self.assertEqual(studio["clone_to_view_ratio"], 0.0)
 
             output = root / "repository_comparison_latest.csv"
             write_comparison(rows, output)
