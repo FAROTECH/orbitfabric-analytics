@@ -112,19 +112,37 @@ Correlation will be treated as temporal evidence, not proof of causation.
 
 ## M3 - Community Signals
 
-**Status: planned**
+**Status: in progress**
 
-Goal: complement traffic with public engagement data.
+Goal: complement traffic and curated context with public engagement and project-activity evidence.
 
-Planned signals:
+M3a stock-snapshot baseline:
 
-- stars;
-- forks;
-- issues;
-- pull requests;
-- contributors;
-- discussions;
-- comments and reactions where useful.
+- [x] Traffic, community and contextual evidence families explicitly separated.
+- [x] Community policy defined in `config/community-signals.yml`.
+- [x] Initial repository selection aligned with the six official `include_in_rollups: true` repositories.
+- [x] Daily repository-scoped stock contract defined.
+- [x] Initial stock signals defined: stars, forks, open issues, open pull requests and repository-scoped contributor records.
+- [x] Stock metric semantics explicitly separated from event-count semantics.
+- [x] `analytics/community.py` implemented with same-day idempotent history merging.
+- [x] Community snapshot unit coverage added.
+- [x] Post-collection generation of `analytics/community_daily.csv` configured.
+- [ ] First automated `analytics/community_daily.csv` generation validated end to end.
+- [ ] Initial community baseline reviewed for all six official repositories.
+
+Planned M3 increments:
+
+- [ ] Daily / rolling change semantics for stock community signals.
+- [ ] Commit and first-party development activity context.
+- [ ] Event-oriented issue lifecycle signals.
+- [ ] Event-oriented pull-request lifecycle signals.
+- [ ] Contributor arrival / participation signals without ecosystem-wide identity assumptions.
+- [ ] GitHub Discussions signals.
+- [ ] Comments and reactions where useful.
+- [ ] Community signals projected into the dashboard.
+- [ ] Cross-reading of traffic, community and contextual events.
+
+A stock change is not automatically a count of new events. For example, an open-issue delta can be affected by both issue creation and issue closure between snapshots. Community metrics remain repository-scoped unless an explicitly deduplicated semantic is introduced later.
 
 ## M4 - Web Analytics
 
