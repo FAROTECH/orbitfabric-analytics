@@ -83,6 +83,7 @@ GitHub repositories
     -> normalized analytics datasets
     -> official rollups
     -> repository comparison
+    -> snapshot deltas
     -> dashboard_data.json
     -> dashboard-site branch
     -> Cloudflare Pages
@@ -101,6 +102,44 @@ During deployment that file is exposed to the static application as:
 dashboard/data/dashboard_data.json
 ```
 
+## Snapshot delta semantics
+
+Snapshot deltas are computed before the browser renders the dashboard.
+
+For the Overview cards:
+
+```text
+latest complete ecosystem day
+vs
+previous complete ecosystem day
+```
+
+For Repository Comparison:
+
+```text
+current rolling N-day snapshot
+vs
+previous complete rolling N-day snapshot
+```
+
+The repository comparison windows therefore have the same length and are shifted by one complete ecosystem snapshot. This is a change-since-previous-snapshot signal, not a comparison against a disjoint historical period.
+
+Each delta carries:
+
+```text
+current
+previous
+absolute
+pct
+state
+```
+
+`state` is one of `increase`, `decrease`, `unchanged` or `new`. If the previous value is zero and the current value is non-zero, percentage change is intentionally left undefined and the state is `new`.
+
+Deltas are directional activity signals only. Higher is not automatically better and lower is not automatically worse.
+
+Repository-scoped unique metrics remain repository-scoped. Their deltas must never be described as new people or ecosystem-wide unique users.
+
 ## Presentation boundary
 
 The browser does not parse raw GHRS data and does not reproduce analytics logic.
@@ -108,6 +147,7 @@ The browser does not parse raw GHRS data and does not reproduce analytics logic.
 The frontend is responsible for:
 
 - rendering overview metrics;
+- rendering snapshot deltas already computed by the analytics layer;
 - rendering charts;
 - rendering repository comparison tables;
 - explaining already-defined metric semantics;
