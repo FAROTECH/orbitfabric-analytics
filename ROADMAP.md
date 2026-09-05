@@ -44,7 +44,7 @@ Current baseline:
 - [x] Adoption proxy semantics defined without introducing a scalar adoption score.
 - [x] `analytics/compare.py` implemented with unit coverage.
 - [x] Post-collection generation of `analytics/repository_comparison_latest.csv` configured.
-- [ ] First automated `repository_comparison_latest.csv` generation validated end to end.
+- [x] First automated `repository_comparison_latest.csv` generation validated end to end.
 - [x] Dashboard deployment architecture selected: static PWA on Cloudflare Pages behind Cloudflare Access.
 - [ ] First ecosystem dashboard generated.
 
