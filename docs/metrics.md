@@ -171,9 +171,108 @@ These names are intentionally explicit. They are sums of repository-level unique
 
 No dashboard should relabel them as "unique OrbitFabric users".
 
+## M1 repository comparison contract
+
+`analytics/compare.py` builds a recent-window comparison across the repositories included in official rollups.
+
+The comparison window does not end on the newest timestamp merely present in the raw data. It ends on the latest day for which the ecosystem rollup has `coverage_complete = true`. This prevents a partially collected latest day from making one repository appear artificially quieter than another.
+
+The default window is 14 calendar days and is identical for every compared repository.
+
+The generated snapshot is persisted at:
+
+```text
+analytics/repository_comparison_latest.csv
+```
+
+Each repository row contains:
+
+```text
+window_start
+window_end
+window_days
+repository_id
+repository
+category
+days_expected
+days_available
+coverage_pct
+coverage_complete
+clones_total
+views_total
+clones_unique_repo_day_sum
+views_unique_repo_day_sum
+clone_active_days
+view_active_days
+clone_only_days
+view_only_days
+mixed_days
+inactive_days
+clones_per_repo_day_unique
+views_per_repo_day_unique
+clone_to_view_ratio
+```
+
+### Window coverage
+
+`days_available` counts measured repository-day rows inside the common comparison window.
+
+A measured zero-activity day is still available. A missing day is not counted as inactive.
+
+`coverage_pct` therefore describes the completeness of the comparison window for that repository. Repository totals must be interpreted together with this value.
+
+### Activity shape
+
+Each available repository-day is classified deterministically as one of:
+
+- `clone_only`: clone activity, no view activity;
+- `view_only`: view activity, no clone activity;
+- `mixed`: both clone and view activity;
+- `inactive`: measured zero clone and zero view activity.
+
+These are activity shapes, not attribution labels. In particular, `clone_only` does not mean automation and `mixed` does not mean external adoption.
+
+### Awareness evidence
+
+At M1, repository browsing is the cleanest available awareness signal:
+
+- `views_total`
+- `views_unique_repo_day_sum`
+- `view_active_days`
+
+Even these values may include maintainers, bots or repeated technical access. They are therefore evidence of repository visibility, not a count of external people.
+
+### Technical evaluation / access evidence
+
+Clone activity is treated as a technical access or evaluation signal:
+
+- `clones_total`
+- `clones_unique_repo_day_sum`
+- `clone_active_days`
+
+It is deliberately not called adoption. During periods of intense OrbitFabric development, CI, greenfield testing, local work and cross-repository integration can dominate these values.
+
+### Diagnostic ratios
+
+The comparison exposes:
+
+- `clones_per_repo_day_unique`
+- `views_per_repo_day_unique`
+- `clone_to_view_ratio`
+
+They describe activity shape only. `clone_to_view_ratio` is not a conversion rate because GitHub does not link repository viewers to cloners. Ratios with a zero denominator are left empty rather than represented as infinity.
+
+### Adoption proxy semantics
+
+M1 does not produce a scalar "adoption score".
+
+Clone activity can be shown as a low-confidence adoption-interest proxy only when it remains clearly separated from external-user claims and is presented together with activity shape and coverage.
+
+Stronger evidence of adoption will come from additional signals such as forks, stars, issues, pull requests, contributors, releases and external web traffic. Those signals belong to later roadmap stages.
+
 ## Separation of concerns
 
-No inferred adoption score, bot filtering or attribution is applied at the normalization or rollup stages.
+No inferred adoption score, bot filtering or attribution is applied at the normalization, rollup or repository-comparison stages.
 
 That separation is intentional:
 
@@ -181,6 +280,7 @@ That separation is intentional:
 raw collection
     -> normalized repository-day dataset
     -> explicit rollups + coverage
+    -> fair repository comparison
     -> contextual interpretation
     -> dashboard
 ```

@@ -39,12 +39,16 @@ Current baseline:
 - [x] `analytics/rollup.py` implemented with unit coverage.
 - [x] Post-collection generation of `analytics/ecosystem_rollups_daily.csv` configured.
 - [x] First automated `ecosystem_rollups_daily.csv` generation validated end to end.
-- [ ] Repository comparison view semantics defined.
-- [ ] Awareness and evaluation metrics defined.
-- [ ] Adoption proxy semantics defined.
+- [x] Repository comparison view semantics defined.
+- [x] Awareness and technical-evaluation metric semantics defined.
+- [x] Adoption proxy semantics defined without introducing a scalar adoption score.
+- [x] `analytics/compare.py` implemented with unit coverage.
+- [x] Post-collection generation of `analytics/repository_comparison_latest.csv` configured.
+- [ ] First automated `repository_comparison_latest.csv` generation validated end to end.
+- [x] Dashboard deployment architecture selected: static PWA on Cloudflare Pages behind Cloudflare Access.
 - [ ] First ecosystem dashboard generated.
 
-Repository-level unique values will not be treated as ecosystem-wide unique users. Rollups expose only explicitly named sums of repository-scoped unique values.
+Repository-level unique values will not be treated as ecosystem-wide unique users. Rollups expose only explicitly named sums of repository-scoped unique values. Repository comparisons use a common recent window anchored to the latest complete ecosystem day.
 
 ## M2 - Event Correlation
 

@@ -115,6 +115,15 @@ jobs:
             --input data/analytics/ecosystem_daily.csv \
             --output data/analytics/ecosystem_rollups_daily.csv
 
+      - name: Build recent repository comparison snapshot
+        run: |
+          python app/analytics/compare.py \
+            --config app/config/repositories.yml \
+            --input data/analytics/ecosystem_daily.csv \
+            --rollups data/analytics/ecosystem_rollups_daily.csv \
+            --days 14 \
+            --output data/analytics/repository_comparison_latest.csv
+
       - name: Persist analytics datasets
         working-directory: data
         run: |
@@ -122,7 +131,8 @@ jobs:
           git config user.name "GitHub Action"
           git add \
             analytics/ecosystem_daily.csv \
-            analytics/ecosystem_rollups_daily.csv
+            analytics/ecosystem_rollups_daily.csv \
+            analytics/repository_comparison_latest.csv
 
           if git diff --cached --quiet; then
             echo "Analytics datasets unchanged."
