@@ -9,6 +9,18 @@ version: 1
 # Use confidence: approximate when the date is intentionally not exact.
 
 events:
+  - id: fprime-adapter-v0-1-0-release
+    date: 2026-09-04
+    type: release
+    channel: github
+    scope:
+      - fprime-adapter
+      - ecosystem
+    confidence: confirmed
+    label: OrbitFabric F´ Adapter v0.1.0 first stable release
+    url: https://github.com/FAROTECH/orbitfabric-fprime-adapter/releases/tag/v0.1.0
+    notes: First stable public release of the OrbitFabric F´ Adapter, published earlier on the same day as the upstream F´ discussion event.
+
   - id: fprime-upstream-deployment-identity-discussion
     date: 2026-09-04
     type: upstream-discussion
@@ -20,6 +32,17 @@ events:
     label: F´ upstream discussion on deployment-resolved identity and COSMOS generation
     url: https://github.com/nasa/fprime/issues/5353#issuecomment-5539882345
     notes: OrbitFabric F´ adapter evidence introduced into the upstream discussion, focusing on generated-dictionary provenance, deployment-resolved identity across native layout refactors, and explicit diagnostics for lossy COSMOS mappings.
+
+  - id: fprime-adapter-v0-1-1-release
+    date: 2026-09-04
+    type: release
+    channel: github
+    scope:
+      - fprime-adapter
+    confidence: confirmed
+    label: OrbitFabric F´ Adapter v0.1.1 release identity correction
+    url: https://github.com/FAROTECH/orbitfabric-fprime-adapter/releases/tag/v0.1.1
+    notes: Same-day patch release correcting release Source Coordinate metadata while preserving the accepted v0.1.0 integration behavior.
 
   - id: libre-space-phasma-xtce-serializer-alignment
     date: 2026-09-05
