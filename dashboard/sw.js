@@ -1,10 +1,12 @@
-const CACHE_NAME = "orbitfabric-analytics-v2";
+const CACHE_NAME = "orbitfabric-analytics-v3";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./styles.css",
   "./deltas.css",
+  "./events.css",
   "./app.js",
+  "./events.js",
   "./manifest.webmanifest",
   "./assets/app-icon.svg",
 ];
