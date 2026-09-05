@@ -36,9 +36,16 @@ signals:
     kind: stock
     source: github_contributors
 
+comparison:
+  mode: latest_vs_previous_available
+  absolute_delta: true
+  percentage_delta: false
+  expose_snapshot_gap_days: true
+
 semantics:
   contributors_repo_count: repository-scoped contributor records; not ecosystem-wide unique people
   open_issues_total: open issues excluding pull requests
   open_pull_requests_total: currently open pull requests
   stars_total: current repository stargazer count; may increase or decrease
   forks_total: current repository fork count; may increase or decrease
+  stock_delta: signed change between two observed repository states; not automatically a count of events
