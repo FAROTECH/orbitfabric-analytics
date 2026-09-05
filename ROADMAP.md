@@ -127,12 +127,23 @@ M3a stock-snapshot baseline:
 - [x] `analytics/community.py` implemented with same-day idempotent history merging.
 - [x] Community snapshot unit coverage added.
 - [x] Post-collection generation of `analytics/community_daily.csv` configured.
-- [ ] First automated `analytics/community_daily.csv` generation validated end to end.
-- [ ] Initial community baseline reviewed for all six official repositories.
+- [x] First automated `analytics/community_daily.csv` generation validated end to end.
+- [x] Initial community baseline reviewed for all six official repositories.
+
+M3b stock deltas:
+
+- [x] Latest-vs-previous-available snapshot comparison semantics defined.
+- [x] Stock deltas kept absolute-only; percentage deltas intentionally excluded from the initial low-cardinality baseline.
+- [x] Snapshot gaps exposed explicitly through `snapshot_gap_days`.
+- [x] Missing previous snapshots represented as non-comparable rather than synthetic zero deltas.
+- [x] `analytics/community_compare.py` implemented with unit coverage.
+- [x] Post-collection generation of `analytics/community_comparison_latest.csv` configured.
+- [ ] First automated `analytics/community_comparison_latest.csv` generation validated end to end.
+- [ ] First real comparable stock delta observed from two distinct collection dates.
 
 Planned M3 increments:
 
-- [ ] Daily / rolling change semantics for stock community signals.
+- [ ] Rolling trend semantics beyond adjacent observed snapshots.
 - [ ] Commit and first-party development activity context.
 - [ ] Event-oriented issue lifecycle signals.
 - [ ] Event-oriented pull-request lifecycle signals.
@@ -143,6 +154,8 @@ Planned M3 increments:
 - [ ] Cross-reading of traffic, community and contextual events.
 
 A stock change is not automatically a count of new events. For example, an open-issue delta can be affected by both issue creation and issue closure between snapshots. Community metrics remain repository-scoped unless an explicitly deduplicated semantic is introduced later.
+
+The first retained community baseline is dated 2026-09-05. Until a later dated snapshot exists, M3b correctly exposes current stock values without inventing comparison deltas.
 
 ## M4 - Web Analytics
 
