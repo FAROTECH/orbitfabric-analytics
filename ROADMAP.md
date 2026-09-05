@@ -26,14 +26,20 @@ M0 was validated with a successful end-to-end collection across all repositories
 
 Goal: turn retained traffic data into a coherent OrbitFabric ecosystem view.
 
-- [x] Define the normalized repository-day dataset.
-- [x] Implement the first cross-repository normalization tool.
-- [x] Document metric semantics and non-additive unique-count rules.
-- [ ] Automate normalized dataset generation after collection.
-- [ ] Define explicit ecosystem and category rollups.
-- [ ] Add Core vs Studio vs adapters comparison.
-- [ ] Define awareness, evaluation and adoption-proxy views.
-- [ ] Build the first ecosystem dashboard.
+Current baseline:
+
+- [x] Repository-day normalization contract defined.
+- [x] `analytics/aggregate.py` implemented.
+- [x] Normalization unit test added.
+- [x] Post-collection generation of `analytics/ecosystem_daily.csv` configured.
+- [ ] First automated `ecosystem_daily.csv` generation validated end to end.
+- [ ] Cross-repository aggregate metrics defined.
+- [ ] Core vs Studio vs adapters comparison defined.
+- [ ] Awareness and evaluation metrics defined.
+- [ ] Adoption proxy semantics defined.
+- [ ] First ecosystem dashboard generated.
+
+Repository-level unique values will not be treated as ecosystem-wide unique users. Any future rollup must preserve that distinction explicitly.
 
 ## M2 - Event Correlation
 

@@ -75,6 +75,16 @@ views_total
 views_unique
 ```
 
+The generated dataset is persisted on the `github-repo-stats` branch at:
+
+```text
+analytics/ecosystem_daily.csv
+```
+
+This keeps generated analytics data separate from code and policy on `main`.
+
+The collection workflow builds the normalized dataset only after all enabled repository collectors have completed successfully. This guarantees that one daily dataset is generated from a coherent post-collection state.
+
 No inferred adoption score, bot filtering or attribution is applied at this stage.
 
 That separation is intentional:
