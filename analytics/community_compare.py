@@ -9,6 +9,8 @@ from collections import defaultdict
 from datetime import date
 from pathlib import Path
 
+import yaml
+
 METRICS = [
     "stars_total",
     "forks_total",
@@ -36,6 +38,28 @@ OUTPUT_FIELDS = [
 ]
 for metric in METRICS:
     OUTPUT_FIELDS.extend([metric, f"{metric}_delta"])
+
+
+def load_comparison_policy(path: Path) -> None:
+    payload = yaml.safe_load(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        raise ValueError(f"{path} must contain a YAML mapping")
+    comparison = payload.get("comparison")
+    if not isinstance(comparison, dict):
+        raise ValueError("community-signals.yml must define comparison policy")
+
+    expected = {
+        "mode": "latest_vs_previous_available",
+        "absolute_delta": True,
+        "percentage_delta": False,
+        "expose_snapshot_gap_days": True,
+    }
+    for key, value in expected.items():
+        if comparison.get(key) != value:
+            raise ValueError(
+                f"Unsupported community comparison policy {key}={comparison.get(key)!r}; "
+                f"expected {value!r}"
+            )
 
 
 def read_history(path: Path) -> list[dict[str, str]]:
@@ -115,9 +139,11 @@ def main() -> int:
         description="Build latest community stock deltas for OrbitFabric repositories."
     )
     parser.add_argument("--input", type=Path, required=True)
+    parser.add_argument("--policy", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
 
+    load_comparison_policy(args.policy)
     rows = build_latest_comparison(read_history(args.input))
     write_comparison(args.output, rows)
     comparable = sum(1 for row in rows if row["comparable"] == "true")
