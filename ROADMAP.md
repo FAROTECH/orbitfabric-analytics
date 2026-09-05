@@ -49,7 +49,7 @@ Current baseline:
 - [x] Dashboard presentation payload contract defined.
 - [x] `analytics/dashboard_data.py` implemented with unit coverage.
 - [x] Post-collection generation of `analytics/dashboard_data.json` configured.
-- [ ] First automated `analytics/dashboard_data.json` generation validated end to end.
+- [x] First automated `analytics/dashboard_data.json` generation validated end to end.
 - [x] Initial responsive static PWA source implemented under `dashboard/`.
 - [ ] Cloudflare Pages project configured.
 - [ ] Cloudflare Access configured.
