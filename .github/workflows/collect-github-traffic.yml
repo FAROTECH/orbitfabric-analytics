@@ -147,6 +147,12 @@ jobs:
             --daily data/analytics/ecosystem_daily.csv \
             --output data/analytics/dashboard_data.json
 
+      - name: Project events into dashboard payload
+        run: |
+          python app/analytics/dashboard_events.py \
+            --dashboard data/analytics/dashboard_data.json \
+            --events data/analytics/events_normalized.json
+
       - name: Persist analytics datasets
         working-directory: data
         run: |
