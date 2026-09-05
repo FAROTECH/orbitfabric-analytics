@@ -38,7 +38,7 @@ Current baseline:
 - [x] Ecosystem / core / product / adapter rollup scopes defined.
 - [x] `analytics/rollup.py` implemented with unit coverage.
 - [x] Post-collection generation of `analytics/ecosystem_rollups_daily.csv` configured.
-- [ ] First automated `ecosystem_rollups_daily.csv` generation validated end to end.
+- [x] First automated `ecosystem_rollups_daily.csv` generation validated end to end.
 - [ ] Repository comparison view semantics defined.
 - [ ] Awareness and evaluation metrics defined.
 - [ ] Adoption proxy semantics defined.
