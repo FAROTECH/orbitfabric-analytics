@@ -87,11 +87,11 @@ Current baseline:
 - [x] `analytics/events.py` implemented to validate and normalize the event registry.
 - [x] Event registry unit coverage added.
 - [x] Post-collection generation of `analytics/events_normalized.json` configured.
-- [ ] First automated `analytics/events_normalized.json` generation validated end to end.
+- [x] First automated `analytics/events_normalized.json` generation validated end to end.
 - [ ] Normalized events projected into `dashboard_data.json`.
 - [ ] Event context rendered in the dashboard timeline.
 - [ ] Traffic/event overlay implemented for correlation inspection.
-- [ ] Initial set of confirmed public OrbitFabric events curated.
+- [x] Initial set of confirmed public OrbitFabric events curated.
 - [ ] First traffic/event correlation review completed.
 
 Planned event classes include releases, outreach, upstream discussions, documentation launches, internal milestones and major ecosystem milestones. Channels are policy-driven and currently include GitHub, LinkedIn, Reddit, Hackaday, Libre Space, website and internal analytics context.
