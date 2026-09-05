@@ -11,6 +11,7 @@
   <link rel="icon" href="./assets/app-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./deltas.css">
+  <link rel="stylesheet" href="./events.css">
 </head>
 <body>
   <div class="app-shell">
@@ -106,6 +107,18 @@
             <div class="chart-wrap"><canvas id="views-chart"></canvas></div>
           </article>
         </div>
+
+        <article class="panel event-context-panel">
+          <div class="event-context-heading">
+            <div>
+              <h3>Event context</h3>
+              <p>Curated project events aligned to the retained traffic window.</p>
+            </div>
+            <p id="event-summary">Loading event context…</p>
+          </div>
+          <div class="event-track" id="event-track" aria-label="Event timeline"></div>
+          <div class="event-list" id="event-list"></div>
+        </article>
       </section>
 
       <section class="section-block">
@@ -167,5 +180,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="./app.js"></script>
+  <script src="./events.js"></script>
 </body>
 </html>
