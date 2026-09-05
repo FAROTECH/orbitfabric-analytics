@@ -89,6 +89,13 @@ jobs:
           path: data
           token: ${{ secrets.GHRS_GITHUB_API_TOKEN }}
 
+      - name: Check out dashboard deployment branch
+        uses: actions/checkout@v4
+        with:
+          ref: dashboard-site
+          path: site
+          token: ${{ secrets.GHRS_GITHUB_API_TOKEN }}
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -144,8 +151,29 @@ jobs:
 
           if git diff --cached --quiet; then
             echo "Analytics datasets unchanged."
+          else
+            git commit -m "analytics: refresh ecosystem datasets"
+            git push origin HEAD:github-repo-stats
+          fi
+
+      - name: Assemble static dashboard site
+        run: |
+          rsync -a --delete app/dashboard/ site/dashboard/
+          mkdir -p site/dashboard/data
+          cp data/analytics/dashboard_data.json site/dashboard/data/dashboard_data.json
+
+      - name: Persist static dashboard site
+        working-directory: site
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add -A dashboard
+          git add -f dashboard/data/dashboard_data.json
+
+          if git diff --cached --quiet; then
+            echo "Static dashboard site unchanged."
             exit 0
           fi
 
-          git commit -m "analytics: refresh ecosystem datasets"
-          git push origin HEAD:github-repo-stats
+          git commit -m "dashboard: refresh static site"
+          git push origin HEAD:dashboard-site
