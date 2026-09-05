@@ -10,6 +10,7 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./assets/app-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./deltas.css">
 </head>
 <body>
   <div class="app-shell">
@@ -31,7 +32,7 @@
             <div class="eyebrow">OVERVIEW</div>
             <h2>Ecosystem pulse</h2>
           </div>
-          <p class="section-note">Latest complete day, con coverage esplicita.</p>
+          <p class="section-note">Latest complete day, con coverage esplicita e delta rispetto al previous complete snapshot.</p>
         </div>
 
         <div class="metric-grid">
@@ -48,12 +49,20 @@
           <article class="metric-card">
             <span class="metric-label">Clone activity</span>
             <strong class="metric-value" id="clones-total">—</strong>
-            <span class="metric-detail">full clone registrati da GitHub</span>
+            <span class="metric-delta unavailable" id="clones-delta">—</span>
+            <span class="metric-detail metric-detail-split">
+              <span id="clones-unique">—</span>
+              <span class="metric-delta compact unavailable" id="clones-unique-delta">—</span>
+            </span>
           </article>
           <article class="metric-card">
             <span class="metric-label">View activity</span>
             <strong class="metric-value" id="views-total">—</strong>
-            <span class="metric-detail">repository views registrate</span>
+            <span class="metric-delta unavailable" id="views-delta">—</span>
+            <span class="metric-detail metric-detail-split">
+              <span id="views-unique">—</span>
+              <span class="metric-delta compact unavailable" id="views-unique-delta">—</span>
+            </span>
           </article>
         </div>
 
@@ -62,6 +71,7 @@
           <p>
             Periodo caratterizzato da intensa first-party activity su Core, Studio e adapter.
             I clone sono un technical-access signal, non una misura diretta di utenti esterni o adoption.
+            Le unique metric restano repository-scoped e non rappresentano persone deduplicate nell'ecosistema.
           </p>
         </aside>
       </section>

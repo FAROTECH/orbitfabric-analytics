@@ -39,6 +39,9 @@ const shortDateFormat = new Intl.DateTimeFormat("it-IT", {
   day: "2-digit",
   month: "short",
 });
+const percentFormat = new Intl.NumberFormat("it-IT", {
+  maximumFractionDigits: 1,
+});
 
 function asDate(value) {
   return new Date(`${value}T12:00:00Z`);
@@ -56,12 +59,45 @@ function formatShortDate(value) {
   return shortDateFormat.format(asDate(value));
 }
 
+function formatSignedNumber(value) {
+  if (value === 0) {
+    return "0";
+  }
+  return `${value > 0 ? "+" : "-"}${formatNumber(Math.abs(value))}`;
+}
+
+function formatDelta(delta) {
+  if (!delta) {
+    return "n/a";
+  }
+  if (delta.state === "new") {
+    return `${formatSignedNumber(delta.absolute)} · new`;
+  }
+  if (delta.state === "unchanged") {
+    return "= 0 (0%)";
+  }
+  return `${formatSignedNumber(delta.absolute)} (${delta.pct > 0 ? "+" : ""}${percentFormat.format(delta.pct)}%)`;
+}
+
+function deltaClass(delta) {
+  return delta?.state ?? "unavailable";
+}
+
+function renderDelta(element, delta, suffix = "") {
+  if (!element) {
+    return;
+  }
+  element.className = `metric-delta ${deltaClass(delta)}`;
+  element.textContent = `${formatDelta(delta)}${suffix ? ` · ${suffix}` : ""}`;
+}
+
 function repositoryLabel(repository) {
   return repositoryLabels[repository.repository_id] ?? repository.repository_id;
 }
 
 function renderOverview(data) {
   const overview = data.overview;
+  const deltas = data.overview_delta;
   document.querySelector("#latest-day").textContent = formatFullDate(
     data.latest_complete_day,
   );
@@ -76,6 +112,33 @@ function renderOverview(data) {
   );
   document.querySelector("#data-status").textContent =
     `Data complete fino al ${formatFullDate(data.latest_complete_day)}`;
+
+  const reference = deltas?.reference_day
+    ? `vs ${formatShortDate(deltas.reference_day)}`
+    : "no previous snapshot";
+  renderDelta(
+    document.querySelector("#clones-delta"),
+    deltas?.clones_total,
+    reference,
+  );
+  renderDelta(
+    document.querySelector("#views-delta"),
+    deltas?.views_total,
+    reference,
+  );
+
+  document.querySelector("#clones-unique").textContent =
+    `${formatNumber(overview.clones_unique_repo_sum)} repo-scoped unique sum`;
+  document.querySelector("#views-unique").textContent =
+    `${formatNumber(overview.views_unique_repo_sum)} repo-scoped unique sum`;
+  renderDelta(
+    document.querySelector("#clones-unique-delta"),
+    deltas?.clones_unique_repo_sum,
+  );
+  renderDelta(
+    document.querySelector("#views-unique-delta"),
+    deltas?.views_unique_repo_sum,
+  );
 }
 
 function baseChartOptions() {
@@ -171,10 +234,20 @@ function renderTimelineCharts(data) {
   });
 }
 
+function tableMetric(value, delta) {
+  const detail = delta
+    ? `<span class="table-delta ${deltaClass(delta)}">${formatDelta(delta)}</span>`
+    : "";
+  return `<div class="table-metric"><span>${formatNumber(value)}</span>${detail}</div>`;
+}
+
 function renderComparison(data) {
   const comparison = data.comparison;
+  const previous = comparison.previous_window_end
+    ? ` · Δ vs previous snapshot ${formatShortDate(comparison.previous_window_end)}`
+    : "";
   document.querySelector("#comparison-window").textContent =
-    `${formatFullDate(comparison.window_start)} → ${formatFullDate(comparison.window_end)} · ${comparison.window_days} giorni`;
+    `${formatFullDate(comparison.window_start)} → ${formatFullDate(comparison.window_end)} · ${comparison.window_days} giorni${previous}`;
 
   const body = document.querySelector("#comparison-body");
   body.replaceChildren();
@@ -184,6 +257,7 @@ function renderComparison(data) {
     const ratio = repository.clone_to_view_ratio;
     const coverageClass = repository.coverage_complete ? "complete" : "partial";
     const fullName = repository.repository;
+    const delta = repository.delta?.comparable ? repository.delta : null;
 
     row.innerHTML = `
       <td>
@@ -193,8 +267,8 @@ function renderComparison(data) {
         </div>
       </td>
       <td><span class="category-pill" data-category="${repository.category}">${repository.category}</span></td>
-      <td>${formatNumber(repository.clones_total)}</td>
-      <td>${formatNumber(repository.views_total)}</td>
+      <td>${tableMetric(repository.clones_total, delta?.clones_total)}</td>
+      <td>${tableMetric(repository.views_total, delta?.views_total)}</td>
       <td>${formatNumber(repository.clone_only_days)}</td>
       <td>${formatNumber(repository.mixed_days)}</td>
       <td>${formatNumber(repository.view_only_days)}</td>
