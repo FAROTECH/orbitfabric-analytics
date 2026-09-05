@@ -22,11 +22,11 @@ M0 was validated with a successful end-to-end collection across all repositories
 
 ## M1 - Ecosystem Dashboard
 
-**Status: in progress**
+**Status: complete**
 
 Goal: turn retained traffic data into a coherent OrbitFabric ecosystem view.
 
-Current baseline:
+Completed baseline:
 
 - [x] Repository-day normalization contract defined.
 - [x] `analytics/aggregate.py` implemented.
@@ -62,7 +62,7 @@ Current baseline:
 - [x] Repository-scoped unique deltas kept explicitly separate from user identity semantics.
 - [x] Snapshot delta UI implemented for Overview and Repository Comparison.
 - [x] First automated snapshot-delta payload and deployment validated end to end.
-- [ ] PWA / mobile validation completed.
+- [x] PWA / mobile validation completed.
 
 Cloudflare Access is intentionally deferred. It can be introduced later if dashboard confidentiality becomes a requirement. Until then the Pages URL is public but intentionally unlisted; anti-indexing controls reduce discoverability but are not treated as security.
 
@@ -74,18 +74,29 @@ The dashboard remains downstream of metric semantics and consumes generated pres
 
 ## M2 - Event Correlation
 
-**Status: planned**
+**Status: in progress**
 
-Goal: compare traffic changes with relevant project events.
+Goal: compare traffic changes with relevant project events without turning temporal proximity into causal claims.
 
-Planned event types include:
+Current baseline:
 
-- releases;
-- public announcements;
-- LinkedIn and Reddit posts;
-- upstream project discussions;
-- documentation launches;
-- major ecosystem milestones.
+- [x] Authoritative event registry retained in `config/events.yml`.
+- [x] Event taxonomy separated into `config/event-taxonomy.yml`.
+- [x] Stable event contract defined: id, date, type, channel, scope, confidence and label.
+- [x] Repository-aware event scope validation defined.
+- [x] `analytics/events.py` implemented to validate and normalize the event registry.
+- [x] Event registry unit coverage added.
+- [x] Post-collection generation of `analytics/events_normalized.json` configured.
+- [ ] First automated `analytics/events_normalized.json` generation validated end to end.
+- [ ] Normalized events projected into `dashboard_data.json`.
+- [ ] Event context rendered in the dashboard timeline.
+- [ ] Traffic/event overlay implemented for correlation inspection.
+- [ ] Initial set of confirmed public OrbitFabric events curated.
+- [ ] First traffic/event correlation review completed.
+
+Planned event classes include releases, outreach, upstream discussions, documentation launches, internal milestones and major ecosystem milestones. Channels are policy-driven and currently include GitHub, LinkedIn, Reddit, Hackaday, Libre Space, website and internal analytics context.
+
+Historical events are not invented merely to populate the dashboard. When a date is uncertain but still useful, it is explicitly marked `approximate`; confirmed day-level correlation uses `confirmed` events.
 
 Correlation will be treated as temporal evidence, not proof of causation.
 
