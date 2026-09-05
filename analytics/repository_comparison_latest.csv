@@ -1,0 +1,7 @@
+window_start,window_end,window_days,repository_id,repository,category,days_expected,days_available,coverage_pct,coverage_complete,clones_total,views_total,clones_unique_repo_day_sum,views_unique_repo_day_sum,clone_active_days,view_active_days,clone_only_days,view_only_days,mixed_days,inactive_days,clones_per_repo_day_unique,views_per_repo_day_unique,clone_to_view_ratio
+2026-08-22,2026-09-04,14,core,FAROTECH/orbitfabric,core,14,14,100.0,True,4696,139,1371,12,14,8,6,0,8,0,3.43,11.58,33.78
+2026-08-22,2026-09-04,14,studio,FAROTECH/orbitfabric-studio,product,14,14,100.0,True,1142,105,217,6,14,6,8,0,6,0,5.26,17.5,10.88
+2026-08-22,2026-09-04,14,reference-mission,FAROTECH/orbitfabric-reference-mission,product,14,14,100.0,True,30,32,27,4,6,4,3,1,3,7,1.11,8.0,0.94
+2026-08-22,2026-09-04,14,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,14,14,100.0,True,597,16,55,3,3,1,2,0,1,11,10.85,5.33,37.31
+2026-08-22,2026-09-04,14,openc3-cosmos-adapter,FAROTECH/orbitfabric-openc3-cosmos-adapter,adapter,14,14,100.0,True,144,9,14,1,2,1,1,0,1,12,10.29,9.0,16.0
+2026-08-22,2026-09-04,14,fprime-adapter,FAROTECH/orbitfabric-fprime-adapter,adapter,14,14,100.0,True,379,42,19,2,2,1,1,0,1,12,19.95,21.0,9.02
