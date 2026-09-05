@@ -93,9 +93,10 @@ Current baseline:
 - [x] First automated event-projection payload and deployment validated end to end.
 - [x] Mobile-first event rail with on-demand traffic-chart guide implemented.
 - [x] Traffic/event overlay implemented for correlation inspection.
-- [ ] First automated interactive traffic/event overlay deployment validated end to end.
+- [x] First automated interactive traffic/event overlay deployment validated end to end.
 - [x] Initial set of confirmed public OrbitFabric events curated.
-- [ ] First traffic/event correlation review completed.
+- [x] First traffic/event correlation review completed.
+- [ ] Interactive event overlay visually validated on desktop and mobile.
 
 Planned event classes include releases, outreach, upstream discussions, documentation launches, internal milestones and major ecosystem milestones. Channels are policy-driven and currently include GitHub, LinkedIn, Reddit, Hackaday, Libre Space, website and internal analytics context.
 
@@ -104,6 +105,8 @@ Historical events are not invented merely to populate the dashboard. When a date
 The event context distinguishes events already inside the retained traffic window from events awaiting a future complete traffic day and events older than the retained timeline. This keeps the dashboard explicit about whether correlation can actually be inspected yet.
 
 The traffic/event overlay is intentionally interaction-driven: the rail is always visible, while a thin guide is drawn across both traffic charts only when an in-window event day is selected. This avoids permanently cluttering the charts and keeps the interaction usable on small screens.
+
+The first correlation review is documented in `reports/correlation/2026-09-04-fprime.md`. It records a real same-day traffic/event correlation around the F´ adapter while explicitly keeping attribution unresolved because release activity and first-party/automation effects are confounding factors.
 
 Correlation will be treated as temporal evidence, not proof of causation.
 
