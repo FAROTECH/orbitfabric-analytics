@@ -108,6 +108,14 @@ jobs:
         working-directory: app
         run: python -m unittest discover -s tests -v
 
+      - name: Build normalized event registry
+        run: |
+          python app/analytics/events.py \
+            --events app/config/events.yml \
+            --taxonomy app/config/event-taxonomy.yml \
+            --repositories app/config/repositories.yml \
+            --output data/analytics/events_normalized.json
+
       - name: Build normalized repository-day dataset
         run: |
           python app/analytics/aggregate.py \
@@ -145,6 +153,7 @@ jobs:
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
           git add \
+            analytics/events_normalized.json \
             analytics/ecosystem_daily.csv \
             analytics/ecosystem_rollups_daily.csv \
             analytics/repository_comparison_latest.csv \
