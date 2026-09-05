@@ -1,13 +1,20 @@
 version: 1
 
-# Timeline of relevant OrbitFabric ecosystem events.
+# Authoritative timeline of relevant OrbitFabric ecosystem events.
 #
-# These events will later be overlaid on traffic and engagement charts.
-# They are context markers only: temporal correlation must not be interpreted
+# Events are context markers only. Temporal correlation must never be treated
 # automatically as proof that an event caused a traffic change.
+#
+# Keep historical events only when the date is known well enough to be useful.
+# Use confidence: approximate when the date is intentionally not exact.
 
 events:
-  - date: 2026-09-04
-    type: analytics
-    project: ecosystem
+  - id: analytics-baseline-collection
+    date: 2026-09-04
+    type: internal
+    channel: analytics
+    scope:
+      - ecosystem
+    confidence: confirmed
     label: OrbitFabric Analytics baseline collection begins
+    notes: Internal observability milestone; not an explanatory external event.
