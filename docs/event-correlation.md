@@ -116,10 +116,30 @@ events_before_timeline
 
 This distinction is important. A newly authored event can appear in the dashboard immediately without pretending that traffic correlation is already available for that day.
 
-The dashboard renders an event rail alongside the Activity Timeline and a curated event list with date, type, channel, scope, confidence, notes and source link where available.
+## Traffic/event inspection
+
+The dashboard uses a mobile-first event rail instead of permanently drawing event lines across every chart.
+
+The default state stays visually quiet:
+
+```text
+traffic charts
+    no persistent event lines
+
+event rail
+    compact markers grouped by day
+```
+
+Selecting an in-window event marker, or the `Show on charts` action on an event card, draws a thin dashed guide for that day on both Clone activity and View activity charts. Selecting the same day again clears the guide.
+
+This interaction is intentionally on-demand so that 14-day charts remain readable on small screens. The event rail remains the persistent orientation surface, while the chart guide appears only during inspection.
+
+Events newer than the latest complete traffic day are shown separately as `awaiting traffic`. They remain visible as context, but no chart guide is drawn until the corresponding traffic day exists.
 
 ## Current M2 boundary
 
-The event registry, normalization pipeline and dashboard context projection are now implemented. The next increment is the direct traffic/event overlay used for correlation inspection.
+The event registry, normalization pipeline, dashboard projection and direct on-demand traffic/event inspection are implemented.
+
+The remaining work is to validate the interactive overlay end to end in deployment and perform the first explicit traffic/event correlation review using real retained traffic data.
 
 No historical outreach event should be invented merely to populate the dashboard. Events are added only when their date and meaning are known well enough to be useful.
