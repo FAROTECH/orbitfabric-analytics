@@ -1,0 +1,44 @@
+version: 1
+
+# Policy for the first M3 GitHub community-signal baseline.
+#
+# M3a records daily stock snapshots only. A stock value describes repository
+# state at collection time; its day-to-day delta is not automatically the
+# number of new events that happened during the day.
+
+repository_selection:
+  field: include_in_rollups
+  value: true
+
+signals:
+  stars_total:
+    collect: true
+    kind: stock
+    source: github_repository
+
+  forks_total:
+    collect: true
+    kind: stock
+    source: github_repository
+
+  open_issues_total:
+    collect: true
+    kind: stock
+    source: github_issues
+
+  open_pull_requests_total:
+    collect: true
+    kind: stock
+    source: github_pull_requests
+
+  contributors_repo_count:
+    collect: true
+    kind: stock
+    source: github_contributors
+
+semantics:
+  contributors_repo_count: repository-scoped contributor records; not ecosystem-wide unique people
+  open_issues_total: open issues excluding pull requests
+  open_pull_requests_total: currently open pull requests
+  stars_total: current repository stargazer count; may increase or decrease
+  forks_total: current repository fork count; may increase or decrease
