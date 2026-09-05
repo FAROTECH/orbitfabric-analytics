@@ -33,13 +33,18 @@ Current baseline:
 - [x] Normalization unit test added.
 - [x] Post-collection generation of `analytics/ecosystem_daily.csv` configured.
 - [x] First automated `ecosystem_daily.csv` generation validated end to end.
-- [ ] Cross-repository aggregate metrics defined.
-- [ ] Core vs Studio vs adapters comparison defined.
+- [x] Cross-repository aggregate metric semantics defined.
+- [x] Coverage semantics defined for incomplete daily windows.
+- [x] Ecosystem / core / product / adapter rollup scopes defined.
+- [x] `analytics/rollup.py` implemented with unit coverage.
+- [x] Post-collection generation of `analytics/ecosystem_rollups_daily.csv` configured.
+- [ ] First automated `ecosystem_rollups_daily.csv` generation validated end to end.
+- [ ] Repository comparison view semantics defined.
 - [ ] Awareness and evaluation metrics defined.
 - [ ] Adoption proxy semantics defined.
 - [ ] First ecosystem dashboard generated.
 
-Repository-level unique values will not be treated as ecosystem-wide unique users. Any future rollup must preserve that distinction explicitly.
+Repository-level unique values will not be treated as ecosystem-wide unique users. Rollups expose only explicitly named sums of repository-scoped unique values.
 
 ## M2 - Event Correlation
 

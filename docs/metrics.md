@@ -35,7 +35,7 @@ These values are evidence of repository activity. They are not direct measuremen
 
 The same person, runner, bot or automation can access multiple OrbitFabric repositories on the same day. GitHub does not provide an ecosystem-wide identity that would allow those accesses to be deduplicated.
 
-A future rollup may expose the sum of repository-level unique values only if it is explicitly named as such and never described as a true unique-user count.
+A rollup may expose the sum of repository-level unique values only if it is explicitly named as such and never described as a true unique-user count.
 
 ### Clone traffic is not equivalent to external adoption
 
@@ -85,14 +85,102 @@ This keeps generated analytics data separate from code and policy on `main`.
 
 The collection workflow builds the normalized dataset only after all enabled repository collectors have completed successfully. This guarantees that one daily dataset is generated from a coherent post-collection state.
 
-No inferred adoption score, bot filtering or attribution is applied at this stage.
+## M1 rollup contract
+
+`analytics/rollup.py` consumes the normalized repository-day dataset and produces the first official cross-repository daily rollups.
+
+Only repositories with both:
+
+```yaml
+collect: true
+include_in_rollups: true
+```
+
+participate in official rollups.
+
+The initial scopes are:
+
+```text
+ecosystem
+category/core
+category/product
+category/adapter
+```
+
+Repositories collected only for technical or ecosystem monitoring remain available in `ecosystem_daily.csv` but do not affect official rollup values.
+
+The rollup schema is:
+
+```text
+date
+scope_type
+scope_id
+repositories_expected
+repositories_available
+coverage_pct
+coverage_complete
+clones_total
+views_total
+clones_unique_repo_sum
+views_unique_repo_sum
+```
+
+The generated rollup dataset is persisted at:
+
+```text
+analytics/ecosystem_rollups_daily.csv
+```
+
+### Coverage semantics
+
+Coverage is part of the metric, not an optional annotation.
+
+`repositories_expected` is derived from the current repository policy for the selected scope.
+
+`repositories_available` counts repositories that have a repository-day row for the date. A row containing zero traffic is still available data. Missing data is different from measured zero activity.
+
+`coverage_pct` is:
+
+```text
+repositories_available / repositories_expected * 100
+```
+
+`coverage_complete` is true only when all repositories expected for that scope are available.
+
+Activity totals on a partially covered day are sums over the repositories that are actually available. They must therefore be interpreted together with coverage and must not be compared blindly with complete days.
+
+A day with zero available repositories may still produce a rollup row with zero totals and `coverage_pct = 0`. The zero totals in that case mean "no available measurements", not "measured zero ecosystem activity".
+
+### Additive activity metrics
+
+These metrics are additive across repositories:
+
+- `clones_total`
+- `views_total`
+
+They may be summed for ecosystem and category scopes, subject to the coverage rule above.
+
+### Repository-scoped unique sums
+
+The rollup exposes:
+
+- `clones_unique_repo_sum`
+- `views_unique_repo_sum`
+
+These names are intentionally explicit. They are sums of repository-level unique counts and are useful as activity or interest signals, but they are not deduplicated people, devices or ecosystem-wide users.
+
+No dashboard should relabel them as "unique OrbitFabric users".
+
+## Separation of concerns
+
+No inferred adoption score, bot filtering or attribution is applied at the normalization or rollup stages.
 
 That separation is intentional:
 
 ```text
 raw collection
     -> normalized repository-day dataset
-    -> explicit aggregation rules
+    -> explicit rollups + coverage
     -> contextual interpretation
     -> dashboard
 ```

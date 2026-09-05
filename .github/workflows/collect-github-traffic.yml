@@ -70,7 +70,7 @@ jobs:
           databranch: github-repo-stats
 
   aggregate:
-    name: Build ecosystem daily dataset
+    name: Build ecosystem analytics datasets
     needs:
       - prepare
       - collect
@@ -108,17 +108,26 @@ jobs:
             --data-root data \
             --output data/analytics/ecosystem_daily.csv
 
-      - name: Persist normalized dataset
+      - name: Build official cross-repository rollups
+        run: |
+          python app/analytics/rollup.py \
+            --config app/config/repositories.yml \
+            --input data/analytics/ecosystem_daily.csv \
+            --output data/analytics/ecosystem_rollups_daily.csv
+
+      - name: Persist analytics datasets
         working-directory: data
         run: |
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
-          git add analytics/ecosystem_daily.csv
+          git add \
+            analytics/ecosystem_daily.csv \
+            analytics/ecosystem_rollups_daily.csv
 
           if git diff --cached --quiet; then
-            echo "Normalized dataset unchanged."
+            echo "Analytics datasets unchanged."
             exit 0
           fi
 
-          git commit -m "analytics: refresh ecosystem daily dataset"
+          git commit -m "analytics: refresh ecosystem datasets"
           git push origin HEAD:github-repo-stats
