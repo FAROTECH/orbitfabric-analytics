@@ -46,9 +46,18 @@ Current baseline:
 - [x] Post-collection generation of `analytics/repository_comparison_latest.csv` configured.
 - [x] First automated `repository_comparison_latest.csv` generation validated end to end.
 - [x] Dashboard deployment architecture selected: static PWA on Cloudflare Pages behind Cloudflare Access.
-- [ ] First ecosystem dashboard generated.
+- [x] Dashboard presentation payload contract defined.
+- [x] `analytics/dashboard_data.py` implemented with unit coverage.
+- [x] Post-collection generation of `analytics/dashboard_data.json` configured.
+- [ ] First automated `analytics/dashboard_data.json` generation validated end to end.
+- [x] Initial responsive static PWA source implemented under `dashboard/`.
+- [ ] Cloudflare Pages project configured.
+- [ ] Cloudflare Access configured.
+- [ ] First deployed ecosystem dashboard validated on desktop and mobile.
 
 Repository-level unique values will not be treated as ecosystem-wide unique users. Rollups expose only explicitly named sums of repository-scoped unique values. Repository comparisons use a common recent window anchored to the latest complete ecosystem day.
+
+The dashboard remains downstream of metric semantics and consumes generated presentation data. It does not access GitHub credentials or infer external adoption inside the browser.
 
 ## M2 - Event Correlation
 

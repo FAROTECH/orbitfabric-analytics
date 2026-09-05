@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#08111f">
+  <meta name="description" content="OrbitFabric ecosystem analytics dashboard">
+  <title>OrbitFabric Analytics</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">ORBITFABRIC</div>
+        <h1>Analytics</h1>
+      </div>
+      <div class="topbar-meta">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="data-status">Loading data…</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="section-block">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">OVERVIEW</div>
+            <h2>Ecosystem pulse</h2>
+          </div>
+          <p class="section-note">Latest complete day, con coverage esplicita.</p>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <span class="metric-label">Latest complete day</span>
+            <strong class="metric-value metric-value-date" id="latest-day">—</strong>
+            <span class="metric-detail">ultimo giorno confrontabile</span>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">Coverage</span>
+            <strong class="metric-value" id="coverage">—</strong>
+            <span class="metric-detail" id="coverage-detail">—</span>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">Clone activity</span>
+            <strong class="metric-value" id="clones-total">—</strong>
+            <span class="metric-detail">full clone registrati da GitHub</span>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">View activity</span>
+            <strong class="metric-value" id="views-total">—</strong>
+            <span class="metric-detail">repository views registrate</span>
+          </article>
+        </div>
+
+        <aside class="context-note">
+          <div class="context-note-title">Context note</div>
+          <p>
+            Periodo caratterizzato da intensa first-party activity su Core, Studio e adapter.
+            I clone sono un technical-access signal, non una misura diretta di utenti esterni o adoption.
+          </p>
+        </aside>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">ACTIVITY TIMELINE</div>
+            <h2>Core, Product, Adapters</h2>
+          </div>
+          <p class="section-note">Composition giornaliera dei rollup ufficiali.</p>
+        </div>
+
+        <div class="chart-grid">
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <h3>Clone activity</h3>
+                <p>technical access / evaluation signal</p>
+              </div>
+            </div>
+            <div class="chart-wrap"><canvas id="clones-chart"></canvas></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <h3>View activity</h3>
+                <p>awareness / browsing signal</p>
+              </div>
+            </div>
+            <div class="chart-wrap"><canvas id="views-chart"></canvas></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">REPOSITORY COMPARISON</div>
+            <h2>Common recent window</h2>
+          </div>
+          <p class="section-note" id="comparison-window">—</p>
+        </div>
+
+        <article class="panel table-panel">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Repository</th>
+                  <th>Category</th>
+                  <th>Clones</th>
+                  <th>Views</th>
+                  <th>Clone-only</th>
+                  <th>Mixed</th>
+                  <th>View-only</th>
+                  <th>Clone/View</th>
+                  <th>Coverage</th>
+                </tr>
+              </thead>
+              <tbody id="comparison-body"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">SIGNAL SHAPE</div>
+            <h2>How activity appears</h2>
+          </div>
+          <p class="section-note">Non dice chi c’è dietro al segnale. Dice come il segnale si presenta.</p>
+        </div>
+
+        <article class="panel">
+          <div class="chart-wrap chart-wrap-tall"><canvas id="signal-shape-chart"></canvas></div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span>OrbitFabric Analytics</span>
+      <span>raw evidence → semantics → interpretation → dashboard</span>
+    </footer>
+  </div>
+
+  <div class="fatal-error" id="fatal-error" hidden>
+    <strong>Dashboard data unavailable</strong>
+    <span id="fatal-error-detail">Impossibile caricare il payload analytics.</span>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

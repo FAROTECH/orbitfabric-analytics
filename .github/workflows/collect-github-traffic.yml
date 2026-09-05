@@ -124,6 +124,13 @@ jobs:
             --days 14 \
             --output data/analytics/repository_comparison_latest.csv
 
+      - name: Build static dashboard payload
+        run: |
+          python app/analytics/dashboard_data.py \
+            --rollups data/analytics/ecosystem_rollups_daily.csv \
+            --comparison data/analytics/repository_comparison_latest.csv \
+            --output data/analytics/dashboard_data.json
+
       - name: Persist analytics datasets
         working-directory: data
         run: |
@@ -132,7 +139,8 @@ jobs:
           git add \
             analytics/ecosystem_daily.csv \
             analytics/ecosystem_rollups_daily.csv \
-            analytics/repository_comparison_latest.csv
+            analytics/repository_comparison_latest.csv \
+            analytics/dashboard_data.json
 
           if git diff --cached --quiet; then
             echo "Analytics datasets unchanged."

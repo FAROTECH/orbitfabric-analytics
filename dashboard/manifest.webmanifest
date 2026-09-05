@@ -1,0 +1,11 @@
+{
+  "name": "OrbitFabric Analytics",
+  "short_name": "OF Analytics",
+  "description": "Private OrbitFabric ecosystem analytics dashboard",
+  "lang": "it",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#08111f",
+  "theme_color": "#08111f"
+}
