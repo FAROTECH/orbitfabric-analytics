@@ -1,0 +1,80 @@
+.metric-delta {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 24px;
+  margin-top: -2px;
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.06);
+  color: var(--muted-strong);
+  font-size: 0.74rem;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+.metric-delta.increase,
+.table-delta.increase {
+  color: var(--accent);
+}
+
+.metric-delta.decrease,
+.table-delta.decrease {
+  color: var(--warn);
+}
+
+.metric-delta.new,
+.table-delta.new {
+  color: var(--adapter);
+}
+
+.metric-delta.unchanged,
+.metric-delta.unavailable,
+.table-delta.unchanged,
+.table-delta.unavailable {
+  color: var(--muted);
+}
+
+.metric-delta.compact {
+  min-height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 0.72rem;
+}
+
+.metric-detail-split {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.35;
+}
+
+.table-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.table-delta {
+  color: var(--muted);
+  font-size: 0.69rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+  .metric-delta {
+    font-size: 0.68rem;
+  }
+
+  .metric-delta.compact {
+    font-size: 0.66rem;
+  }
+}
