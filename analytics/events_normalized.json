@@ -16,6 +16,33 @@
       "channel": "github",
       "confidence": "confirmed",
       "date": "2026-09-04",
+      "id": "fprime-adapter-v0-1-0-release",
+      "label": "OrbitFabric F\u00b4 Adapter v0.1.0 first stable release",
+      "notes": "First stable public release of the OrbitFabric F\u00b4 Adapter, published earlier on the same day as the upstream F\u00b4 discussion event.",
+      "scope": [
+        "fprime-adapter",
+        "ecosystem"
+      ],
+      "type": "release",
+      "url": "https://github.com/FAROTECH/orbitfabric-fprime-adapter/releases/tag/v0.1.0"
+    },
+    {
+      "channel": "github",
+      "confidence": "confirmed",
+      "date": "2026-09-04",
+      "id": "fprime-adapter-v0-1-1-release",
+      "label": "OrbitFabric F\u00b4 Adapter v0.1.1 release identity correction",
+      "notes": "Same-day patch release correcting release Source Coordinate metadata while preserving the accepted v0.1.0 integration behavior.",
+      "scope": [
+        "fprime-adapter"
+      ],
+      "type": "release",
+      "url": "https://github.com/FAROTECH/orbitfabric-fprime-adapter/releases/tag/v0.1.1"
+    },
+    {
+      "channel": "github",
+      "confidence": "confirmed",
+      "date": "2026-09-04",
       "id": "fprime-upstream-deployment-identity-discussion",
       "label": "F\u00b4 upstream discussion on deployment-resolved identity and COSMOS generation",
       "notes": "OrbitFabric F\u00b4 adapter evidence introduced into the upstream discussion, focusing on generated-dictionary provenance, deployment-resolved identity across native layout refactors, and explicit diagnostics for lossy COSMOS mappings.",
