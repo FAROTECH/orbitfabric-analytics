@@ -2,10 +2,30 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from analytics.community_compare import build_latest_comparison, read_history, write_comparison
+from analytics.community_compare import (
+    build_latest_comparison,
+    load_comparison_policy,
+    read_history,
+    write_comparison,
+)
 
 
 class CommunityComparisonTests(unittest.TestCase):
+    def test_policy_accepts_supported_comparison_contract(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            policy = Path(tmp) / "community-signals.yml"
+            policy.write_text(
+                """version: 1
+comparison:
+  mode: latest_vs_previous_available
+  absolute_delta: true
+  percentage_delta: false
+  expose_snapshot_gap_days: true
+""",
+                encoding="utf-8",
+            )
+            self.assertIsNone(load_comparison_policy(policy))
+
     def test_first_snapshot_is_not_comparable(self) -> None:
         rows = [
             {
