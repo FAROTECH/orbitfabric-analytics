@@ -32,7 +32,7 @@ Current baseline:
 - [x] `analytics/aggregate.py` implemented.
 - [x] Normalization unit test added.
 - [x] Post-collection generation of `analytics/ecosystem_daily.csv` configured.
-- [ ] First automated `ecosystem_daily.csv` generation validated end to end.
+- [x] First automated `ecosystem_daily.csv` generation validated end to end.
 - [ ] Cross-repository aggregate metrics defined.
 - [ ] Core vs Studio vs adapters comparison defined.
 - [ ] Awareness and evaluation metrics defined.
