@@ -88,8 +88,9 @@ Current baseline:
 - [x] Event registry unit coverage added.
 - [x] Post-collection generation of `analytics/events_normalized.json` configured.
 - [x] First automated `analytics/events_normalized.json` generation validated end to end.
-- [ ] Normalized events projected into `dashboard_data.json`.
-- [ ] Event context rendered in the dashboard timeline.
+- [x] Normalized events projected into `dashboard_data.json`.
+- [x] Event context rendered alongside the dashboard activity timeline.
+- [ ] First automated event-projection payload and deployment validated end to end.
 - [ ] Traffic/event overlay implemented for correlation inspection.
 - [x] Initial set of confirmed public OrbitFabric events curated.
 - [ ] First traffic/event correlation review completed.
@@ -97,6 +98,8 @@ Current baseline:
 Planned event classes include releases, outreach, upstream discussions, documentation launches, internal milestones and major ecosystem milestones. Channels are policy-driven and currently include GitHub, LinkedIn, Reddit, Hackaday, Libre Space, website and internal analytics context.
 
 Historical events are not invented merely to populate the dashboard. When a date is uncertain but still useful, it is explicitly marked `approximate`; confirmed day-level correlation uses `confirmed` events.
+
+The event context distinguishes events already inside the retained traffic window from events awaiting a future complete traffic day and events older than the retained timeline. This keeps the dashboard explicit about whether correlation can actually be inspected yet.
 
 Correlation will be treated as temporal evidence, not proof of causation.
 
