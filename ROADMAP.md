@@ -74,11 +74,11 @@ The dashboard remains downstream of metric semantics and consumes generated pres
 
 ## M2 - Event Correlation
 
-**Status: in progress**
+**Status: complete**
 
 Goal: compare traffic changes with relevant project events without turning temporal proximity into causal claims.
 
-Current baseline:
+Completed baseline:
 
 - [x] Authoritative event registry retained in `config/events.yml`.
 - [x] Event taxonomy separated into `config/event-taxonomy.yml`.
@@ -96,7 +96,7 @@ Current baseline:
 - [x] First automated interactive traffic/event overlay deployment validated end to end.
 - [x] Initial set of confirmed public OrbitFabric events curated.
 - [x] First traffic/event correlation review completed.
-- [ ] Interactive event overlay visually validated on desktop and mobile.
+- [x] Interactive event overlay visually validated on desktop and mobile.
 
 Planned event classes include releases, outreach, upstream discussions, documentation launches, internal milestones and major ecosystem milestones. Channels are policy-driven and currently include GitHub, LinkedIn, Reddit, Hackaday, Libre Space, website and internal analytics context.
 
