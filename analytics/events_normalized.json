@@ -1,0 +1,17 @@
+{
+  "events": [
+    {
+      "channel": "analytics",
+      "confidence": "confirmed",
+      "date": "2026-09-04",
+      "id": "analytics-baseline-collection",
+      "label": "OrbitFabric Analytics baseline collection begins",
+      "notes": "Internal observability milestone; not an explanatory external event.",
+      "scope": [
+        "ecosystem"
+      ],
+      "type": "internal"
+    }
+  ],
+  "schema_version": 1
+}
