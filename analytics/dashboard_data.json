@@ -356,6 +356,460 @@
     "window_end": "2026-09-04",
     "window_start": "2026-08-22"
   },
+  "ecosystem_context": {
+    "aligned_window": {
+      "development": {
+        "automation_commits": 5,
+        "commits_total": 295,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "first_party_commits": 290,
+        "other_commits": 0,
+        "rows_available": 84,
+        "rows_expected": 84,
+        "workflow_runs_failure": 5,
+        "workflow_runs_other": 28,
+        "workflow_runs_success": 101,
+        "workflow_runs_total": 134
+      },
+      "lifecycle": {
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "issues_closed": 21,
+        "issues_opened": 12,
+        "prs_closed_unmerged": 7,
+        "prs_merged": 65,
+        "prs_opened": 69,
+        "rows_available": 84,
+        "rows_expected": 84
+      },
+      "participation": {
+        "automation_participants_repo_count": 0,
+        "comment_events": 72,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "first_party_participants_repo_count": 19,
+        "issue_author_events": 12,
+        "other_participants_first_seen_repo_count": 0,
+        "other_participants_repo_count": 0,
+        "participants_first_seen_repo_count": 4,
+        "participants_repo_count": 19,
+        "pr_author_events": 69,
+        "rows_available": 84,
+        "rows_expected": 84
+      },
+      "repositories": [
+        {
+          "category": "core",
+          "development": {
+            "automation_commits": 0,
+            "commits_total": 21,
+            "first_party_commits": 21,
+            "other_commits": 0,
+            "workflow_runs_failure": 0,
+            "workflow_runs_other": 0,
+            "workflow_runs_success": 42,
+            "workflow_runs_total": 42
+          },
+          "lifecycle": {
+            "issues_closed": 11,
+            "issues_opened": 8,
+            "prs_closed_unmerged": 6,
+            "prs_merged": 21,
+            "prs_opened": 26
+          },
+          "participation": {
+            "automation_participants_repo_count": 0,
+            "comment_events": 49,
+            "first_party_participants_repo_count": 7,
+            "issue_author_events": 8,
+            "other_participants_first_seen_repo_count": 0,
+            "other_participants_repo_count": 0,
+            "participants_first_seen_repo_count": 0,
+            "participants_repo_count": 7,
+            "pr_author_events": 26
+          },
+          "repository": "FAROTECH/orbitfabric",
+          "repository_id": "core",
+          "stock": {
+            "category": "core",
+            "contributors_repo_count": 1,
+            "contributors_repo_count_delta": 0,
+            "forks_total": 1,
+            "forks_total_delta": 0,
+            "open_issues_total": 3,
+            "open_issues_total_delta": 0,
+            "open_pull_requests_total": 0,
+            "open_pull_requests_total_delta": 0,
+            "repository": "FAROTECH/orbitfabric",
+            "repository_id": "core",
+            "stars_total": 6,
+            "stars_total_delta": 0
+          }
+        },
+        {
+          "category": "adapter",
+          "development": {
+            "automation_commits": 0,
+            "commits_total": 93,
+            "first_party_commits": 93,
+            "other_commits": 0,
+            "workflow_runs_failure": 2,
+            "workflow_runs_other": 16,
+            "workflow_runs_success": 16,
+            "workflow_runs_total": 34
+          },
+          "lifecycle": {
+            "issues_closed": 0,
+            "issues_opened": 0,
+            "prs_closed_unmerged": 1,
+            "prs_merged": 14,
+            "prs_opened": 14
+          },
+          "participation": {
+            "automation_participants_repo_count": 0,
+            "comment_events": 0,
+            "first_party_participants_repo_count": 2,
+            "issue_author_events": 0,
+            "other_participants_first_seen_repo_count": 0,
+            "other_participants_repo_count": 0,
+            "participants_first_seen_repo_count": 1,
+            "participants_repo_count": 2,
+            "pr_author_events": 14
+          },
+          "repository": "FAROTECH/orbitfabric-fprime-adapter",
+          "repository_id": "fprime-adapter",
+          "stock": {
+            "category": "adapter",
+            "contributors_repo_count": 1,
+            "contributors_repo_count_delta": 0,
+            "forks_total": 0,
+            "forks_total_delta": 0,
+            "open_issues_total": 0,
+            "open_issues_total_delta": 0,
+            "open_pull_requests_total": 0,
+            "open_pull_requests_total_delta": 0,
+            "repository": "FAROTECH/orbitfabric-fprime-adapter",
+            "repository_id": "fprime-adapter",
+            "stars_total": 0,
+            "stars_total_delta": 0
+          }
+        },
+        {
+          "category": "adapter",
+          "development": {
+            "automation_commits": 0,
+            "commits_total": 7,
+            "first_party_commits": 7,
+            "other_commits": 0,
+            "workflow_runs_failure": 0,
+            "workflow_runs_other": 7,
+            "workflow_runs_success": 7,
+            "workflow_runs_total": 14
+          },
+          "lifecycle": {
+            "issues_closed": 0,
+            "issues_opened": 0,
+            "prs_closed_unmerged": 0,
+            "prs_merged": 6,
+            "prs_opened": 6
+          },
+          "participation": {
+            "automation_participants_repo_count": 0,
+            "comment_events": 0,
+            "first_party_participants_repo_count": 1,
+            "issue_author_events": 0,
+            "other_participants_first_seen_repo_count": 0,
+            "other_participants_repo_count": 0,
+            "participants_first_seen_repo_count": 1,
+            "participants_repo_count": 1,
+            "pr_author_events": 6
+          },
+          "repository": "FAROTECH/orbitfabric-openc3-cosmos-adapter",
+          "repository_id": "openc3-cosmos-adapter",
+          "stock": {
+            "category": "adapter",
+            "contributors_repo_count": 1,
+            "contributors_repo_count_delta": 0,
+            "forks_total": 0,
+            "forks_total_delta": 0,
+            "open_issues_total": 0,
+            "open_issues_total_delta": 0,
+            "open_pull_requests_total": 0,
+            "open_pull_requests_total_delta": 0,
+            "repository": "FAROTECH/orbitfabric-openc3-cosmos-adapter",
+            "repository_id": "openc3-cosmos-adapter",
+            "stars_total": 0,
+            "stars_total_delta": 0
+          }
+        },
+        {
+          "category": "adapter",
+          "development": {
+            "automation_commits": 0,
+            "commits_total": 47,
+            "first_party_commits": 47,
+            "other_commits": 0,
+            "workflow_runs_failure": 3,
+            "workflow_runs_other": 3,
+            "workflow_runs_success": 17,
+            "workflow_runs_total": 23
+          },
+          "lifecycle": {
+            "issues_closed": 0,
+            "issues_opened": 0,
+            "prs_closed_unmerged": 0,
+            "prs_merged": 9,
+            "prs_opened": 9
+          },
+          "participation": {
+            "automation_participants_repo_count": 0,
+            "comment_events": 0,
+            "first_party_participants_repo_count": 2,
+            "issue_author_events": 0,
+            "other_participants_first_seen_repo_count": 0,
+            "other_participants_repo_count": 0,
+            "participants_first_seen_repo_count": 1,
+            "participants_repo_count": 2,
+            "pr_author_events": 9
+          },
+          "repository": "FAROTECH/orbitfabric-openobsw-opensvf-adapter",
+          "repository_id": "openobsw-opensvf-adapter",
+          "stock": {
+            "category": "adapter",
+            "contributors_repo_count": 1,
+            "contributors_repo_count_delta": 0,
+            "forks_total": 0,
+            "forks_total_delta": 0,
+            "open_issues_total": 0,
+            "open_issues_total_delta": 0,
+            "open_pull_requests_total": 0,
+            "open_pull_requests_total_delta": 0,
+            "repository": "FAROTECH/orbitfabric-openobsw-opensvf-adapter",
+            "repository_id": "openobsw-opensvf-adapter",
+            "stars_total": 0,
+            "stars_total_delta": 0
+          }
+        },
+        {
+          "category": "product",
+          "development": {
+            "automation_commits": 0,
+            "commits_total": 3,
+            "first_party_commits": 3,
+            "other_commits": 0,
+            "workflow_runs_failure": 0,
+            "workflow_runs_other": 0,
+            "workflow_runs_success": 4,
+            "workflow_runs_total": 4
+          },
+          "lifecycle": {
+            "issues_closed": 0,
+            "issues_opened": 0,
+            "prs_closed_unmerged": 0,
+            "prs_merged": 1,
+            "prs_opened": 1
+          },
+          "participation": {
+            "automation_participants_repo_count": 0,
+            "comment_events": 0,
+            "first_party_participants_repo_count": 1,
+            "issue_author_events": 0,
+            "other_participants_first_seen_repo_count": 0,
+            "other_participants_repo_count": 0,
+            "participants_first_seen_repo_count": 1,
+            "participants_repo_count": 1,
+            "pr_author_events": 1
+          },
+          "repository": "FAROTECH/orbitfabric-reference-mission",
+          "repository_id": "reference-mission",
+          "stock": {
+            "category": "product",
+            "contributors_repo_count": 1,
+            "contributors_repo_count_delta": 0,
+            "forks_total": 0,
+            "forks_total_delta": 0,
+            "open_issues_total": 0,
+            "open_issues_total_delta": 0,
+            "open_pull_requests_total": 0,
+            "open_pull_requests_total_delta": 0,
+            "repository": "FAROTECH/orbitfabric-reference-mission",
+            "repository_id": "reference-mission",
+            "stars_total": 0,
+            "stars_total_delta": 0
+          }
+        },
+        {
+          "category": "product",
+          "development": {
+            "automation_commits": 5,
+            "commits_total": 124,
+            "first_party_commits": 119,
+            "other_commits": 0,
+            "workflow_runs_failure": 0,
+            "workflow_runs_other": 2,
+            "workflow_runs_success": 15,
+            "workflow_runs_total": 17
+          },
+          "lifecycle": {
+            "issues_closed": 10,
+            "issues_opened": 4,
+            "prs_closed_unmerged": 0,
+            "prs_merged": 14,
+            "prs_opened": 13
+          },
+          "participation": {
+            "automation_participants_repo_count": 0,
+            "comment_events": 23,
+            "first_party_participants_repo_count": 6,
+            "issue_author_events": 4,
+            "other_participants_first_seen_repo_count": 0,
+            "other_participants_repo_count": 0,
+            "participants_first_seen_repo_count": 0,
+            "participants_repo_count": 6,
+            "pr_author_events": 13
+          },
+          "repository": "FAROTECH/orbitfabric-studio",
+          "repository_id": "studio",
+          "stock": {
+            "category": "product",
+            "contributors_repo_count": 2,
+            "contributors_repo_count_delta": 0,
+            "forks_total": 0,
+            "forks_total_delta": 0,
+            "open_issues_total": 2,
+            "open_issues_total_delta": 0,
+            "open_pull_requests_total": 0,
+            "open_pull_requests_total_delta": 0,
+            "repository": "FAROTECH/orbitfabric-studio",
+            "repository_id": "studio",
+            "stars_total": 0,
+            "stars_total_delta": 0
+          }
+        }
+      ],
+      "window_days": 14,
+      "window_end": "2026-09-04",
+      "window_start": "2026-08-22"
+    },
+    "semantics": {
+      "development_activity_is_context_not_attribution": true,
+      "other_participant_does_not_mean_external_user": true,
+      "participant_totals_are_repo_day_sums": true,
+      "participants_are_repository_scoped": true,
+      "stock_snapshot_may_be_newer_than_traffic": true
+    },
+    "stock": {
+      "comparable": true,
+      "current_date": "2026-09-06",
+      "previous_date": "2026-09-05",
+      "repositories": [
+        {
+          "category": "core",
+          "contributors_repo_count": 1,
+          "contributors_repo_count_delta": 0,
+          "forks_total": 1,
+          "forks_total_delta": 0,
+          "open_issues_total": 3,
+          "open_issues_total_delta": 0,
+          "open_pull_requests_total": 0,
+          "open_pull_requests_total_delta": 0,
+          "repository": "FAROTECH/orbitfabric",
+          "repository_id": "core",
+          "stars_total": 6,
+          "stars_total_delta": 0
+        },
+        {
+          "category": "adapter",
+          "contributors_repo_count": 1,
+          "contributors_repo_count_delta": 0,
+          "forks_total": 0,
+          "forks_total_delta": 0,
+          "open_issues_total": 0,
+          "open_issues_total_delta": 0,
+          "open_pull_requests_total": 0,
+          "open_pull_requests_total_delta": 0,
+          "repository": "FAROTECH/orbitfabric-fprime-adapter",
+          "repository_id": "fprime-adapter",
+          "stars_total": 0,
+          "stars_total_delta": 0
+        },
+        {
+          "category": "adapter",
+          "contributors_repo_count": 1,
+          "contributors_repo_count_delta": 0,
+          "forks_total": 0,
+          "forks_total_delta": 0,
+          "open_issues_total": 0,
+          "open_issues_total_delta": 0,
+          "open_pull_requests_total": 0,
+          "open_pull_requests_total_delta": 0,
+          "repository": "FAROTECH/orbitfabric-openc3-cosmos-adapter",
+          "repository_id": "openc3-cosmos-adapter",
+          "stars_total": 0,
+          "stars_total_delta": 0
+        },
+        {
+          "category": "adapter",
+          "contributors_repo_count": 1,
+          "contributors_repo_count_delta": 0,
+          "forks_total": 0,
+          "forks_total_delta": 0,
+          "open_issues_total": 0,
+          "open_issues_total_delta": 0,
+          "open_pull_requests_total": 0,
+          "open_pull_requests_total_delta": 0,
+          "repository": "FAROTECH/orbitfabric-openobsw-opensvf-adapter",
+          "repository_id": "openobsw-opensvf-adapter",
+          "stars_total": 0,
+          "stars_total_delta": 0
+        },
+        {
+          "category": "product",
+          "contributors_repo_count": 1,
+          "contributors_repo_count_delta": 0,
+          "forks_total": 0,
+          "forks_total_delta": 0,
+          "open_issues_total": 0,
+          "open_issues_total_delta": 0,
+          "open_pull_requests_total": 0,
+          "open_pull_requests_total_delta": 0,
+          "repository": "FAROTECH/orbitfabric-reference-mission",
+          "repository_id": "reference-mission",
+          "stars_total": 0,
+          "stars_total_delta": 0
+        },
+        {
+          "category": "product",
+          "contributors_repo_count": 2,
+          "contributors_repo_count_delta": 0,
+          "forks_total": 0,
+          "forks_total_delta": 0,
+          "open_issues_total": 2,
+          "open_issues_total_delta": 0,
+          "open_pull_requests_total": 0,
+          "open_pull_requests_total_delta": 0,
+          "repository": "FAROTECH/orbitfabric-studio",
+          "repository_id": "studio",
+          "stars_total": 0,
+          "stars_total_delta": 0
+        }
+      ],
+      "snapshot_gap_days": 1,
+      "totals": {
+        "contributors_repo_count": 7,
+        "contributors_repo_count_delta": 0,
+        "forks_total": 1,
+        "forks_total_delta": 0,
+        "open_issues_total": 5,
+        "open_issues_total_delta": 0,
+        "open_pull_requests_total": 0,
+        "open_pull_requests_total_delta": 0,
+        "stars_total": 6,
+        "stars_total_delta": 0
+      }
+    }
+  },
   "event_context": {
     "events_before_timeline": 0,
     "events_in_timeline": 4,
