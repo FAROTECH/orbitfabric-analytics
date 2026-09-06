@@ -108,6 +108,13 @@ jobs:
         working-directory: app
         run: python -m unittest discover -s tests -v
 
+      - name: Resolve logical collection date
+        id: collection-date
+        run: |
+          COLLECTION_DATE="$(python app/tools/collection_date.py --config app/config/collection.yml)"
+          echo "date=$COLLECTION_DATE" >> "$GITHUB_OUTPUT"
+          echo "Logical analytics collection date: $COLLECTION_DATE"
+
       - name: Build normalized event registry
         run: |
           python app/analytics/events.py \
@@ -124,6 +131,7 @@ jobs:
           python app/analytics/community.py \
             --repositories app/config/repositories.yml \
             --policy app/config/community-signals.yml \
+            --date "${{ steps.collection-date.outputs.date }}" \
             --output data/analytics/community_daily.csv
 
       - name: Build latest community stock comparison
@@ -141,6 +149,7 @@ jobs:
           python app/analytics/development_activity.py \
             --repositories app/config/repositories.yml \
             --policy app/config/development-activity.yml \
+            --end-date "${{ steps.collection-date.outputs.date }}" \
             --output data/analytics/development_activity_daily.csv
 
       - name: Build normalized repository-day dataset
