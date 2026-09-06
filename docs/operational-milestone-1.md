@@ -1,6 +1,6 @@
 # Operational Milestone 1 - Ecosystem Observability Baseline
 
-Status: complete, final visual acceptance pending.
+Status: complete, final mobile visual acceptance pending.
 
 ## Purpose
 
@@ -109,13 +109,30 @@ The previous non-blocking M3f automation/deployment validation debt is therefore
 
 ## Final presentation acceptance
 
-One human-facing acceptance item remains deliberately separate from automated validation:
+Desktop visual acceptance was completed on 2026-09-06 against the deployed M3f dashboard.
+
+The inspected page shows:
 
 ```text
-desktop/mobile visual inspection of the deployed M3f dashboard
+Ecosystem pulse populated
+traffic charts rendered
+curated event context rendered
+Community & engineering section populated
+community / lifecycle / participation / development summary cards rendered
+repository-level context table populated
+repository comparison rendered
+signal-shape chart rendered
+no fatal dashboard-data error
+no visible desktop layout breakage
 ```
 
-This is a presentation check only. It no longer blocks confidence in the analytics pipeline, generated payload or `dashboard-site` deployment.
+One human-facing acceptance item remains:
+
+```text
+mobile visual inspection of the deployed M3f dashboard
+```
+
+This is a presentation-only check. The analytics pipeline, generated payload, deployment and desktop presentation are already accepted.
 
 ## Deferred by design
 
