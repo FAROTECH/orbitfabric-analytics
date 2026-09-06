@@ -177,6 +177,7 @@ The first retained participation window contains only first-party actors on the 
 - [ ] Reactions only where reliable event timestamps can be retained without reconstructing history from current stock.
 - [ ] Richer contributor / participant analysis if repository activity becomes multi-actor enough to justify it.
 - [ ] More explicit cross-reading / derived interpretation between traffic, community, lifecycle, participation, development context and curated events.
+- [ ] Optional private persistent participant state if future scale makes fixed-baseline event reconstruction materially inefficient and repository visibility is intentionally kept private.
 
 ## M4 - Web Analytics
 
