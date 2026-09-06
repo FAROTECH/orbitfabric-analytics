@@ -1,7 +1,7 @@
 {
   "name": "OrbitFabric Analytics",
   "short_name": "OF Analytics",
-  "description": "Private OrbitFabric ecosystem analytics dashboard",
+  "description": "OrbitFabric ecosystem observability dashboard",
   "lang": "it",
   "start_url": "./",
   "scope": "./",
