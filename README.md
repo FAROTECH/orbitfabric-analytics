@@ -33,7 +33,7 @@ Curated releases, outreach and upstream discussion events are normalized, projec
 
 **M3 - Community Signals: in progress**
 
-M3 now retains a daily repository-scoped GitHub community baseline for the official OrbitFabric repositories and builds absolute latest-vs-previous stock comparisons when a previous snapshot exists.
+M3 now retains daily repository-scoped GitHub community stock, latest-vs-previous stock comparisons, development activity context, and direct issue / pull-request lifecycle event counts for the official OrbitFabric repositories.
 
 ## Architecture
 
@@ -77,7 +77,7 @@ analytics/events.py
 analytics/events_normalized.json
 ```
 
-M3 community collection adds a second retained evidence stream:
+M3 community collection adds retained evidence streams:
 
 ```text
 config/community-signals.yml
@@ -95,6 +95,26 @@ analytics/community_compare.py
         |
         v
 analytics/community_comparison_latest.csv
+```
+
+```text
+config/development-activity.yml
+        |
+        v
+analytics/development_activity.py
+        |
+        v
+analytics/development_activity_daily.csv
+```
+
+```text
+config/community-lifecycle.yml
+        |
+        v
+analytics/community_lifecycle.py
+        |
+        v
+analytics/community_lifecycle_daily.csv
 ```
 
 `main` contains source code, configuration, documentation and dashboard source.
@@ -152,15 +172,25 @@ M3b compares the latest available snapshot with the previous available snapshot 
 
 Percentage deltas are intentionally omitted from the initial low-cardinality community baseline.
 
-Event-oriented community activity is introduced separately in later M3 increments.
+M3d adds direct lifecycle counts from GitHub timestamps:
 
-See [docs/community-signals.md](docs/community-signals.md).
+```text
+issues_opened
+issues_closed
+prs_opened
+prs_merged
+prs_closed_unmerged
+```
+
+These lifecycle signals are not inferred from stock changes. A single issue or pull request may contribute to more than one event class over its lifetime, including two classes on the same day.
+
+See [docs/community-signals.md](docs/community-signals.md) and [docs/community-lifecycle.md](docs/community-lifecycle.md).
 
 ## Collector
 
 Traffic collection uses [`jgehrcke/github-repo-stats`](https://github.com/jgehrcke/github-repo-stats), pinned to `v1.4.2`.
 
-The workflow also executes the M3 community snapshot collector and latest stock comparison after the traffic jobs complete.
+After the traffic jobs complete, the workflow also executes M3 community stock collection, stock comparison, development activity context, and issue / pull-request lifecycle collection.
 
 The workflow runs once per day and can also be started manually from GitHub Actions.
 
@@ -199,10 +229,14 @@ If it is not configured, the collector reuses `GHRS_GITHUB_API_TOKEN`. Public co
 - `config/events.yml`: authoritative event timeline.
 - `config/event-taxonomy.yml`: event type, channel and confidence policy.
 - `config/community-signals.yml`: M3 community stock and comparison policy.
+- `config/development-activity.yml`: M3c development activity policy.
+- `config/community-lifecycle.yml`: M3d issue / pull-request lifecycle policy.
 - `tools/build_repository_matrix.py`: validates repository configuration and emits the GitHub Actions matrix.
 - `analytics/events.py`: validates and normalizes event context for M2.
 - `analytics/community.py`: collects and retains repository-scoped M3 community snapshots.
 - `analytics/community_compare.py`: builds latest-vs-previous absolute stock comparisons.
+- `analytics/development_activity.py`: collects repository-scoped commit and workflow-run context.
+- `analytics/community_lifecycle.py`: collects issue and pull-request lifecycle events from GitHub timestamps.
 
 ## Roadmap
 
