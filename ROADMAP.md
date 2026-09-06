@@ -98,7 +98,7 @@ Completed baseline:
 - [x] First traffic/event correlation review completed.
 - [x] Interactive event overlay visually validated on desktop and mobile.
 
-Planned event classes include releases, outreach, upstream discussions, documentation launches, internal milestones and major ecosystem milestones. Channels are policy-driven and currently include GitHub, LinkedIn, Reddit, Hackaday, Libre Space, website and internal analytics context.
+Planned event classes include releases, outreach, upstream discussions, community contributions, documentation launches, internal milestones and major ecosystem milestones. Channels are policy-driven and currently include GitHub, LinkedIn, Reddit, Hackaday, Libre Space, website and internal analytics context.
 
 Historical events are not invented merely to populate the dashboard. When a date is uncertain but still useful, it is explicitly marked `approximate`; confirmed day-level correlation uses `confirmed` events.
 
@@ -170,14 +170,32 @@ M3d issue / pull-request lifecycle:
 - [x] First automated lifecycle backfill validated end to end.
 - [x] Initial lifecycle evidence reviewed across the retained traffic window.
 
+M3e repository participation baseline:
+
+- [x] Participant identity semantics kept repository-scoped rather than ecosystem-wide.
+- [x] Participation policy defined in `config/community-participation.yml`.
+- [x] Initial scope aligned with the six official repositories.
+- [x] Rolling 21-day participation recollection window defined.
+- [x] Issue authors, pull-request authors and issue/PR conversation comments selected as initial actor-bearing surfaces.
+- [x] Daily distinct participant counts separated into first-party / automation / other policy classes.
+- [x] `other` explicitly kept separate from external-contributor semantics.
+- [x] Repository-scoped first-observed participant semantics defined.
+- [x] Private cumulative actor registry defined in `analytics/community_participants.json`.
+- [x] Raw actor registry excluded from dashboard publication by policy.
+- [x] `analytics/community_participation.py` implemented with idempotent repository-day history merging.
+- [x] Participation unit coverage added.
+- [x] Post-collection generation of `analytics/community_participation_daily.csv` and participant registry configured.
+- [ ] First automated participation backfill validated end to end.
+- [ ] Initial participation evidence reviewed across the retained traffic window.
+
 Planned M3 increments:
 
 - [ ] Rolling trend semantics beyond adjacent observed snapshots.
-- [ ] Contributor arrival / participation signals without ecosystem-wide identity assumptions.
+- [ ] Pull-request review participation signals.
 - [ ] GitHub Discussions signals.
-- [ ] Comments and reactions where useful.
+- [ ] Reactions where timestamp semantics are strong enough to avoid reconstructing event history from current stock.
 - [ ] Community signals projected into the dashboard.
-- [ ] Cross-reading of traffic, community, lifecycle, development context and curated events.
+- [ ] Cross-reading of traffic, community, lifecycle, participation, development context and curated events.
 
 A stock change is not automatically a count of new events. For example, an open-issue delta can be affected by both issue creation and issue closure between snapshots. Community metrics remain repository-scoped unless an explicitly deduplicated semantic is introduced later.
 
@@ -186,6 +204,8 @@ The first retained community baseline is dated 2026-09-05. The first cross-date 
 Development activity context is explanatory evidence only. High first-party commit or workflow-run activity can make first-party/automation contamination more plausible, but does not prove that those activities caused GitHub traffic. The initial clone-spike review is retained in `reports/development-context/2026-09-02-to-04-clone-spikes.md`.
 
 Lifecycle signals are direct counts of observed GitHub timestamps, not user counts. An issue or pull request may legitimately contribute to more than one lifecycle class over time or on the same day. The first lifecycle review is retained in `reports/community-lifecycle/2026-08-17-to-09-06-baseline.md`.
+
+Participation `first_seen` means first observation retained by OrbitFabric Analytics for one login in one repository. It does not mean first GitHub activity, first ecosystem-wide participation, a new user or a new external contributor.
 
 ## M4 - Web Analytics
 
