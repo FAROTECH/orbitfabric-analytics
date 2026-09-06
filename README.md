@@ -37,10 +37,10 @@ M3b Community stock deltas         complete
 M3c Development activity context   complete
 M3d Issue / PR lifecycle           complete
 M3e Repository participation       complete
-M3f Ecosystem dashboard context    complete for milestone scope
+M3f Ecosystem dashboard context    complete and E2E validated
 ```
 
-The final M3f GitHub Actions / deployment validation remains an explicit non-blocking operational validation debt until the first public-repository run is executed. Everything through M3e has already been validated end to end.
+The first public-repository workflow run successfully validated the M3f ecosystem-context projection, dataset persistence and `dashboard-site` refresh. Only final human visual acceptance of the deployed desktop/mobile presentation remains.
 
 Richer engagement features are intentionally deferred after this baseline rather than expanding scope indefinitely.
 
@@ -174,6 +174,14 @@ collects traffic
 ```
 
 The public-safe participation collector reconstructs repository-scoped first-observed state in memory from the fixed observation baseline and writes only aggregate daily counts.
+
+The first public-repository M3f validation run is recorded as:
+
+```text
+run #20
+id 34026249039
+conclusion success
+```
 
 ## Secrets
 
