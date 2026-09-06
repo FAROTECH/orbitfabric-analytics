@@ -212,6 +212,15 @@ jobs:
             --dashboard data/analytics/dashboard_data.json \
             --events data/analytics/events_normalized.json
 
+      - name: Project ecosystem context into dashboard payload
+        run: |
+          python app/analytics/dashboard_ecosystem_context.py \
+            --dashboard data/analytics/dashboard_data.json \
+            --community data/analytics/community_comparison_latest.csv \
+            --development data/analytics/development_activity_daily.csv \
+            --lifecycle data/analytics/community_lifecycle_daily.csv \
+            --participation data/analytics/community_participation_daily.csv
+
       - name: Persist analytics datasets
         working-directory: data
         run: |
