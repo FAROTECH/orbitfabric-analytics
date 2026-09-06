@@ -6,9 +6,9 @@ Status: accepted and operational.
 
 OrbitFabric Analytics uses a static, installable Progressive Web App for presentation.
 
-The dashboard lives in the same public `orbitfabric-analytics` repository under `dashboard/` and is deployed to Cloudflare Pages.
+The dashboard lives in the `orbitfabric-analytics` repository under `dashboard/` and is deployed to Cloudflare Pages.
 
-The dashboard deployment policy remains intentionally **public but unlisted**. Cloudflare Access is optional and can be introduced later if the dashboard starts containing information that should be treated as confidential.
+Repository visibility is an operational choice. The dashboard deployment policy remains intentionally **public but unlisted**. Cloudflare Access is optional and can be introduced later if the dashboard starts containing information that should be treated as confidential.
 
 ## UI language
 
@@ -54,7 +54,8 @@ The dashboard architecture preserves these properties:
 - generated dashboard data is built by trusted automation;
 - desktop and mobile PWA usage;
 - portable static hosting;
-- only public-safe aggregate participation evidence is retained and projected.
+- retained evidence remains public-safe regardless of repository visibility;
+- only aggregate participation evidence is projected.
 
 ## Branch responsibilities
 
@@ -183,7 +184,9 @@ Participation data is repository-scoped.
 
 Window totals such as participant presence are represented as sums of repository-day observations. They are not ecosystem-wide deduplicated people.
 
-Raw actor logins are used only while collecting public GitHub events. The public-safe collector reconstructs repository-scoped first-observed state from the fixed observation baseline in memory and persists aggregate daily counts only.
+Raw actor logins are used only transiently while collecting public GitHub events. The current collector reconstructs repository-scoped first-observed state from the fixed observation baseline in memory and persists aggregate daily counts only.
+
+A private persistent participant registry may be reconsidered later if fixed-baseline reconstruction becomes materially inefficient and repository visibility is intentionally kept private. It is not required by the current dashboard contract.
 
 ## Presentation boundary
 
@@ -211,7 +214,7 @@ The Cloudflare Pages production URL is technically public when Cloudflare Access
 
 Current policy:
 
-- do not link the dashboard from public OrbitFabric repositories, documentation or social profiles unless discoverability becomes intentional;
+- do not link the dashboard from OrbitFabric repositories, documentation or social profiles unless discoverability becomes intentional;
 - publish only analytics information acceptable for public exposure;
 - send `X-Robots-Tag: noindex, nofollow, noarchive, nosnippet`;
 - include an HTML robots directive;
@@ -223,7 +226,7 @@ If confidentiality becomes a requirement, Cloudflare Access can be enabled witho
 
 ## Security boundary
 
-The source repository itself is public by project decision.
+Repository visibility does not define the analytics security model. Retained state remains public-safe by design.
 
 GitHub credentials remain inside GitHub Actions or another trusted build environment. Repository visibility does not move secrets into source control.
 
