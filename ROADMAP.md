@@ -4,7 +4,7 @@ OrbitFabric Analytics grows in stages. The first priority is preserving trustwor
 
 ## Operational Milestone 1 - Ecosystem Observability Baseline
 
-**Status: complete, final visual acceptance pending**
+**Status: complete, final mobile visual acceptance pending**
 
 Goal: establish a durable first analytics baseline that can be left running while OrbitFabric development and outreach continue.
 
@@ -22,9 +22,10 @@ Exit criteria:
 - [x] First public-repository M3f workflow run completed successfully.
 - [x] `ecosystem_context` confirmed in generated `dashboard_data.json`.
 - [x] `dashboard-site` refreshed successfully by automation.
-- [ ] Final desktop/mobile presentation check.
+- [x] Final desktop presentation check.
+- [ ] Final mobile presentation check.
 
-The previous M3f validation debt caused by the private-repository Actions quota is now resolved on the automation and deployment side. Only the final human visual acceptance remains.
+The previous M3f validation debt caused by the private-repository Actions quota is resolved. The deployed desktop dashboard has also passed human visual inspection; only the final mobile presentation check remains.
 
 ## Public repository decision
 
@@ -147,7 +148,7 @@ The first retained participation window contains only first-party actors on the 
 
 ### M3f - Ecosystem dashboard context
 
-**Status: complete; automated E2E and deployment validated**
+**Status: complete; automated E2E, deployment and desktop presentation validated**
 
 - [x] `analytics/dashboard_ecosystem_context.py` added as a downstream presentation projection.
 - [x] Community stock retains its own observation date.
@@ -161,7 +162,8 @@ The first retained participation window contains only first-party actors on the 
 - [x] First M3f projection run validated end to end in public run #20.
 - [x] Generated `dashboard_data.json` confirmed to contain `ecosystem_context` with complete aligned-window coverage.
 - [x] `dashboard-site` refreshed successfully by run #20.
-- [ ] Final desktop/mobile visual acceptance.
+- [x] Desktop visual acceptance completed on the deployed M3f dashboard.
+- [ ] Final mobile visual acceptance.
 
 ## Deferred TODO after Operational Milestone 1
 
