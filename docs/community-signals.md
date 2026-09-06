@@ -13,13 +13,13 @@ TRAFFIC
 views / clones
 
 COMMUNITY
-stars / forks / issues / pull requests / contributors
+stars / forks / issues / pull requests / participants
 
 DEVELOPMENT CONTEXT
 commits / workflow runs
 
 CONTEXT
-releases / outreach / upstream discussions
+releases / outreach / upstream discussions / community contributions
 ```
 
 None of these families is treated as a direct count of ecosystem users.
@@ -108,7 +108,7 @@ open_issues_total_delta: -1
 
 means that the observed open-issue stock decreased by one between snapshots. It does not by itself say how many issues were opened or closed during the interval.
 
-The same caution applies to contributor count. `contributors_repo_count_delta=+1` does not yet mean "one new contributor"; contributor arrival requires an event-oriented identity-aware contract in a later M3 increment.
+The same caution applies to contributor count. `contributors_repo_count_delta=+1` does not by itself mean one new contributor.
 
 ## M3c development activity context
 
@@ -144,6 +144,42 @@ These are derived from GitHub lifecycle timestamps, not inferred from stock chan
 
 See `docs/community-lifecycle.md` for the detailed contract.
 
+## M3e repository participation
+
+M3e begins actor-oriented participation analysis while keeping identity explicitly repository-scoped.
+
+The daily dataset is:
+
+```text
+analytics/community_participation_daily.csv
+```
+
+and the cumulative private actor registry is:
+
+```text
+analytics/community_participants.json
+```
+
+The first actor-bearing surfaces are issue authors, pull-request authors and issue / pull-request conversation comments.
+
+Daily distinct logins are classified through policy as:
+
+```text
+first_party
+
+automation
+
+other
+```
+
+`other` is not automatically an external contributor. It only means that the login is not currently configured as first-party or automation.
+
+`participants_first_seen_repo_count` means first observation retained by OrbitFabric Analytics for one login in one repository. It does not mean first GitHub activity ever, ecosystem-wide first participation or a new user.
+
+Raw actor identities remain on the private data branch and are not projected into the public-unlisted dashboard.
+
+See `docs/community-participation.md` for the detailed contract.
+
 ## Repository scope
 
 M3 currently selects repositories where:
@@ -174,13 +210,12 @@ Collectors fail rather than silently persisting partial repository evidence.
 
 ## What is intentionally deferred
 
-M3 still defers richer engagement and identity-oriented semantics:
+M3 still defers engagement surfaces whose semantics need separate treatment:
 
 ```text
-contributor arrival / participation
+pull-request review participation
 GitHub Discussions
-comments
-reactions
+reaction events
 ```
 
-These signals require their own contracts and, for some GitHub surfaces, additional API permissions. They remain separate from stock, lifecycle and development-context evidence.
+Reactions in particular must not be reconstructed as historical events merely from current reaction counts attached to older objects.
