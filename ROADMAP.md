@@ -139,7 +139,7 @@ M3b stock deltas:
 - [x] `analytics/community_compare.py` implemented with unit coverage.
 - [x] Post-collection generation of `analytics/community_comparison_latest.csv` configured.
 - [x] First automated `analytics/community_comparison_latest.csv` generation validated end to end.
-- [ ] First real comparable stock delta observed from two distinct collection dates.
+- [x] First real comparable stock delta observed from two distinct collection dates.
 
 M3c development activity context:
 
@@ -153,8 +153,8 @@ M3c development activity context:
 - [x] `analytics/development_activity.py` implemented with idempotent repository-day history merging.
 - [x] Development activity unit coverage added.
 - [x] Post-collection generation of `analytics/development_activity_daily.csv` configured.
-- [ ] First automated development-activity backfill validated end to end.
-- [ ] Initial development context reviewed against known high-clone days.
+- [x] First automated development-activity backfill validated end to end.
+- [x] Initial development context reviewed against known high-clone days.
 
 Planned M3 increments:
 
@@ -169,9 +169,9 @@ Planned M3 increments:
 
 A stock change is not automatically a count of new events. For example, an open-issue delta can be affected by both issue creation and issue closure between snapshots. Community metrics remain repository-scoped unless an explicitly deduplicated semantic is introduced later.
 
-The first retained community baseline is dated 2026-09-05. The scheduled run on the night of 2026-09-05 validated the M3b comparison pipeline but correctly remained a same-date replacement, so the first real cross-date stock delta is still pending.
+The first retained community baseline is dated 2026-09-05. The first cross-date comparison, 2026-09-05 to 2026-09-06, is valid and currently shows zero stock changes across all six official repositories.
 
-Development activity context is explanatory evidence only. High first-party commit or workflow-run activity can make first-party/automation contamination more plausible, but does not prove that those activities caused GitHub traffic.
+Development activity context is explanatory evidence only. High first-party commit or workflow-run activity can make first-party/automation contamination more plausible, but does not prove that those activities caused GitHub traffic. The initial clone-spike review is retained in `reports/development-context/2026-09-02-to-04-clone-spikes.md`.
 
 ## M4 - Web Analytics
 
