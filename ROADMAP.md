@@ -44,7 +44,7 @@ Completed baseline:
 - [x] Adoption proxy semantics defined without introducing a scalar adoption score.
 - [x] `analytics/compare.py` implemented with unit coverage.
 - [x] Post-collection generation of `analytics/repository_comparison_latest.csv` configured.
-- [x] First automated `repository_comparison_latest.csv` generation validated end to end.
+- [x] First automated `analytics/repository_comparison_latest.csv` generation validated end to end.
 - [x] Dashboard presentation payload contract defined.
 - [x] `analytics/dashboard_data.py` implemented with unit coverage.
 - [x] Post-collection generation of `analytics/dashboard_data.json` configured.
@@ -167,8 +167,8 @@ M3d issue / pull-request lifecycle:
 - [x] `analytics/community_lifecycle.py` implemented with idempotent repository-day history merging.
 - [x] Lifecycle unit coverage added.
 - [x] Post-collection generation of `analytics/community_lifecycle_daily.csv` configured.
-- [ ] First automated lifecycle backfill validated end to end.
-- [ ] Initial lifecycle evidence reviewed across the retained traffic window.
+- [x] First automated lifecycle backfill validated end to end.
+- [x] Initial lifecycle evidence reviewed across the retained traffic window.
 
 Planned M3 increments:
 
@@ -185,7 +185,7 @@ The first retained community baseline is dated 2026-09-05. The first cross-date 
 
 Development activity context is explanatory evidence only. High first-party commit or workflow-run activity can make first-party/automation contamination more plausible, but does not prove that those activities caused GitHub traffic. The initial clone-spike review is retained in `reports/development-context/2026-09-02-to-04-clone-spikes.md`.
 
-Lifecycle signals are direct counts of observed GitHub timestamps, not user counts. An issue or pull request may legitimately contribute to more than one lifecycle class over time or on the same day.
+Lifecycle signals are direct counts of observed GitHub timestamps, not user counts. An issue or pull request may legitimately contribute to more than one lifecycle class over time or on the same day. The first lifecycle review is retained in `reports/community-lifecycle/2026-08-17-to-09-06-baseline.md`.
 
 ## M4 - Web Analytics
 
