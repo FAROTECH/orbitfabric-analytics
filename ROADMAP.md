@@ -4,7 +4,7 @@ OrbitFabric Analytics grows in stages. The first priority is preserving trustwor
 
 ## Operational Milestone 1 - Ecosystem Observability Baseline
 
-**Status: complete**
+**Status: complete, final visual acceptance pending**
 
 Goal: establish a durable first analytics baseline that can be left running while OrbitFabric development and outreach continue.
 
@@ -19,30 +19,33 @@ Exit criteria:
 - [x] Issue / PR lifecycle retained.
 - [x] Repository-scoped participation baseline retained.
 - [x] Community and engineering dashboard integration implemented.
-- [x] Milestone accepted with explicit non-blocking M3f validation debt after GitHub Actions quota exhaustion.
+- [x] First public-repository M3f workflow run completed successfully.
+- [x] `ecosystem_context` confirmed in generated `dashboard_data.json`.
+- [x] `dashboard-site` refreshed successfully by automation.
+- [ ] Final desktop/mobile presentation check.
 
-The final M3f workflow/deployment/visual validation remains explicit TODO work until the first public-repository run is available. It is not represented as already successful. If that run reveals a defect, reopen M3f only.
+The previous M3f validation debt caused by the private-repository Actions quota is now resolved on the automation and deployment side. Only the final human visual acceptance remains.
 
 ## Public repository decision
 
-**Status: accepted; visibility switch pending in GitHub settings**
+**Status: accepted and operational**
 
-OrbitFabric Analytics is intentionally becoming a public open-source observability project rather than remaining a private internal repository.
+OrbitFabric Analytics is intentionally a public open-source observability project.
 
 Decision principles:
 
-- [x] Public analytics is treated as a project decision, not only as an Actions quota workaround.
+- [x] Public analytics is a project decision, not only an Actions quota workaround.
 - [x] Source, metric semantics, aggregate datasets, reports and dashboard architecture are suitable for public review.
 - [x] GitHub Actions secrets remain outside repository content.
-- [x] No token-like credential strings found in the current source audit.
+- [x] No token-like credential strings were found in the source audit.
 - [x] Nominative participant state removed from retained analytics.
-- [x] `analytics/community_participants.json` removed from the `github-repo-stats` branch.
+- [x] `analytics/community_participants.json` removed from the `github-repo-stats` branch before publication.
 - [x] Participation `first_seen` semantics redesigned to reconstruct from public GitHub events since a fixed observation baseline.
 - [x] Workflow switched to the public-safe participation collector and no longer persists raw actor identities.
-- [ ] Repository visibility changed from private to public in GitHub settings.
-- [ ] First public Actions run validates M3f projection, dashboard-site deployment and desktop/mobile rendering.
+- [x] Repository visibility changed to public.
+- [x] First public Actions run completed successfully.
 
-The historical deleted actor-registry blob contains only the maintainer login `FAROTECH`; no third-party participant identity was ever retained before the public transition.
+The historical deleted actor-registry blob contained only the maintainer login `FAROTECH`; no third-party participant identity was retained before the public transition.
 
 ## M0 - Data Retention
 
@@ -137,13 +140,14 @@ Development activity is explanatory context, not traffic attribution.
 - [x] First-observed semantics reconstructed from public events without retained raw actor identities.
 - [x] `analytics/community_participation_public.py` wired into the workflow.
 - [x] Nominative actor registry removed from retained public analytics state.
+- [x] Public-safe collector validated in the first public workflow run.
 - [x] Initial participation review completed.
 
 The first retained participation window contains only first-party actors on the currently collected GitHub surfaces. This is a useful T0 baseline, not evidence that nobody external is aware of OrbitFabric.
 
 ### M3f - Ecosystem dashboard context
 
-**Status: complete for milestone scope; final operational validation deferred**
+**Status: complete; automated E2E and deployment validated**
 
 - [x] `analytics/dashboard_ecosystem_context.py` added as a downstream presentation projection.
 - [x] Community stock retains its own observation date.
@@ -154,8 +158,10 @@ The first retained participation window contains only first-party actors on the 
 - [x] `Ecosystem Context / Community & engineering` dashboard section implemented.
 - [x] Mobile-responsive summary cards and repository context table implemented.
 - [x] Workflow projection step wired after curated-event projection.
-- [ ] First M3f projection run validated end to end.
-- [ ] First M3f `dashboard-site` deployment and desktop/mobile visual check.
+- [x] First M3f projection run validated end to end in public run #20.
+- [x] Generated `dashboard_data.json` confirmed to contain `ecosystem_context` with complete aligned-window coverage.
+- [x] `dashboard-site` refreshed successfully by run #20.
+- [ ] Final desktop/mobile visual acceptance.
 
 ## Deferred TODO after Operational Milestone 1
 
