@@ -1,6 +1,6 @@
 # Operational Milestone 1 - Ecosystem Observability Baseline
 
-Status: complete, final mobile visual acceptance pending.
+Status: complete.
 
 ## Purpose
 
@@ -56,17 +56,21 @@ The first-milestone dashboard provides:
 
 Community stock is allowed to be newer than the latest complete traffic day and exposes its own observation date.
 
-Participation retains aggregate repository-day evidence only. Raw actor logins are used transiently during collection and are not persisted into public analytics state.
+Participation retains aggregate repository-day evidence only. Raw actor logins are used transiently during collection and are not persisted into retained analytics state.
 
-## Public repository decision
+## Repository visibility and public-safe boundary
 
-OrbitFabric Analytics is intentionally published as a public open-source project.
+The durable architectural decision is that retained Analytics state is public-safe by design.
 
-This is part of the project architecture: analytics code, metric semantics, aggregate evidence and reports are intended to be inspectable. The repository therefore retains only evidence that is acceptable to expose publicly.
+Repository visibility itself is an operational choice and may change between public and private without changing metric semantics, data-retention boundaries or the dashboard contract.
+
+The public interval used for this milestone validated that boundary in practice and also allowed the GitHub-hosted workflow to execute without consuming private-repository Actions minutes.
 
 Before the visibility change, the previous cumulative participant registry was removed from `github-repo-stats`. Its historical content contained only the maintainer login `FAROTECH`; no third-party identity had been retained.
 
 Repository-scoped `first_seen` semantics are now reconstructed from public GitHub events since the fixed observation baseline rather than from a persisted nominative registry.
+
+No LICENSE is introduced merely because the repository is temporarily public. Licensing remains a separate future decision if external reuse of Analytics is intentionally offered.
 
 ## Final automated validation
 
@@ -109,9 +113,9 @@ The previous non-blocking M3f automation/deployment validation debt is therefore
 
 ## Final presentation acceptance
 
-Desktop visual acceptance was completed on 2026-09-06 against the deployed M3f dashboard.
+Desktop and mobile visual acceptance were both completed on 2026-09-06 against the deployed M3f dashboard.
 
-The inspected page shows:
+The accepted presentation shows:
 
 ```text
 Ecosystem pulse populated
@@ -124,15 +128,10 @@ repository comparison rendered
 signal-shape chart rendered
 no fatal dashboard-data error
 no visible desktop layout breakage
+mobile layout usable without blocking overflow or presentation defects
 ```
 
-One human-facing acceptance item remains:
-
-```text
-mobile visual inspection of the deployed M3f dashboard
-```
-
-This is a presentation-only check. The analytics pipeline, generated payload, deployment and desktop presentation are already accepted.
+The Operational Milestone 1 presentation gate is therefore closed.
 
 ## Deferred by design
 
