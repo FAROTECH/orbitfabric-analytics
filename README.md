@@ -16,7 +16,7 @@ policy in configuration, logic in tooling
 
 ## Current status
 
-The first operational analytics milestone is being finalized.
+**Operational Milestone 1 - Ecosystem Observability Baseline: complete**
 
 Completed capability layers:
 
@@ -29,8 +29,10 @@ M3b Community stock deltas         complete
 M3c Development activity context   complete
 M3d Issue / PR lifecycle           complete
 M3e Repository participation       complete
-M3f Ecosystem dashboard context    implementation complete; final E2E validation pending
+M3f Ecosystem dashboard context    complete for milestone scope
 ```
+
+The final M3f GitHub Actions / deployment validation is explicitly retained as a non-blocking operational validation debt because the GitHub Free Actions quota was exhausted before the final run could be executed. Everything through M3e has already been validated end to end. M3f source, workflow wiring and dataset contracts are implemented; the first available future run must validate the projection and deployment and trigger a focused M3f reopen only if a defect is found.
 
 Richer engagement features are intentionally deferred after this baseline rather than expanding scope indefinitely.
 
@@ -150,7 +152,7 @@ Important interpretation rules:
 
 ## Automation
 
-`.github/workflows/collect-github-traffic.yml` runs daily and can also be started manually.
+`.github/workflows/collect-github-traffic.yml` runs daily and can also be started manually when Actions capacity is available.
 
 The workflow:
 
@@ -191,6 +193,7 @@ The first milestone deliberately postpones richer analytics surfaces such as:
 - reactions where event timestamps can be retained without reconstructing history from current stock;
 - richer contributor / participant analysis;
 - web and documentation analytics;
-- automated intelligence, anomaly detection and periodic reporting.
+- automated intelligence, anomaly detection and periodic reporting;
+- final M3f workflow/deployment/visual validation at the first available Actions run.
 
 These remain tracked in [ROADMAP.md](ROADMAP.md) rather than being required for the initial operational baseline.
