@@ -2,9 +2,9 @@ version: 1
 
 # Policy for M3e repository-scoped participation signals.
 #
-# Participant identity is retained only as private analytics evidence on the
-# github-repo-stats branch. Dashboard publication must use aggregate counts,
-# not raw actor logins.
+# Raw GitHub actor logins are used only in-memory while collecting public
+# participation events. Retained analytics contains aggregate repository-day
+# counts only; no cumulative nominative actor registry is persisted.
 
 repository_selection:
   field: include_in_rollups
@@ -12,6 +12,7 @@ repository_selection:
 
 history:
   lookback_days: 21
+  observation_start_date: "2026-08-17"
 
 classification:
   first_party_logins:
@@ -66,5 +67,5 @@ semantics:
   first_party_participants_repo_count: daily distinct observed participants whose login is configured as first-party
   automation_participants_repo_count: daily distinct observed participants whose login is configured as automation
   other_participants_repo_count: daily distinct observed participants not configured as first-party or automation; not automatically external contributors
-  participants_first_seen_repo_count: participants whose earliest retained observation for this repository is the UTC day
+  participants_first_seen_repo_count: participants whose earliest reconstructed observation for this repository since history.observation_start_date is the UTC day
   other_participants_first_seen_repo_count: first-observed participants classified as other; not automatically new external contributors
