@@ -1,0 +1,70 @@
+version: 1
+
+# Policy for M3e repository-scoped participation signals.
+#
+# Participant identity is retained only as private analytics evidence on the
+# github-repo-stats branch. Dashboard publication must use aggregate counts,
+# not raw actor logins.
+
+repository_selection:
+  field: include_in_rollups
+  value: true
+
+history:
+  lookback_days: 21
+
+classification:
+  first_party_logins:
+    - FAROTECH
+
+  automation_logins:
+    - github-actions[bot]
+    - dependabot[bot]
+
+signals:
+  issue_author_events:
+    collect: true
+    kind: participation_event
+
+  pr_author_events:
+    collect: true
+    kind: participation_event
+
+  comment_events:
+    collect: true
+    kind: participation_event
+
+  participants_repo_count:
+    collect: true
+    kind: repository_scoped_distinct_actor_count
+
+  first_party_participants_repo_count:
+    collect: true
+    kind: repository_scoped_distinct_actor_count
+
+  automation_participants_repo_count:
+    collect: true
+    kind: repository_scoped_distinct_actor_count
+
+  other_participants_repo_count:
+    collect: true
+    kind: repository_scoped_distinct_actor_count
+
+  participants_first_seen_repo_count:
+    collect: true
+    kind: repository_scoped_first_observed_actor_count
+
+  other_participants_first_seen_repo_count:
+    collect: true
+    kind: repository_scoped_first_observed_actor_count
+
+semantics:
+  issue_author_events: non-pull-request issues created in the UTC day
+  pr_author_events: pull requests created in the UTC day
+  comment_events: issue or pull-request conversation comments created in the UTC day
+  participants_repo_count: distinct GitHub logins observed across enabled participation events in the repository and UTC day
+  first_party_participants_repo_count: daily distinct observed participants whose login is configured as first-party
+  automation_participants_repo_count: daily distinct observed participants whose login is configured as automation
+  other_participants_repo_count: daily distinct observed participants not configured as first-party or automation; not automatically external contributors
+  participants_first_seen_repo_count: participants whose earliest retained observation for this repository is the UTC day
+  other_participants_first_seen_repo_count: first-observed participants classified as other; not automatically new external contributors
