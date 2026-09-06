@@ -1,6 +1,6 @@
 # OrbitFabric Analytics
 
-Analytics and ecosystem observability for OrbitFabric projects.
+Public analytics and ecosystem observability for OrbitFabric projects.
 
 ## Purpose
 
@@ -13,6 +13,14 @@ The governing rule is:
 ```text
 policy in configuration, logic in tooling
 ```
+
+## Visibility policy
+
+OrbitFabric Analytics is intentionally an open-source public project.
+
+This is a project decision, not only a GitHub Actions billing workaround. The public repository makes the evidence model, metric semantics and observability tooling inspectable alongside the rest of the OrbitFabric ecosystem.
+
+Only public-safe retained evidence belongs in repository branches. Participation analytics therefore retains aggregate repository-day counts, not a cumulative nominative actor registry.
 
 ## Current status
 
@@ -32,7 +40,7 @@ M3e Repository participation       complete
 M3f Ecosystem dashboard context    complete for milestone scope
 ```
 
-The final M3f GitHub Actions / deployment validation is explicitly retained as a non-blocking operational validation debt because the GitHub Free Actions quota was exhausted before the final run could be executed. Everything through M3e has already been validated end to end. M3f source, workflow wiring and dataset contracts are implemented; the first available future run must validate the projection and deployment and trigger a focused M3f reopen only if a defect is found.
+The final M3f GitHub Actions / deployment validation remains an explicit non-blocking operational validation debt until the first public-repository run is executed. Everything through M3e has already been validated end to end.
 
 Richer engagement features are intentionally deferred after this baseline rather than expanding scope indefinitely.
 
@@ -51,7 +59,7 @@ LIFECYCLE
 issue / pull-request open, close and merge events
 
 PARTICIPATION
-repository-scoped actor-bearing activity
+repository-scoped aggregate actor-bearing activity
 
 DEVELOPMENT CONTEXT
 commits / workflow runs
@@ -88,8 +96,7 @@ main
 
 github-repo-stats
     retained traffic history
-    generated analytics datasets
-    private participation actor registry
+    generated public-safe analytics datasets
 
 dashboard-site
     deployable static dashboard snapshot
@@ -111,12 +118,11 @@ analytics/community_comparison_latest.csv
 analytics/development_activity_daily.csv
 analytics/community_lifecycle_daily.csv
 analytics/community_participation_daily.csv
-analytics/community_participants.json
 
 analytics/dashboard_data.json
 ```
 
-`community_participants.json` is a private repository-scoped actor registry used to preserve first-observed semantics. It is not copied into the public-unlisted dashboard deployment.
+Raw GitHub actor logins used for participation analysis are not retained. `first_seen` is reconstructed from public GitHub events since the explicit observation baseline configured in `config/community-participation.yml`.
 
 ## Dashboard
 
@@ -134,7 +140,7 @@ It presents:
 
 Community stock may be newer than the latest complete traffic day. That difference is explicit in the dashboard instead of being silently merged into one time boundary.
 
-The current production URL is technically public but intentionally unlisted. Anti-indexing controls reduce discoverability but are not treated as security. Cloudflare Access remains an optional future hardening step.
+The dashboard URL remains intentionally unlisted and uses anti-indexing controls. Those controls reduce discoverability but are not treated as security.
 
 See [docs/dashboard-architecture.md](docs/dashboard-architecture.md).
 
@@ -152,7 +158,7 @@ Important interpretation rules:
 
 ## Automation
 
-`.github/workflows/collect-github-traffic.yml` runs daily and can also be started manually when Actions capacity is available.
+`.github/workflows/collect-github-traffic.yml` runs daily and can also be started manually.
 
 The workflow:
 
@@ -166,6 +172,8 @@ collects traffic
     -> persists datasets on github-repo-stats
     -> assembles dashboard-site
 ```
+
+The public-safe participation collector reconstructs repository-scoped first-observed state in memory from the fixed observation baseline and writes only aggregate daily counts.
 
 ## Secrets
 
@@ -181,7 +189,7 @@ Optional M3-specific secret:
 COMMUNITY_GITHUB_TOKEN
 ```
 
-If the community-specific token is absent, public M3 collectors can reuse the traffic token and retain their existing anonymous fallback for public endpoints where appropriate.
+Secrets remain GitHub Actions configuration and are never written to repository files or generated dashboard payloads.
 
 ## Deferred work
 
@@ -193,7 +201,6 @@ The first milestone deliberately postpones richer analytics surfaces such as:
 - reactions where event timestamps can be retained without reconstructing history from current stock;
 - richer contributor / participant analysis;
 - web and documentation analytics;
-- automated intelligence, anomaly detection and periodic reporting;
-- final M3f workflow/deployment/visual validation at the first available Actions run.
+- automated intelligence, anomaly detection and periodic reporting.
 
 These remain tracked in [ROADMAP.md](ROADMAP.md) rather than being required for the initial operational baseline.
