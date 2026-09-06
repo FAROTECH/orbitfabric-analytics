@@ -44,7 +44,7 @@ Completed baseline:
 - [x] Adoption proxy semantics defined without introducing a scalar adoption score.
 - [x] `analytics/compare.py` implemented with unit coverage.
 - [x] Post-collection generation of `analytics/repository_comparison_latest.csv` configured.
-- [x] First automated `analytics/repository_comparison_latest.csv` generation validated end to end.
+- [x] First automated `repository_comparison_latest.csv` generation validated end to end.
 - [x] Dashboard presentation payload contract defined.
 - [x] `analytics/dashboard_data.py` implemented with unit coverage.
 - [x] Post-collection generation of `analytics/dashboard_data.json` configured.
@@ -185,8 +185,8 @@ M3e repository participation baseline:
 - [x] `analytics/community_participation.py` implemented with idempotent repository-day history merging.
 - [x] Participation unit coverage added.
 - [x] Post-collection generation of `analytics/community_participation_daily.csv` and participant registry configured.
-- [ ] First automated participation backfill validated end to end.
-- [ ] Initial participation evidence reviewed across the retained traffic window.
+- [x] First automated participation backfill validated end to end.
+- [x] Initial participation evidence reviewed across the retained traffic window.
 
 Planned M3 increments:
 
@@ -205,7 +205,7 @@ Development activity context is explanatory evidence only. High first-party comm
 
 Lifecycle signals are direct counts of observed GitHub timestamps, not user counts. An issue or pull request may legitimately contribute to more than one lifecycle class over time or on the same day. The first lifecycle review is retained in `reports/community-lifecycle/2026-08-17-to-09-06-baseline.md`.
 
-Participation `first_seen` means first observation retained by OrbitFabric Analytics for one login in one repository. It does not mean first GitHub activity, first ecosystem-wide participation, a new user or a new external contributor.
+Participation `first_seen` means first observation retained by OrbitFabric Analytics for one login in one repository. It does not mean first GitHub activity, first ecosystem-wide participation, a new user or a new external contributor. The first participation review is retained in `reports/community-participation/2026-08-17-to-09-06-baseline.md`; the initial retained window contains only first-party participation on the currently collected actor-bearing GitHub surfaces.
 
 ## M4 - Web Analytics
 
