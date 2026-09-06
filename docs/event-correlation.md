@@ -1,6 +1,6 @@
 # Event correlation
 
-Status: M2 in progress.
+Status: M2 complete.
 
 ## Goal
 
@@ -50,9 +50,17 @@ url: https://example.invalid
 notes: Additional context
 ```
 
+## Event-type boundary
+
+`outreach` is reserved for activity that directly presents, promotes or explains OrbitFabric or one of its ecosystem components.
+
+`community-contribution` is intentionally different. It records a strong technical contribution by the OrbitFabric maintainer in a relevant external community when the contribution itself is not about OrbitFabric. Its possible relationship to OrbitFabric is indirect through maintainer reputation and later ecosystem discovery.
+
+This distinction allows reputation-building activity to be retained as context without misrepresenting it as an OrbitFabric campaign or direct project exposure.
+
 ## Scope semantics
 
-`ecosystem` means that the event is relevant to OrbitFabric as a whole.
+`ecosystem` means that the event is relevant to OrbitFabric as a whole. For a `community-contribution`, that relevance may be explicitly indirect and must be described in the event notes.
 
 Repository-specific scopes use the stable repository IDs from `config/repositories.yml`, for example:
 
@@ -136,10 +144,8 @@ This interaction is intentionally on-demand so that 14-day charts remain readabl
 
 Events newer than the latest complete traffic day are shown separately as `awaiting traffic`. They remain visible as context, but no chart guide is drawn until the corresponding traffic day exists.
 
-## Current M2 boundary
+## Current boundary
 
-The event registry, normalization pipeline, dashboard projection and direct on-demand traffic/event inspection are implemented.
+The event registry, normalization pipeline, dashboard projection and direct on-demand traffic/event inspection are implemented and validated.
 
-The remaining work is to validate the interactive overlay end to end in deployment and perform the first explicit traffic/event correlation review using real retained traffic data.
-
-No historical outreach event should be invented merely to populate the dashboard. Events are added only when their date and meaning are known well enough to be useful.
+No historical outreach or community-contribution event should be invented merely to populate the dashboard. Events are added only when their date and meaning are known well enough to be useful.
