@@ -55,6 +55,28 @@ events:
     url: https://community.libre.space/t/phasma-keeping-xtce-packet-layouts-aligned-with-c-serializers/15277
     notes: Technical discussion around PHASMA as an interoperability case, highlighting the risk of packet-contract drift when XTCE layouts and C serializers evolve as separate representations.
 
+  - id: libre-space-gpsd-pps-community-contribution
+    date: 2026-09-05
+    type: community-contribution
+    channel: libre-space
+    scope:
+      - ecosystem
+    confidence: confirmed
+    label: Libre Space contribution on GPSD and PPS station clock discipline
+    url: https://community.libre.space/t/tutorial-setup-gpsd-and-pps-for-satnogs-station-discipline-clock-getting-the-time-directly-from-the-satellites/15272/11
+    notes: Strong technical community contribution by the OrbitFabric maintainer. The contribution is not about OrbitFabric and must not be treated as direct ecosystem outreach; its relevance is indirect through maintainer reputation and possible later ecosystem discovery.
+
+  - id: libre-space-inspiresat-telemetry-community-contribution
+    date: 2026-09-05
+    type: community-contribution
+    channel: libre-space
+    scope:
+      - ecosystem
+    confidence: confirmed
+    label: Libre Space contribution on INSPIRESat-1 telemetry access and bulk frame export
+    url: https://community.libre.space/t/bulk-frame-export-or-telemetry-api-access-for-inspiresat-1-norad-51657/15262
+    notes: Strong technical community contribution by the OrbitFabric maintainer around SatNOGS telemetry access. It is not OrbitFabric-specific; any relation to OrbitFabric traffic is indirect through reputation and possible ecosystem discovery, not direct promotion.
+
   - id: analytics-baseline-collection
     date: 2026-09-04
     type: internal
