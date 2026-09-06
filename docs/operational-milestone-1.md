@@ -1,6 +1,6 @@
 # Operational Milestone 1 - Ecosystem Observability Baseline
 
-Status: complete.
+Status: complete, final visual acceptance pending.
 
 ## Purpose
 
@@ -60,13 +60,62 @@ Participation retains aggregate repository-day evidence only. Raw actor logins a
 
 ## Public repository decision
 
-OrbitFabric Analytics is intentionally being published as a public open-source project.
+OrbitFabric Analytics is intentionally published as a public open-source project.
 
-This is part of the project architecture: the analytics code, metric semantics, aggregate evidence and reports are intended to be inspectable. The repository must therefore retain only evidence that is acceptable to expose publicly.
+This is part of the project architecture: analytics code, metric semantics, aggregate evidence and reports are intended to be inspectable. The repository therefore retains only evidence that is acceptable to expose publicly.
 
 Before the visibility change, the previous cumulative participant registry was removed from `github-repo-stats`. Its historical content contained only the maintainer login `FAROTECH`; no third-party identity had been retained.
 
 Repository-scoped `first_seen` semantics are now reconstructed from public GitHub events since the fixed observation baseline rather than from a persisted nominative registry.
+
+## Final automated validation
+
+The first public-repository workflow execution completed successfully on 2026-09-06:
+
+```text
+run #20
+id 34026249039
+head 7645025c556ea2dd416473268a7019383a6380c2
+conclusion success
+```
+
+The run validated the full retained pipeline, including:
+
+```text
+public-safe participation collection
+traffic normalization and rollups
+community stock comparison
+development activity context
+issue / PR lifecycle
+curated event projection
+M3f ecosystem-context projection
+dataset persistence
+dashboard-site assembly and persistence
+```
+
+The generated `analytics/dashboard_data.json` contains `ecosystem_context` with complete aligned-window coverage for development, lifecycle and participation evidence.
+
+The deployment branch was refreshed successfully by automation:
+
+```text
+dashboard-site
+commit 593c9e6532a2ffc7827721480583f5e478be48ee
+message dashboard: refresh static site
+```
+
+The deployed branch also contains the `Ecosystem Context / Community & engineering` presentation section and the generated M3f payload.
+
+The previous non-blocking M3f automation/deployment validation debt is therefore resolved.
+
+## Final presentation acceptance
+
+One human-facing acceptance item remains deliberately separate from automated validation:
+
+```text
+desktop/mobile visual inspection of the deployed M3f dashboard
+```
+
+This is a presentation check only. It no longer blocks confidence in the analytics pipeline, generated payload or `dashboard-site` deployment.
 
 ## Deferred by design
 
@@ -83,31 +132,3 @@ automated intelligence and anomaly detection
 ```
 
 They remain roadmap TODO items and can be added when the amount of real ecosystem activity justifies them.
-
-## Closure decision
-
-The milestone is accepted as complete on 2026-09-06.
-
-The decision is based on:
-
-- collection and retained data branches operational;
-- traffic, event, community, lifecycle, participation and development collectors validated end to end through M3e;
-- semantic interpretation boundaries documented;
-- dashboard M3f source and payload projection implemented;
-- M3f workflow wiring and unit-test coverage present and statically reviewed against the validated dataset contracts;
-- PWA deployment architecture already operational and mobile-capable from the previously validated dashboard baseline.
-
-The final M3f GitHub Actions execution could not be performed while the repository was private because the GitHub Free Actions quota was exhausted. This remains a **non-blocking operational validation debt**, not a silently claimed successful run.
-
-## Deferred operational validation
-
-After the repository visibility is switched to public, the first available workflow execution must:
-
-```text
-1. execute the workflow containing the M3f ecosystem-context projection
-2. confirm dashboard_data.json contains ecosystem_context
-3. confirm dashboard-site deployment
-4. perform one desktop/mobile visual check
-```
-
-If that execution reveals a defect, reopen M3f only. The already validated M0-M3e baseline and this milestone closure are not retroactively invalidated.
