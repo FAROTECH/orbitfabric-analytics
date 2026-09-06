@@ -1,6 +1,6 @@
 # Community participation signals
 
-Status: M3e in progress.
+Status: M3e complete.
 
 ## Goal
 
@@ -8,7 +8,7 @@ M3e adds repository-scoped participation evidence on top of stock, lifecycle and
 
 The purpose is not to manufacture a global user count. It is to observe whether GitHub activity around an OrbitFabric repository involves only configured first-party identities, automation, or additional participant logins.
 
-## Dataset
+## Retained dataset
 
 The generated daily history is:
 
@@ -16,15 +16,27 @@ The generated daily history is:
 analytics/community_participation_daily.csv
 ```
 
-The private repository-scoped actor registry is:
+It contains aggregate repository-day counts only.
+
+Raw GitHub logins are used transiently while collecting public GitHub events and are not persisted as analytics state.
+
+## Public-repository boundary
+
+OrbitFabric Analytics is designed to be publishable as a public repository.
+
+For participation, the retained boundary is therefore:
 
 ```text
-analytics/community_participants.json
+public GitHub actor-bearing events
+        ↓
+in-memory actor reconstruction
+        ↓
+repository-day aggregate counts
+        ↓
+public analytics history
 ```
 
-Both are retained on the private `github-repo-stats` branch.
-
-The raw actor registry is analytics evidence only. It is not copied into the public-unlisted dashboard deployment. Any future dashboard projection must publish aggregate counts rather than raw actor logins.
+There is no cumulative nominative participant registry in the retained public data branch.
 
 ## Repository scope
 
@@ -84,13 +96,18 @@ participants_first_seen_repo_count
 other_participants_first_seen_repo_count
 ```
 
-These counts are derived from the retained actor registry.
-
 `first_seen` means:
 
 ```text
-earliest observation retained by OrbitFabric Analytics
+earliest reconstructed observation since the configured observation baseline
 for this login in this repository
+```
+
+The observation boundary is explicit in policy:
+
+```yaml
+history:
+  observation_start_date: "2026-08-17"
 ```
 
 It does not mean:
@@ -102,13 +119,11 @@ new user
 new external contributor
 ```
 
-The initial registry is seeded from the rolling historical backfill. Its `observation_start_date` makes that boundary explicit.
-
-If a later backfill reaches an earlier activity date for an existing login, the registry can move that repository-scoped first observation earlier and the recollected daily window is recalculated accordingly.
+The public-safe collector reconstructs first-observed state from GitHub events starting at that fixed baseline on every run. This preserves the semantic without retaining a nominative actor registry.
 
 ## Historical recollection
 
-The initial policy recollects a rolling 21-day window on every run.
+The retained daily output still recollects a rolling 21-day window on every run.
 
 Daily rows are merged idempotently using:
 
@@ -116,7 +131,7 @@ Daily rows are merged idempotently using:
 date + repository_id
 ```
 
-The actor registry is cumulative, so a participant first observed before the current 21-day window is not incorrectly rediscovered as new when older daily rows fall out of recollection.
+The fixed observation baseline can be optimized later if participation volume grows enough to make full reconstruction expensive. That optimization must preserve the same public-data boundary.
 
 ## Relationship to other M3 evidence
 
@@ -130,18 +145,16 @@ LIFECYCLE
 issue and PR open / close / merge events
 
 PARTICIPATION
-actor-bearing author and comment events + repository-scoped distinct actors
+actor-bearing author and comment events + repository-scoped aggregate actor counts
 
 DEVELOPMENT CONTEXT
 commits / workflow runs / first-party engineering intensity
 ```
 
-These layers can later be cross-read in the dashboard, but their semantics remain independent.
+These layers can be cross-read in the dashboard, but their semantics remain independent.
 
 ## Deferred surfaces
 
-GitHub Discussions, review participation and reaction events are not folded into this first participation contract automatically.
+GitHub Discussions, review participation and reaction events are intentionally deferred after Operational Milestone 1.
 
-They require separate API and semantic decisions, especially because reactions are often available as current counts on historical objects rather than as timestamped reaction events.
-
-M3 should add them only when they can be represented without retroactively mislabeling stock as event history.
+They should be added only when their API and timestamp semantics justify the extra complexity.
