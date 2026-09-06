@@ -1,0 +1,41 @@
+version: 1
+
+# Policy for M3d issue / pull-request lifecycle signals.
+#
+# These are event counts derived from GitHub lifecycle timestamps. They are
+# intentionally separate from stock values such as open_issues_total.
+
+repository_selection:
+  field: include_in_rollups
+  value: true
+
+history:
+  lookback_days: 21
+
+signals:
+  issues_opened:
+    collect: true
+    kind: lifecycle_event
+
+  issues_closed:
+    collect: true
+    kind: lifecycle_event
+
+  prs_opened:
+    collect: true
+    kind: lifecycle_event
+
+  prs_merged:
+    collect: true
+    kind: lifecycle_event
+
+  prs_closed_unmerged:
+    collect: true
+    kind: lifecycle_event
+
+semantics:
+  issues_opened: non-pull-request issues whose created_at timestamp falls in the UTC day
+  issues_closed: non-pull-request issues whose closed_at timestamp falls in the UTC day
+  prs_opened: pull requests whose created_at timestamp falls in the UTC day
+  prs_merged: pull requests whose merged_at timestamp falls in the UTC day
+  prs_closed_unmerged: pull requests with no merged_at timestamp whose closed_at timestamp falls in the UTC day
