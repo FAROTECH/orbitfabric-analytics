@@ -3,5 +3,5 @@ core,FAROTECH/orbitfabric,core,2026-09-06,2026-09-05,1,true,6,0,1,0,3,0,0,0,1,0
 fprime-adapter,FAROTECH/orbitfabric-fprime-adapter,adapter,2026-09-06,2026-09-05,1,true,0,0,0,0,0,0,0,0,1,0
 openc3-cosmos-adapter,FAROTECH/orbitfabric-openc3-cosmos-adapter,adapter,2026-09-06,2026-09-05,1,true,0,0,0,0,0,0,0,0,1,0
 openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,2026-09-06,2026-09-05,1,true,0,0,0,0,0,0,0,0,1,0
-reference-mission,FAROTECH/orbitfabric-reference-mission,product,2026-09-06,2026-09-05,1,true,0,0,0,0,0,0,0,0,1,0
+reference-mission,FAROTECH/orbitfabric-reference-mission,product,2026-09-06,2026-09-05,1,true,0,0,0,0,0,0,1,1,1,0
 studio,FAROTECH/orbitfabric-studio,product,2026-09-06,2026-09-05,1,true,0,0,0,0,2,0,0,0,2,0
