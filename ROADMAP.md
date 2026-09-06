@@ -4,7 +4,7 @@ OrbitFabric Analytics grows in stages. The first priority is preserving trustwor
 
 ## Operational Milestone 1 - Ecosystem Observability Baseline
 
-**Status: final validation**
+**Status: complete**
 
 Goal: establish a durable first analytics baseline that can be left running while OrbitFabric development and outreach continue.
 
@@ -19,16 +19,15 @@ Exit criteria:
 - [x] Issue / PR lifecycle retained.
 - [x] Repository-scoped participation baseline retained.
 - [x] Community and engineering dashboard integration implemented.
-- [ ] Final ecosystem-context workflow projection validated end to end.
-- [ ] Final dashboard presentation visually validated after M3f deployment.
+- [x] Milestone accepted with explicit non-blocking M3f validation debt after GitHub Actions quota exhaustion.
+
+The final M3f workflow/deployment/visual validation remains a TODO and must be executed at the first available Actions run. It is not represented as already successful. If that future run reveals a defect, reopen M3f only.
 
 Richer engagement and intelligence features are deliberately deferred. They are not required to close this first operational milestone.
 
 ## M0 - Data Retention
 
 **Status: complete**
-
-Goal: stop losing GitHub traffic history.
 
 - [x] Central analytics repository created.
 - [x] Authoritative repository inventory defined.
@@ -44,14 +43,11 @@ Goal: stop losing GitHub traffic history.
 
 **Status: complete**
 
-Goal: turn retained traffic data into a coherent OrbitFabric ecosystem view.
-
 - [x] Repository-day normalization contract defined.
 - [x] `analytics/aggregate.py` implemented with unit coverage.
 - [x] Automated `analytics/ecosystem_daily.csv` generation validated.
-- [x] Cross-repository aggregate and coverage semantics defined.
 - [x] Ecosystem / core / product / adapter rollups implemented and validated.
-- [x] Repository comparison semantics implemented over a common recent window.
+- [x] Repository comparison implemented over a common recent window.
 - [x] Awareness, technical-evaluation and adoption-proxy boundaries defined without a scalar score.
 - [x] `analytics/dashboard_data.py` implemented and validated.
 - [x] Responsive static PWA implemented.
@@ -68,11 +64,9 @@ Cloudflare Access remains optional. The Pages URL is technically public but inte
 
 **Status: complete**
 
-Goal: compare traffic changes with relevant context without turning temporal proximity into causal claims.
-
 - [x] Authoritative event registry retained in `config/events.yml`.
 - [x] Event taxonomy separated into `config/event-taxonomy.yml`.
-- [x] Stable event contract defined: id, date, type, channel, scope, confidence and label.
+- [x] Stable event contract defined.
 - [x] Repository-aware scope validation implemented.
 - [x] `analytics/events.py` implemented with unit coverage.
 - [x] Normalized event dataset generated automatically.
@@ -87,7 +81,7 @@ Event context remains correlation evidence only. Releases, direct outreach, upst
 
 ## M3 - Community Signals
 
-**Status: finalizing**
+**Status: complete for Operational Milestone 1 scope**
 
 Goal: complement traffic and curated events with public repository engagement and project-activity evidence.
 
@@ -95,14 +89,10 @@ Goal: complement traffic and curated events with public repository engagement an
 
 **Status: complete**
 
-- [x] Traffic, community and contextual evidence families explicitly separated.
-- [x] Community policy defined in `config/community-signals.yml`.
-- [x] Scope aligned with the six official `include_in_rollups: true` repositories.
 - [x] Daily repository-scoped stock contract defined.
 - [x] Stars, forks, open issues, open pull requests and repository-scoped contributor records retained.
 - [x] Stock semantics explicitly separated from event-count semantics.
-- [x] `analytics/community.py` implemented with same-day idempotent history merging.
-- [x] First automated baseline validated and reviewed.
+- [x] `analytics/community.py` implemented and validated.
 
 ### M3b - Stock deltas
 
@@ -112,15 +102,12 @@ Goal: complement traffic and curated events with public repository engagement an
 - [x] Absolute-only stock deltas implemented.
 - [x] Snapshot gaps exposed through `snapshot_gap_days`.
 - [x] Missing previous snapshots represented as non-comparable.
-- [x] `analytics/community_compare.py` implemented with unit coverage.
-- [x] First real cross-date stock comparison validated.
+- [x] `analytics/community_compare.py` implemented and validated.
 
 ### M3c - Development activity context
 
 **Status: complete**
 
-- [x] Development context kept separate from traffic and community interpretation.
-- [x] Policy defined in `config/development-activity.yml`.
 - [x] Rolling 21-day recollection implemented.
 - [x] Default-branch commit activity retained.
 - [x] First-party / automation / other commit classification policy defined.
@@ -135,7 +122,6 @@ Development activity is explanatory context, not traffic attribution.
 **Status: complete**
 
 - [x] Lifecycle events separated from stock deltas.
-- [x] Policy defined in `config/community-lifecycle.yml`.
 - [x] Rolling 21-day lifecycle recollection implemented.
 - [x] Issue open / close and PR open / merge / close-unmerged semantics defined.
 - [x] Pull requests excluded from issue counts despite GitHub API overlap.
@@ -148,7 +134,6 @@ Development activity is explanatory context, not traffic attribution.
 **Status: complete**
 
 - [x] Participant identity semantics kept repository-scoped rather than ecosystem-wide.
-- [x] Policy defined in `config/community-participation.yml`.
 - [x] Rolling 21-day participation recollection implemented.
 - [x] Issue authors, PR authors and issue / PR conversation comments selected as initial actor-bearing surfaces.
 - [x] Daily participant observations classified as first-party / automation / other.
@@ -163,32 +148,28 @@ The first retained participation window contains only first-party actors on the 
 
 ### M3f - Ecosystem dashboard context
 
-**Status: implementation complete, validation pending**
-
-Goal: turn the dashboard from a traffic-focused surface into the first coherent ecosystem observability surface.
+**Status: complete for milestone scope; final operational validation deferred**
 
 - [x] `analytics/dashboard_ecosystem_context.py` added as a downstream presentation projection.
 - [x] Community stock projected without forcing it onto the traffic date boundary.
 - [x] Stock snapshot date exposed independently from latest complete traffic day.
-- [x] Lifecycle context aggregated over the traffic comparison window.
-- [x] Participation context aggregated over the traffic comparison window.
-- [x] Development context aggregated over the traffic comparison window.
-- [x] Coverage semantics retained for all aligned context families.
+- [x] Lifecycle, participation and development context aligned to the traffic comparison window.
+- [x] Coverage semantics retained for aligned context families.
 - [x] Repository-level community and engineering context projected.
 - [x] Participant window totals labelled as repository-day observations rather than deduplicated people.
 - [x] Raw participant registry remains private and outside `dashboard_data.json`.
 - [x] `Ecosystem Context / Community & engineering` dashboard section implemented.
 - [x] Mobile-responsive summary cards and repository context table implemented.
-- [x] PWA cache advanced to include M3f assets.
-- [x] Dashboard runtime and architecture documentation refreshed.
-- [ ] First automated M3f projection into `dashboard_data.json` validated end to end.
-- [ ] First M3f `dashboard-site` deployment validated.
-- [ ] Final desktop/mobile visual validation completed.
+- [x] PWA cache and dashboard documentation refreshed.
+- [x] Workflow projection step wired after curated-event projection.
+- [ ] First M3f projection run validated end to end. **Deferred: GitHub Actions quota exhausted.**
+- [ ] First M3f `dashboard-site` deployment and desktop/mobile visual check. **Deferred until the first available run.**
+
+These two unchecked items are explicit validation debt, not unimplemented feature scope.
 
 ## Deferred TODO after Operational Milestone 1
 
-These features are intentionally postponed until real ecosystem activity makes them worth the added complexity:
-
+- [ ] Execute the first available M3f workflow run after GitHub Actions capacity returns; verify `ecosystem_context`, dashboard-site deployment and desktop/mobile rendering.
 - [ ] Rolling trend semantics beyond adjacent snapshots and the current common comparison window.
 - [ ] Pull-request review participation signals.
 - [ ] GitHub Discussions signals.
@@ -196,15 +177,9 @@ These features are intentionally postponed until real ecosystem activity makes t
 - [ ] Richer contributor / participant analysis if repository activity becomes multi-actor enough to justify it.
 - [ ] More explicit cross-reading / derived interpretation between traffic, community, lifecycle, participation, development context and curated events.
 
-They remain valid future work, but none blocks the first operational analytics baseline.
-
 ## M4 - Web Analytics
 
 **Status: deferred / planned**
-
-Goal: understand traffic across OrbitFabric website/documentation and GitHub.
-
-TODO:
 
 - [ ] Privacy-friendly web analytics.
 - [ ] UTM campaign attribution.
@@ -214,10 +189,6 @@ TODO:
 ## M5 - Intelligence
 
 **Status: deferred / planned**
-
-Goal: surface useful signals automatically without turning metrics into vanity scores.
-
-TODO:
 
 - [ ] Weekly trend summaries.
 - [ ] Anomaly detection.
