@@ -4,9 +4,9 @@ OrbitFabric Analytics grows in stages. The first priority is preserving trustwor
 
 ## Operational Milestone 1 - Ecosystem Observability Baseline
 
-**Status: complete, final mobile visual acceptance pending**
+**Status: complete**
 
-Goal: establish a durable first analytics baseline that can be left running while OrbitFabric development and outreach continue.
+Goal: establish a durable first analytics baseline that can be left running while OrbitFabric development and outreach continue independently.
 
 Exit criteria:
 
@@ -23,30 +23,34 @@ Exit criteria:
 - [x] `ecosystem_context` confirmed in generated `dashboard_data.json`.
 - [x] `dashboard-site` refreshed successfully by automation.
 - [x] Final desktop presentation check.
-- [ ] Final mobile presentation check.
+- [x] Final mobile presentation check.
 
-The previous M3f validation debt caused by the private-repository Actions quota is resolved. The deployed desktop dashboard has also passed human visual inspection; only the final mobile presentation check remains.
+The previous M3f validation debt caused by the private-repository Actions quota is resolved. The deployed dashboard has passed both desktop and mobile human visual inspection.
 
-## Public repository decision
+## Repository visibility and public-safe evidence boundary
 
 **Status: accepted and operational**
 
-OrbitFabric Analytics is intentionally a public open-source observability project.
+The durable project decision is that retained Analytics state is **public-safe by design**. Repository visibility may therefore be changed between public and private for operational reasons without changing metric semantics or data-retention boundaries.
+
+The current public period was also used to validate the public-safe design and to execute GitHub-hosted Actions without consuming private-repository minutes. It is not treated as a permanent commitment that this repository must remain public.
 
 Decision principles:
 
-- [x] Public analytics is a project decision, not only an Actions quota workaround.
-- [x] Source, metric semantics, aggregate datasets, reports and dashboard architecture are suitable for public review.
+- [x] Source, metric semantics, aggregate datasets, reports and dashboard architecture are safe for public review.
 - [x] GitHub Actions secrets remain outside repository content.
 - [x] No token-like credential strings were found in the source audit.
 - [x] Nominative participant state removed from retained analytics.
 - [x] `analytics/community_participants.json` removed from the `github-repo-stats` branch before publication.
 - [x] Participation `first_seen` semantics redesigned to reconstruct from public GitHub events since a fixed observation baseline.
 - [x] Workflow switched to the public-safe participation collector and no longer persists raw actor identities.
-- [x] Repository visibility changed to public.
+- [x] Repository visibility changed to public for the validation period.
 - [x] First public Actions run completed successfully.
+- [x] No LICENSE is introduced merely because of the temporary public visibility; licensing remains a separate future decision if external reuse is intentionally offered.
 
 The historical deleted actor-registry blob contained only the maintainer login `FAROTECH`; no third-party participant identity was retained before the public transition.
+
+If repository visibility is later returned to private, the public-safe evidence boundary remains in force so that a future public interval never requires another privacy migration.
 
 ## M0 - Data Retention
 
@@ -148,7 +152,7 @@ The first retained participation window contains only first-party actors on the 
 
 ### M3f - Ecosystem dashboard context
 
-**Status: complete; automated E2E, deployment and desktop presentation validated**
+**Status: complete and accepted**
 
 - [x] `analytics/dashboard_ecosystem_context.py` added as a downstream presentation projection.
 - [x] Community stock retains its own observation date.
@@ -163,7 +167,7 @@ The first retained participation window contains only first-party actors on the 
 - [x] Generated `dashboard_data.json` confirmed to contain `ecosystem_context` with complete aligned-window coverage.
 - [x] `dashboard-site` refreshed successfully by run #20.
 - [x] Desktop visual acceptance completed on the deployed M3f dashboard.
-- [ ] Final mobile visual acceptance.
+- [x] Mobile visual acceptance completed on the deployed M3f dashboard.
 
 ## Deferred TODO after Operational Milestone 1
 
