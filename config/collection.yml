@@ -1,0 +1,8 @@
+version: 1
+
+# Logical day used by snapshot-style analytics datasets.
+# Scheduled GitHub Actions runs can start later than their cron time, so the
+# date must not depend directly on the runner's UTC wall clock.
+
+timezone: Europe/Rome
+rollover_hour: 6
