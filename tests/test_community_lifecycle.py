@@ -69,39 +69,54 @@ signals:
             "category": "core",
         }
         issues = [
+            {"number": 1, "created_at": "2026-09-05T08:00:00Z"},
+            {"number": 2, "created_at": "2026-09-05T09:00:00Z"},
+            {"number": 3, "created_at": "2026-09-05T10:00:00Z"},
             {
-                "created_at": "2026-09-05T08:00:00Z",
-                "closed_at": "2026-09-05T12:00:00Z",
-            },
-            {
-                "created_at": "2026-09-05T09:00:00Z",
-                "closed_at": None,
-            },
-            {
-                "created_at": "2026-09-05T10:00:00Z",
-                "closed_at": "2026-09-06T10:00:00Z",
-            },
-            {
+                "number": 10,
                 "created_at": "2026-09-05T11:00:00Z",
-                "closed_at": None,
                 "pull_request": {"url": "https://api.github.com/example"},
             },
         ]
         pull_requests = [
+            {"number": 10, "created_at": "2026-09-05T08:30:00Z"},
+            {"number": 11, "created_at": "2026-09-05T13:00:00Z"},
+            {"number": 12, "created_at": "2026-09-06T14:00:00Z"},
+        ]
+        lifecycle_events = [
             {
-                "created_at": "2026-09-05T08:30:00Z",
-                "closed_at": "2026-09-05T09:30:00Z",
-                "merged_at": "2026-09-05T09:30:00Z",
+                "event": "closed",
+                "created_at": "2026-09-05T12:00:00Z",
+                "issue": {"number": 1},
             },
             {
-                "created_at": "2026-09-05T13:00:00Z",
-                "closed_at": "2026-09-06T08:00:00Z",
-                "merged_at": None,
+                "event": "closed",
+                "created_at": "2026-09-06T10:00:00Z",
+                "issue": {"number": 3},
             },
             {
-                "created_at": "2026-09-06T14:00:00Z",
-                "closed_at": None,
-                "merged_at": None,
+                "event": "merged",
+                "created_at": "2026-09-05T09:30:00Z",
+                "issue": {
+                    "number": 10,
+                    "pull_request": {"url": "https://api.github.com/example"},
+                },
+            },
+            {
+                "event": "closed",
+                "created_at": "2026-09-05T09:30:01Z",
+                "issue": {
+                    "number": 10,
+                    "pull_request": {"url": "https://api.github.com/example"},
+                },
+            },
+            {
+                "event": "closed",
+                "created_at": "2026-09-06T08:00:00Z",
+                "issue": {
+                    "number": 11,
+                    "pull_request": {"url": "https://api.github.com/example"},
+                },
             },
         ]
 
@@ -111,6 +126,7 @@ signals:
             date(2026, 9, 6),
             issues,
             pull_requests,
+            lifecycle_events,
             {
                 "issues_opened",
                 "issues_closed",
@@ -133,6 +149,59 @@ signals:
         self.assertEqual(second["prs_opened"], 1)
         self.assertEqual(second["prs_merged"], 0)
         self.assertEqual(second["prs_closed_unmerged"], 1)
+
+    def test_close_before_later_merge_remains_closed_unmerged_event(self) -> None:
+        repository = {
+            "id": "core",
+            "repo": "FAROTECH/orbitfabric",
+            "category": "core",
+        }
+        lifecycle_events = [
+            {
+                "event": "closed",
+                "created_at": "2026-09-05T10:00:00Z",
+                "issue": {
+                    "number": 20,
+                    "pull_request": {"url": "https://api.github.com/example"},
+                },
+            },
+            {
+                "event": "merged",
+                "created_at": "2026-09-06T11:00:00Z",
+                "issue": {
+                    "number": 20,
+                    "pull_request": {"url": "https://api.github.com/example"},
+                },
+            },
+            {
+                "event": "closed",
+                "created_at": "2026-09-06T11:00:01Z",
+                "issue": {
+                    "number": 20,
+                    "pull_request": {"url": "https://api.github.com/example"},
+                },
+            },
+        ]
+
+        rows = build_repository_rows(
+            repository,
+            date(2026, 9, 5),
+            date(2026, 9, 6),
+            [],
+            [],
+            lifecycle_events,
+            {
+                "issues_opened",
+                "issues_closed",
+                "prs_opened",
+                "prs_merged",
+                "prs_closed_unmerged",
+            },
+        )
+
+        self.assertEqual(rows[0]["prs_closed_unmerged"], 1)
+        self.assertEqual(rows[1]["prs_merged"], 1)
+        self.assertEqual(rows[1]["prs_closed_unmerged"], 0)
 
     def test_history_merge_replaces_recollected_repository_days(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
