@@ -15,6 +15,9 @@ views / clones
 COMMUNITY
 stars / forks / issues / pull requests / contributors
 
+DEVELOPMENT CONTEXT
+commits / workflow runs
+
 CONTEXT
 releases / outreach / upstream discussions
 ```
@@ -47,7 +50,7 @@ date + repository_id
 
 A rerun on the same date replaces that repository snapshot instead of duplicating it.
 
-## Initial signals
+## Initial stock signals
 
 ```text
 stars_total
@@ -107,6 +110,40 @@ means that the observed open-issue stock decreased by one between snapshots. It 
 
 The same caution applies to contributor count. `contributors_repo_count_delta=+1` does not yet mean "one new contributor"; contributor arrival requires an event-oriented identity-aware contract in a later M3 increment.
 
+## M3c development activity context
+
+Development activity is retained separately in:
+
+```text
+analytics/development_activity_daily.csv
+```
+
+It records repository-day commit and GitHub Actions activity over a rolling recollection window. The purpose is contextual: high first-party or automation activity can make traffic contamination more plausible, but it does not prove that development activity caused GitHub traffic.
+
+See `docs/development-activity.md` for the detailed contract.
+
+## M3d issue / pull-request lifecycle
+
+M3d adds direct lifecycle event counts in:
+
+```text
+analytics/community_lifecycle_daily.csv
+```
+
+The event classes are:
+
+```text
+issues_opened
+issues_closed
+prs_opened
+prs_merged
+prs_closed_unmerged
+```
+
+These are derived from GitHub lifecycle timestamps, not inferred from stock changes. This is the layer that can answer how many open/close/merge events were actually observed during a repository-day window.
+
+See `docs/community-lifecycle.md` for the detailed contract.
+
 ## Repository scope
 
 M3 currently selects repositories where:
@@ -119,38 +156,31 @@ This keeps the community baseline aligned with the six official repositories use
 
 ## Collection behavior
 
-`analytics/community.py` reads repository policy, queries public GitHub REST evidence and merges the current snapshot into `analytics/community_daily.csv`.
-
-The collector can use:
+The M3 collectors can use:
 
 ```text
 COMMUNITY_GITHUB_TOKEN
 ```
 
-when a dedicated community token is configured. Otherwise it reuses:
+when a dedicated community token is configured. Otherwise they reuse:
 
 ```text
 GHRS_GITHUB_API_TOKEN
 ```
 
-For public endpoints, if a fine-grained token does not carry the permission required by an endpoint, the collector can retry that request anonymously. This is a compatibility fallback, not the long-term preferred permission model.
+For public endpoints, if a fine-grained token does not carry the permission required by an endpoint, the collectors can retry that request anonymously. This is a compatibility fallback, not the long-term preferred permission model.
 
-The collection fails rather than silently persisting a partial repository snapshot.
+Collectors fail rather than silently persisting partial repository evidence.
 
 ## What is intentionally deferred
 
-The stock layer does not infer event counts and does not yet collect:
+M3 still defers richer engagement and identity-oriented semantics:
 
 ```text
-new issues / closed issues
-new pull requests / merged pull requests
-commit activity
+contributor arrival / participation
 GitHub Discussions
 comments
 reactions
-new contributor events
 ```
 
-Those signals require event-oriented semantics and, for some GitHub surfaces, additional API permissions. They belong to later M3 increments rather than being mixed into the stock-snapshot contract.
-
-Commit/activity context is specifically planned because it will help distinguish periods dominated by first-party development from periods where external community evidence is increasing.
+These signals require their own contracts and, for some GitHub surfaces, additional API permissions. They remain separate from stock, lifecycle and development-context evidence.
