@@ -152,6 +152,17 @@ jobs:
             --end-date "${{ steps.collection-date.outputs.date }}" \
             --output data/analytics/development_activity_daily.csv
 
+      - name: Collect issue and pull-request lifecycle
+        env:
+          COMMUNITY_GITHUB_TOKEN: ${{ secrets.COMMUNITY_GITHUB_TOKEN }}
+          GHRS_GITHUB_API_TOKEN: ${{ secrets.GHRS_GITHUB_API_TOKEN }}
+        run: |
+          python app/analytics/community_lifecycle.py \
+            --repositories app/config/repositories.yml \
+            --policy app/config/community-lifecycle.yml \
+            --end-date "${{ steps.collection-date.outputs.date }}" \
+            --output data/analytics/community_lifecycle_daily.csv
+
       - name: Build normalized repository-day dataset
         run: |
           python app/analytics/aggregate.py \
@@ -199,6 +210,7 @@ jobs:
             analytics/community_daily.csv \
             analytics/community_comparison_latest.csv \
             analytics/development_activity_daily.csv \
+            analytics/community_lifecycle_daily.csv \
             analytics/ecosystem_daily.csv \
             analytics/ecosystem_rollups_daily.csv \
             analytics/repository_comparison_latest.csv \
