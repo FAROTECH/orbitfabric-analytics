@@ -138,7 +138,7 @@ M3b stock deltas:
 - [x] Missing previous snapshots represented as non-comparable rather than synthetic zero deltas.
 - [x] `analytics/community_compare.py` implemented with unit coverage.
 - [x] Post-collection generation of `analytics/community_comparison_latest.csv` configured.
-- [ ] First automated `analytics/community_comparison_latest.csv` generation validated end to end.
+- [x] First automated `analytics/community_comparison_latest.csv` generation validated end to end.
 - [ ] First real comparable stock delta observed from two distinct collection dates.
 
 Planned M3 increments:
@@ -155,7 +155,7 @@ Planned M3 increments:
 
 A stock change is not automatically a count of new events. For example, an open-issue delta can be affected by both issue creation and issue closure between snapshots. Community metrics remain repository-scoped unless an explicitly deduplicated semantic is introduced later.
 
-The first retained community baseline is dated 2026-09-05. Until a later dated snapshot exists, M3b correctly exposes current stock values without inventing comparison deltas.
+The first retained community baseline is dated 2026-09-05. The scheduled run on the night of 2026-09-05 validated the M3b comparison pipeline but correctly remained a same-date replacement, so the first real cross-date stock delta is still pending.
 
 ## M4 - Web Analytics
 
