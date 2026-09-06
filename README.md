@@ -1,6 +1,6 @@
 # OrbitFabric Analytics
 
-Public analytics and ecosystem observability for OrbitFabric projects.
+Analytics and ecosystem observability for OrbitFabric projects.
 
 ## Purpose
 
@@ -16,15 +16,19 @@ policy in configuration, logic in tooling
 
 ## Visibility policy
 
-OrbitFabric Analytics is intentionally an open-source public project.
+OrbitFabric Analytics retains **public-safe evidence by design**.
 
-This is a project decision, not only a GitHub Actions billing workaround. The public repository makes the evidence model, metric semantics and observability tooling inspectable alongside the rest of the OrbitFabric ecosystem.
+Repository visibility itself is an operational choice. The repository may be public or private without changing the analytics contract, because retained branches contain only evidence acceptable for public exposure.
 
-Only public-safe retained evidence belongs in repository branches. Participation analytics therefore retains aggregate repository-day counts, not a cumulative nominative actor registry.
+The public interval used for Operational Milestone 1 validated this boundary in practice and also allowed GitHub-hosted Actions to execute without consuming private-repository minutes. It is not treated as a permanent commitment that Analytics must remain public.
+
+Participation analytics retains aggregate repository-day counts, not a cumulative nominative actor registry.
+
+No LICENSE is added merely because of a temporary public interval. Licensing remains a separate future decision if external reuse of Analytics is intentionally offered.
 
 ## Current status
 
-**Operational Milestone 1 - Ecosystem Observability Baseline: complete**
+**Operational Milestone 1 - Ecosystem Observability Baseline: complete and accepted**
 
 Completed capability layers:
 
@@ -40,7 +44,7 @@ M3e Repository participation       complete
 M3f Ecosystem dashboard context    complete and E2E validated
 ```
 
-The first public-repository workflow run successfully validated the M3f ecosystem-context projection, dataset persistence and `dashboard-site` refresh. Only final human visual acceptance of the deployed desktop/mobile presentation remains.
+The first public-repository workflow run successfully validated the M3f ecosystem-context projection, dataset persistence and `dashboard-site` refresh. The deployed dashboard subsequently passed both desktop and mobile human visual acceptance.
 
 Richer engagement features are intentionally deferred after this baseline rather than expanding scope indefinitely.
 
@@ -209,6 +213,7 @@ The first milestone deliberately postpones richer analytics surfaces such as:
 - reactions where event timestamps can be retained without reconstructing history from current stock;
 - richer contributor / participant analysis;
 - web and documentation analytics;
-- automated intelligence, anomaly detection and periodic reporting.
+- automated intelligence, anomaly detection and periodic reporting;
+- optional private persistent participant state only if future scale makes event reconstruction inefficient and repository visibility is intentionally kept private.
 
 These remain tracked in [ROADMAP.md](ROADMAP.md) rather than being required for the initial operational baseline.
