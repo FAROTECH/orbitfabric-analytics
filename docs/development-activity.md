@@ -1,6 +1,6 @@
 # Development activity context
 
-Status: M3c in progress.
+Status: M3c complete.
 
 ## Goal
 
@@ -63,7 +63,7 @@ Workflow-run counts describe GitHub Actions runs created for the default branch.
 
 ## Historical backfill
 
-M3c initially recollects a rolling 21-day window on every run. The window is merged idempotently into retained history, replacing matching repository-day rows instead of duplicating them.
+M3c recollects a rolling 21-day window on every run. The window is merged idempotently into retained history, replacing matching repository-day rows instead of duplicating them.
 
 This gives immediate development context for the currently retained traffic period rather than waiting several weeks to accumulate a new baseline.
 
@@ -96,3 +96,5 @@ CURATED EVENTS
 ```
 
 with each evidence family retaining its own semantics.
+
+The first retained review of the high-clone period is documented in `reports/development-context/2026-09-02-to-04-clone-spikes.md`.
