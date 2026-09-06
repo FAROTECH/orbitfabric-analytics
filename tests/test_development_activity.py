@@ -40,7 +40,7 @@ history:
   lookback_days: 21
 classification:
   first_party_logins: [FAROTECH]
-  automation_logins: [github-actions[bot]]
+  automation_logins: ["github-actions[bot]"]
 """,
                 encoding="utf-8",
             )
