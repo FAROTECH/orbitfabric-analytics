@@ -168,12 +168,11 @@ jobs:
           COMMUNITY_GITHUB_TOKEN: ${{ secrets.COMMUNITY_GITHUB_TOKEN }}
           GHRS_GITHUB_API_TOKEN: ${{ secrets.GHRS_GITHUB_API_TOKEN }}
         run: |
-          python app/analytics/community_participation.py \
+          python app/analytics/community_participation_public.py \
             --repositories app/config/repositories.yml \
             --policy app/config/community-participation.yml \
             --end-date "${{ steps.collection-date.outputs.date }}" \
-            --output data/analytics/community_participation_daily.csv \
-            --registry data/analytics/community_participants.json
+            --output data/analytics/community_participation_daily.csv
 
       - name: Build normalized repository-day dataset
         run: |
@@ -233,7 +232,6 @@ jobs:
             analytics/development_activity_daily.csv \
             analytics/community_lifecycle_daily.csv \
             analytics/community_participation_daily.csv \
-            analytics/community_participants.json \
             analytics/ecosystem_daily.csv \
             analytics/ecosystem_rollups_daily.csv \
             analytics/repository_comparison_latest.csv \
