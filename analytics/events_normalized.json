@@ -57,6 +57,32 @@
       "channel": "libre-space",
       "confidence": "confirmed",
       "date": "2026-09-05",
+      "id": "libre-space-gpsd-pps-community-contribution",
+      "label": "Libre Space contribution on GPSD and PPS station clock discipline",
+      "notes": "Strong technical community contribution by the OrbitFabric maintainer. The contribution is not about OrbitFabric and must not be treated as direct ecosystem outreach; its relevance is indirect through maintainer reputation and possible later ecosystem discovery.",
+      "scope": [
+        "ecosystem"
+      ],
+      "type": "community-contribution",
+      "url": "https://community.libre.space/t/tutorial-setup-gpsd-and-pps-for-satnogs-station-discipline-clock-getting-the-time-directly-from-the-satellites/15272/11"
+    },
+    {
+      "channel": "libre-space",
+      "confidence": "confirmed",
+      "date": "2026-09-05",
+      "id": "libre-space-inspiresat-telemetry-community-contribution",
+      "label": "Libre Space contribution on INSPIRESat-1 telemetry access and bulk frame export",
+      "notes": "Strong technical community contribution by the OrbitFabric maintainer around SatNOGS telemetry access. It is not OrbitFabric-specific; any relation to OrbitFabric traffic is indirect through reputation and possible ecosystem discovery, not direct promotion.",
+      "scope": [
+        "ecosystem"
+      ],
+      "type": "community-contribution",
+      "url": "https://community.libre.space/t/bulk-frame-export-or-telemetry-api-access-for-inspiresat-1-norad-51657/15262"
+    },
+    {
+      "channel": "libre-space",
+      "confidence": "confirmed",
+      "date": "2026-09-05",
       "id": "libre-space-phasma-xtce-serializer-alignment",
       "label": "Libre Space PHASMA discussion on XTCE and C serializer contract alignment",
       "notes": "Technical discussion around PHASMA as an interoperability case, highlighting the risk of packet-contract drift when XTCE layouts and C serializers evolve as separate representations.",
