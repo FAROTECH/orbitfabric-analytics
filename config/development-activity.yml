@@ -1,0 +1,65 @@
+version: 1
+
+# Policy for M3c development-activity context.
+#
+# This dataset is contextual evidence. It helps explain periods dominated by
+# first-party development or automation, but it is not a causal attribution
+# layer for GitHub traffic.
+
+repository_selection:
+  field: include_in_rollups
+  value: true
+
+history:
+  lookback_days: 21
+
+classification:
+  first_party_logins:
+    - FAROTECH
+
+  automation_logins:
+    - github-actions[bot]
+    - dependabot[bot]
+
+signals:
+  commits_total:
+    collect: true
+    kind: daily_activity
+
+  first_party_commits:
+    collect: true
+    kind: daily_activity
+
+  automation_commits:
+    collect: true
+    kind: daily_activity
+
+  other_commits:
+    collect: true
+    kind: daily_activity
+
+  workflow_runs_total:
+    collect: true
+    kind: daily_activity
+
+  workflow_runs_success:
+    collect: true
+    kind: daily_activity
+
+  workflow_runs_failure:
+    collect: true
+    kind: daily_activity
+
+  workflow_runs_other:
+    collect: true
+    kind: daily_activity
+
+semantics:
+  commits_total: commits observed on the repository default branch in the UTC day
+  first_party_commits: commits attributed by GitHub to a configured first-party login
+  automation_commits: commits attributed by GitHub to a configured automation login
+  other_commits: commits not attributable to configured first-party or automation logins; not automatically external contributors
+  workflow_runs_total: GitHub Actions workflow runs created for the default branch in the UTC day
+  workflow_runs_success: workflow runs with conclusion success
+  workflow_runs_failure: workflow runs with conclusion failure
+  workflow_runs_other: workflow runs with any other conclusion or no final conclusion
