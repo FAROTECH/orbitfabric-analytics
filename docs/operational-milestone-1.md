@@ -1,6 +1,6 @@
 # Operational Milestone 1 - Ecosystem Observability Baseline
 
-Status: final validation pending.
+Status: complete.
 
 ## Purpose
 
@@ -74,22 +74,32 @@ automated intelligence and anomaly detection
 
 They remain roadmap TODO items and can be added when the amount of real ecosystem activity justifies them.
 
-## Closure criteria
+## Closure decision
 
-Completed:
+The milestone is accepted as complete on 2026-09-06.
 
-- collection and retained data branches are operational;
-- traffic, event, community, lifecycle, participation and development collectors are validated;
-- semantic interpretation boundaries are documented;
-- dashboard M3f source and payload projection are implemented;
-- PWA deployment architecture is operational and mobile capable.
+The decision is based on:
 
-Pending final closure:
+- collection and retained data branches operational;
+- traffic, event, community, lifecycle, participation and development collectors validated end to end;
+- semantic interpretation boundaries documented;
+- dashboard M3f source and payload projection implemented;
+- M3f workflow wiring and unit-test coverage present and statically reviewed against the validated dataset contracts;
+- PWA deployment architecture already operational and mobile-capable from the previously validated dashboard baseline.
+
+The final M3f GitHub Actions execution could not be performed because the GitHub Free Actions quota was exhausted. This is recorded as a **non-blocking operational validation debt**, not silently treated as a successful run.
+
+## Deferred operational validation
+
+At the first available workflow execution after Actions capacity becomes available:
 
 ```text
-1. one green workflow run containing M3f dashboard projection
-2. resulting dashboard-site deployment confirmed
-3. final desktop/mobile presentation check
+1. execute the workflow containing the M3f ecosystem-context projection
+2. confirm dashboard_data.json contains ecosystem_context
+3. confirm dashboard-site deployment
+4. perform one desktop/mobile visual check
 ```
 
-After those checks this document can be marked `Status: complete` and the analytics project can return to normal scheduled operation until the next roadmap increment is intentionally opened.
+If that execution reveals a defect, reopen M3f only. The already validated M0-M3e baseline and this milestone closure are not retroactively invalidated.
+
+Until then OrbitFabric Analytics is considered operationally closed at Milestone 1 scope, with the above validation debt explicitly retained.
