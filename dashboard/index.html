@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./deltas.css">
   <link rel="stylesheet" href="./events.css">
+  <link rel="stylesheet" href="./context.css">
 </head>
 <body>
   <div class="app-shell">
@@ -124,6 +125,74 @@
       <section class="section-block">
         <div class="section-heading">
           <div>
+            <div class="eyebrow">ECOSYSTEM CONTEXT</div>
+            <h2>Community & engineering</h2>
+          </div>
+          <p class="section-note">Stock corrente e activity context allineato alla stessa finestra del traffic comparison.</p>
+        </div>
+
+        <p class="context-window-note" id="context-window-note">Loading community & engineering context…</p>
+
+        <div class="context-summary-grid">
+          <article class="context-summary-card">
+            <span class="metric-label">Community stock · stars</span>
+            <strong class="context-summary-value" id="context-stock-value">—</strong>
+            <span class="context-summary-detail" id="context-stock-detail">—</span>
+            <span class="context-summary-delta" id="context-stock-delta">—</span>
+          </article>
+
+          <article class="context-summary-card">
+            <span class="metric-label">Lifecycle · aligned window</span>
+            <strong class="context-summary-value" id="context-lifecycle-value">—</strong>
+            <span class="context-summary-detail" id="context-lifecycle-detail">—</span>
+          </article>
+
+          <article class="context-summary-card">
+            <span class="metric-label">Participation · aligned window</span>
+            <strong class="context-summary-value" id="context-participation-value">—</strong>
+            <span class="context-summary-detail" id="context-participation-detail">—</span>
+          </article>
+
+          <article class="context-summary-card">
+            <span class="metric-label">Development context · aligned window</span>
+            <strong class="context-summary-value" id="context-development-value">—</strong>
+            <span class="context-summary-detail" id="context-development-detail">—</span>
+          </article>
+        </div>
+
+        <article class="panel table-panel">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Repository</th>
+                  <th>Stars</th>
+                  <th>Forks</th>
+                  <th>Open issues</th>
+                  <th>Open PRs</th>
+                  <th>PR merged</th>
+                  <th>Other participant repo-days</th>
+                  <th>First-party commits</th>
+                  <th>Workflow runs</th>
+                </tr>
+              </thead>
+              <tbody id="context-repository-body"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <aside class="context-note context-semantics-note">
+          <div class="context-note-title">Semantics</div>
+          <p>
+            Community stock può essere più recente dell'ultimo traffic day. Lifecycle, participation e development context sono invece aggregati sulla finestra traffic comune.
+            Participant counts sono repository-scoped; i totali mostrati sulla finestra sono participant repo-days. `other` non significa automaticamente utente o contributor esterno.
+          </p>
+        </aside>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <div>
             <div class="eyebrow">REPOSITORY COMPARISON</div>
             <h2>Common recent window</h2>
           </div>
@@ -182,5 +251,6 @@
   <script src="./event-overlay.js"></script>
   <script src="./app.js"></script>
   <script src="./events.js"></script>
+  <script src="./context.js"></script>
 </body>
 </html>
