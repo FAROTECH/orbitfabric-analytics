@@ -1,6 +1,28 @@
 # OrbitFabric Analytics Roadmap
 
-OrbitFabric Analytics grows in stages. The first priority is preserving data. Higher-level interpretation comes only after the collection baseline is stable.
+OrbitFabric Analytics grows in stages. The first priority is preserving trustworthy evidence. Higher-level interpretation comes only after collection and semantic boundaries are stable.
+
+## Operational Milestone 1 - Ecosystem Observability Baseline
+
+**Status: final validation**
+
+Goal: establish a durable first analytics baseline that can be left running while OrbitFabric development and outreach continue.
+
+Exit criteria:
+
+- [x] Traffic history retained automatically.
+- [x] Official ecosystem normalization, rollups and repository comparison operational.
+- [x] Static mobile-friendly dashboard deployed.
+- [x] Curated event correlation operational.
+- [x] Community stock and stock deltas retained.
+- [x] Development activity context retained.
+- [x] Issue / PR lifecycle retained.
+- [x] Repository-scoped participation baseline retained.
+- [x] Community and engineering dashboard integration implemented.
+- [ ] Final ecosystem-context workflow projection validated end to end.
+- [ ] Final dashboard presentation visually validated after M3f deployment.
+
+Richer engagement and intelligence features are deliberately deferred. They are not required to close this first operational milestone.
 
 ## M0 - Data Retention
 
@@ -11,14 +33,12 @@ Goal: stop losing GitHub traffic history.
 - [x] Central analytics repository created.
 - [x] Authoritative repository inventory defined.
 - [x] Per-repository collection enable/disable policy defined.
-- [x] Separate inclusion policy for future ecosystem rollups defined.
+- [x] Separate inclusion policy for official ecosystem rollups defined.
 - [x] Dynamic GitHub Actions matrix generated from repository configuration.
 - [x] Daily `github-repo-stats` collector configured.
 - [x] `GHRS_GITHUB_API_TOKEN` repository secret configured.
 - [x] First successful collection run completed.
 - [x] `github-repo-stats` data branch verified.
-
-M0 was validated with a successful end-to-end collection across all repositories enabled at the time of the first run.
 
 ## M1 - Ecosystem Dashboard
 
@@ -26,210 +46,192 @@ M0 was validated with a successful end-to-end collection across all repositories
 
 Goal: turn retained traffic data into a coherent OrbitFabric ecosystem view.
 
-Completed baseline:
-
 - [x] Repository-day normalization contract defined.
-- [x] `analytics/aggregate.py` implemented.
-- [x] Normalization unit test added.
-- [x] Post-collection generation of `analytics/ecosystem_daily.csv` configured.
-- [x] First automated `ecosystem_daily.csv` generation validated end to end.
-- [x] Cross-repository aggregate metric semantics defined.
-- [x] Coverage semantics defined for incomplete daily windows.
-- [x] Ecosystem / core / product / adapter rollup scopes defined.
-- [x] `analytics/rollup.py` implemented with unit coverage.
-- [x] Post-collection generation of `analytics/ecosystem_rollups_daily.csv` configured.
-- [x] First automated `ecosystem_rollups_daily.csv` generation validated end to end.
-- [x] Repository comparison view semantics defined.
-- [x] Awareness and technical-evaluation metric semantics defined.
-- [x] Adoption proxy semantics defined without introducing a scalar adoption score.
-- [x] `analytics/compare.py` implemented with unit coverage.
-- [x] Post-collection generation of `analytics/repository_comparison_latest.csv` configured.
-- [x] First automated `repository_comparison_latest.csv` generation validated end to end.
-- [x] Dashboard presentation payload contract defined.
-- [x] `analytics/dashboard_data.py` implemented with unit coverage.
-- [x] Post-collection generation of `analytics/dashboard_data.json` configured.
-- [x] First automated `analytics/dashboard_data.json` generation validated end to end.
-- [x] Initial responsive static PWA source implemented under `dashboard/`.
-- [x] Cloudflare Pages project configured.
-- [x] Public-unlisted deployment policy selected; `noindex` / `robots.txt` controls configured.
-- [x] `dashboard-site` deployment branch automation configured.
-- [x] First automated `dashboard-site` refresh validated end to end.
-- [x] Cloudflare production branch switched to `dashboard-site`.
-- [x] First deployed ecosystem dashboard validated on desktop.
-- [x] Snapshot delta semantics defined.
-- [x] Overview delta implemented as latest complete day vs previous complete day.
-- [x] Repository delta implemented as current rolling comparison window vs previous complete snapshot of the same window length.
-- [x] Repository-scoped unique deltas kept explicitly separate from user identity semantics.
-- [x] Snapshot delta UI implemented for Overview and Repository Comparison.
-- [x] First automated snapshot-delta payload and deployment validated end to end.
-- [x] PWA / mobile validation completed.
+- [x] `analytics/aggregate.py` implemented with unit coverage.
+- [x] Automated `analytics/ecosystem_daily.csv` generation validated.
+- [x] Cross-repository aggregate and coverage semantics defined.
+- [x] Ecosystem / core / product / adapter rollups implemented and validated.
+- [x] Repository comparison semantics implemented over a common recent window.
+- [x] Awareness, technical-evaluation and adoption-proxy boundaries defined without a scalar score.
+- [x] `analytics/dashboard_data.py` implemented and validated.
+- [x] Responsive static PWA implemented.
+- [x] Cloudflare Pages deployment through `dashboard-site` operational.
+- [x] Public-unlisted deployment policy and anti-indexing controls configured.
+- [x] Overview day-over-day deltas implemented.
+- [x] Rolling repository snapshot deltas implemented.
+- [x] Repository-scoped unique metrics kept separate from user-identity semantics.
+- [x] Desktop and mobile PWA validation completed.
 
-Cloudflare Access is intentionally deferred. It can be introduced later if dashboard confidentiality becomes a requirement. Until then the Pages URL is public but intentionally unlisted; anti-indexing controls reduce discoverability but are not treated as security.
-
-Repository-level unique values will not be treated as ecosystem-wide unique users. Rollups expose only explicitly named sums of repository-scoped unique values. Repository comparisons use a common recent window anchored to the latest complete ecosystem day.
-
-Snapshot deltas are directional activity changes, not quality scores. An increase is not automatically positive and a decrease is not automatically negative. Percentage deltas are omitted when the previous value is zero and the current value is non-zero; that state is represented as `new`.
-
-The dashboard remains downstream of metric semantics and consumes generated presentation data. It does not access GitHub credentials or infer external adoption inside the browser.
+Cloudflare Access remains optional. The Pages URL is technically public but intentionally unlisted; anti-indexing controls are not treated as security.
 
 ## M2 - Event Correlation
 
 **Status: complete**
 
-Goal: compare traffic changes with relevant project events without turning temporal proximity into causal claims.
-
-Completed baseline:
+Goal: compare traffic changes with relevant context without turning temporal proximity into causal claims.
 
 - [x] Authoritative event registry retained in `config/events.yml`.
 - [x] Event taxonomy separated into `config/event-taxonomy.yml`.
 - [x] Stable event contract defined: id, date, type, channel, scope, confidence and label.
-- [x] Repository-aware event scope validation defined.
-- [x] `analytics/events.py` implemented to validate and normalize the event registry.
-- [x] Event registry unit coverage added.
-- [x] Post-collection generation of `analytics/events_normalized.json` configured.
-- [x] First automated `analytics/events_normalized.json` generation validated end to end.
-- [x] Normalized events projected into `dashboard_data.json`.
-- [x] Event context rendered alongside the dashboard activity timeline.
-- [x] First automated event-projection payload and deployment validated end to end.
-- [x] Mobile-first event rail with on-demand traffic-chart guide implemented.
-- [x] Traffic/event overlay implemented for correlation inspection.
-- [x] First automated interactive traffic/event overlay deployment validated end to end.
-- [x] Initial set of confirmed public OrbitFabric events curated.
-- [x] First traffic/event correlation review completed.
-- [x] Interactive event overlay visually validated on desktop and mobile.
+- [x] Repository-aware scope validation implemented.
+- [x] `analytics/events.py` implemented with unit coverage.
+- [x] Normalized event dataset generated automatically.
+- [x] Events projected into `dashboard_data.json`.
+- [x] Event context rendered alongside traffic.
+- [x] Mobile-first event rail and on-demand chart guide implemented.
+- [x] First real traffic/event correlation review completed.
+- [x] Interactive overlay validated on desktop and mobile.
+- [x] `community-contribution` added for relevant maintainer technical presence that is not direct OrbitFabric outreach.
 
-Planned event classes include releases, outreach, upstream discussions, community contributions, documentation launches, internal milestones and major ecosystem milestones. Channels are policy-driven and currently include GitHub, LinkedIn, Reddit, Hackaday, Libre Space, website and internal analytics context.
-
-Historical events are not invented merely to populate the dashboard. When a date is uncertain but still useful, it is explicitly marked `approximate`; confirmed day-level correlation uses `confirmed` events.
-
-The event context distinguishes events already inside the retained traffic window from events awaiting a future complete traffic day and events older than the retained timeline. This keeps the dashboard explicit about whether correlation can actually be inspected yet.
-
-The traffic/event overlay is intentionally interaction-driven: the rail is always visible, while a thin guide is drawn across both traffic charts only when an in-window event day is selected. This avoids permanently cluttering the charts and keeps the interaction usable on small screens.
-
-The first correlation review is documented in `reports/correlation/2026-09-04-fprime.md`. It records a real same-day traffic/event correlation around the F´ adapter while explicitly keeping attribution unresolved because release activity and first-party/automation effects are confounding factors.
-
-Correlation will be treated as temporal evidence, not proof of causation.
+Event context remains correlation evidence only. Releases, direct outreach, upstream discussions, community contributions and internal milestones retain distinct meanings.
 
 ## M3 - Community Signals
 
-**Status: in progress**
+**Status: finalizing**
 
-Goal: complement traffic and curated context with public engagement and project-activity evidence.
+Goal: complement traffic and curated events with public repository engagement and project-activity evidence.
 
-M3a stock-snapshot baseline:
+### M3a - Stock snapshot baseline
+
+**Status: complete**
 
 - [x] Traffic, community and contextual evidence families explicitly separated.
 - [x] Community policy defined in `config/community-signals.yml`.
-- [x] Initial repository selection aligned with the six official `include_in_rollups: true` repositories.
+- [x] Scope aligned with the six official `include_in_rollups: true` repositories.
 - [x] Daily repository-scoped stock contract defined.
-- [x] Initial stock signals defined: stars, forks, open issues, open pull requests and repository-scoped contributor records.
-- [x] Stock metric semantics explicitly separated from event-count semantics.
+- [x] Stars, forks, open issues, open pull requests and repository-scoped contributor records retained.
+- [x] Stock semantics explicitly separated from event-count semantics.
 - [x] `analytics/community.py` implemented with same-day idempotent history merging.
-- [x] Community snapshot unit coverage added.
-- [x] Post-collection generation of `analytics/community_daily.csv` configured.
-- [x] First automated `analytics/community_daily.csv` generation validated end to end.
-- [x] Initial community baseline reviewed for all six official repositories.
+- [x] First automated baseline validated and reviewed.
 
-M3b stock deltas:
+### M3b - Stock deltas
 
-- [x] Latest-vs-previous-available snapshot comparison semantics defined.
-- [x] Stock deltas kept absolute-only; percentage deltas intentionally excluded from the initial low-cardinality baseline.
-- [x] Snapshot gaps exposed explicitly through `snapshot_gap_days`.
-- [x] Missing previous snapshots represented as non-comparable rather than synthetic zero deltas.
+**Status: complete**
+
+- [x] Latest-vs-previous-available snapshot semantics defined.
+- [x] Absolute-only stock deltas implemented.
+- [x] Snapshot gaps exposed through `snapshot_gap_days`.
+- [x] Missing previous snapshots represented as non-comparable.
 - [x] `analytics/community_compare.py` implemented with unit coverage.
-- [x] Post-collection generation of `analytics/community_comparison_latest.csv` configured.
-- [x] First automated `analytics/community_comparison_latest.csv` generation validated end to end.
-- [x] First real comparable stock delta observed from two distinct collection dates.
+- [x] First real cross-date stock comparison validated.
 
-M3c development activity context:
+### M3c - Development activity context
 
-- [x] Machine-derived development context kept separate from traffic and community interpretation.
-- [x] Development activity policy defined in `config/development-activity.yml`.
-- [x] Initial scope aligned with the six official repositories.
-- [x] Rolling 21-day historical recollection window defined.
-- [x] Daily default-branch commit activity contract defined.
-- [x] Policy-driven first-party / automation / other commit classification defined.
-- [x] Daily GitHub Actions run activity contract defined.
-- [x] `analytics/development_activity.py` implemented with idempotent repository-day history merging.
-- [x] Development activity unit coverage added.
-- [x] Post-collection generation of `analytics/development_activity_daily.csv` configured.
-- [x] First automated development-activity backfill validated end to end.
-- [x] Initial development context reviewed against known high-clone days.
+**Status: complete**
 
-M3d issue / pull-request lifecycle:
+- [x] Development context kept separate from traffic and community interpretation.
+- [x] Policy defined in `config/development-activity.yml`.
+- [x] Rolling 21-day recollection implemented.
+- [x] Default-branch commit activity retained.
+- [x] First-party / automation / other commit classification policy defined.
+- [x] GitHub Actions run activity retained.
+- [x] `analytics/development_activity.py` implemented and validated.
+- [x] Initial clone-spike review completed.
 
-- [x] Lifecycle events explicitly separated from stock deltas.
-- [x] Lifecycle policy defined in `config/community-lifecycle.yml`.
-- [x] Initial scope aligned with the six official repositories.
-- [x] Rolling 21-day lifecycle recollection window defined.
-- [x] Daily lifecycle contract defined for issue open/close and pull-request open/merge/close-unmerged events.
-- [x] Pull requests excluded from issue lifecycle counts despite GitHub issues API overlap.
-- [x] `analytics/community_lifecycle.py` implemented with idempotent repository-day history merging.
-- [x] Lifecycle unit coverage added.
-- [x] Post-collection generation of `analytics/community_lifecycle_daily.csv` configured.
-- [x] First automated lifecycle backfill validated end to end.
-- [x] Initial lifecycle evidence reviewed across the retained traffic window.
+Development activity is explanatory context, not traffic attribution.
 
-M3e repository participation baseline:
+### M3d - Issue / pull-request lifecycle
+
+**Status: complete**
+
+- [x] Lifecycle events separated from stock deltas.
+- [x] Policy defined in `config/community-lifecycle.yml`.
+- [x] Rolling 21-day lifecycle recollection implemented.
+- [x] Issue open / close and PR open / merge / close-unmerged semantics defined.
+- [x] Pull requests excluded from issue counts despite GitHub API overlap.
+- [x] Merge-generated close events prevented from becoming false close-unmerged events.
+- [x] `analytics/community_lifecycle.py` implemented and validated.
+- [x] Initial lifecycle evidence review completed.
+
+### M3e - Repository participation baseline
+
+**Status: complete**
 
 - [x] Participant identity semantics kept repository-scoped rather than ecosystem-wide.
-- [x] Participation policy defined in `config/community-participation.yml`.
-- [x] Initial scope aligned with the six official repositories.
-- [x] Rolling 21-day participation recollection window defined.
-- [x] Issue authors, pull-request authors and issue/PR conversation comments selected as initial actor-bearing surfaces.
-- [x] Daily distinct participant counts separated into first-party / automation / other policy classes.
+- [x] Policy defined in `config/community-participation.yml`.
+- [x] Rolling 21-day participation recollection implemented.
+- [x] Issue authors, PR authors and issue / PR conversation comments selected as initial actor-bearing surfaces.
+- [x] Daily participant observations classified as first-party / automation / other.
 - [x] `other` explicitly kept separate from external-contributor semantics.
-- [x] Repository-scoped first-observed participant semantics defined.
-- [x] Private cumulative actor registry defined in `analytics/community_participants.json`.
-- [x] Raw actor registry excluded from dashboard publication by policy.
-- [x] `analytics/community_participation.py` implemented with idempotent repository-day history merging.
-- [x] Participation unit coverage added.
-- [x] Post-collection generation of `analytics/community_participation_daily.csv` and participant registry configured.
-- [x] First automated participation backfill validated end to end.
-- [x] Initial participation evidence reviewed across the retained traffic window.
+- [x] Repository-scoped first-observed semantics defined.
+- [x] Private cumulative actor registry retained in `analytics/community_participants.json`.
+- [x] Raw actor registry excluded from dashboard publication.
+- [x] `analytics/community_participation.py` implemented and validated.
+- [x] Initial participation review completed.
 
-Planned M3 increments:
+The first retained participation window contains only first-party actors on the currently collected GitHub surfaces. This is a useful T0 baseline, not evidence that nobody external is aware of OrbitFabric.
 
-- [ ] Rolling trend semantics beyond adjacent observed snapshots.
+### M3f - Ecosystem dashboard context
+
+**Status: implementation complete, validation pending**
+
+Goal: turn the dashboard from a traffic-focused surface into the first coherent ecosystem observability surface.
+
+- [x] `analytics/dashboard_ecosystem_context.py` added as a downstream presentation projection.
+- [x] Community stock projected without forcing it onto the traffic date boundary.
+- [x] Stock snapshot date exposed independently from latest complete traffic day.
+- [x] Lifecycle context aggregated over the traffic comparison window.
+- [x] Participation context aggregated over the traffic comparison window.
+- [x] Development context aggregated over the traffic comparison window.
+- [x] Coverage semantics retained for all aligned context families.
+- [x] Repository-level community and engineering context projected.
+- [x] Participant window totals labelled as repository-day observations rather than deduplicated people.
+- [x] Raw participant registry remains private and outside `dashboard_data.json`.
+- [x] `Ecosystem Context / Community & engineering` dashboard section implemented.
+- [x] Mobile-responsive summary cards and repository context table implemented.
+- [x] PWA cache advanced to include M3f assets.
+- [x] Dashboard runtime and architecture documentation refreshed.
+- [ ] First automated M3f projection into `dashboard_data.json` validated end to end.
+- [ ] First M3f `dashboard-site` deployment validated.
+- [ ] Final desktop/mobile visual validation completed.
+
+## Deferred TODO after Operational Milestone 1
+
+These features are intentionally postponed until real ecosystem activity makes them worth the added complexity:
+
+- [ ] Rolling trend semantics beyond adjacent snapshots and the current common comparison window.
 - [ ] Pull-request review participation signals.
 - [ ] GitHub Discussions signals.
-- [ ] Reactions where timestamp semantics are strong enough to avoid reconstructing event history from current stock.
-- [ ] Community signals projected into the dashboard.
-- [ ] Cross-reading of traffic, community, lifecycle, participation, development context and curated events.
+- [ ] Reactions only where reliable event timestamps can be retained without reconstructing history from current stock.
+- [ ] Richer contributor / participant analysis if repository activity becomes multi-actor enough to justify it.
+- [ ] More explicit cross-reading / derived interpretation between traffic, community, lifecycle, participation, development context and curated events.
 
-A stock change is not automatically a count of new events. For example, an open-issue delta can be affected by both issue creation and issue closure between snapshots. Community metrics remain repository-scoped unless an explicitly deduplicated semantic is introduced later.
-
-The first retained community baseline is dated 2026-09-05. The first cross-date comparison, 2026-09-05 to 2026-09-06, is valid and currently shows zero stock changes across all six official repositories.
-
-Development activity context is explanatory evidence only. High first-party commit or workflow-run activity can make first-party/automation contamination more plausible, but does not prove that those activities caused GitHub traffic. The initial clone-spike review is retained in `reports/development-context/2026-09-02-to-04-clone-spikes.md`.
-
-Lifecycle signals are direct counts of observed GitHub timestamps, not user counts. An issue or pull request may legitimately contribute to more than one lifecycle class over time or on the same day. The first lifecycle review is retained in `reports/community-lifecycle/2026-08-17-to-09-06-baseline.md`.
-
-Participation `first_seen` means first observation retained by OrbitFabric Analytics for one login in one repository. It does not mean first GitHub activity, first ecosystem-wide participation, a new user or a new external contributor. The first participation review is retained in `reports/community-participation/2026-08-17-to-09-06-baseline.md`; the initial retained window contains only first-party participation on the currently collected actor-bearing GitHub surfaces.
+They remain valid future work, but none blocks the first operational analytics baseline.
 
 ## M4 - Web Analytics
 
-**Status: planned**
+**Status: deferred / planned**
 
-Goal: understand traffic across the OrbitFabric website/documentation and GitHub ecosystem.
+Goal: understand traffic across OrbitFabric website/documentation and GitHub.
 
-Planned capabilities:
+TODO:
 
-- privacy-friendly web analytics;
-- UTM campaign attribution;
-- documentation entry/exit paths;
-- GitHub and website traffic comparison.
+- [ ] Privacy-friendly web analytics.
+- [ ] UTM campaign attribution.
+- [ ] Documentation entry / exit paths.
+- [ ] GitHub and website traffic comparison.
 
 ## M5 - Intelligence
 
-**Status: planned**
+**Status: deferred / planned**
 
 Goal: surface useful signals automatically without turning metrics into vanity scores.
 
-Potential capabilities:
+TODO:
 
-- weekly trend summaries;
-- anomaly detection;
-- repository momentum indicators;
-- release/outreach impact windows;
-- automated ecosystem reports.
+- [ ] Weekly trend summaries.
+- [ ] Anomaly detection.
+- [ ] Repository momentum indicators with explicit semantics.
+- [ ] Release / outreach impact windows.
+- [ ] Automated ecosystem reports.
+
+## Interpretation rules retained across milestones
+
+- GitHub traffic unique metrics are repository-scoped, not ecosystem-wide people.
+- Clone activity is technical-access evidence and may contain substantial first-party / automation contamination.
+- A stock delta is a state transition, not a lifecycle event count.
+- Lifecycle counts are events, not people.
+- Participation `first_seen` means first observation retained by Analytics for one login in one repository.
+- `other` participation does not automatically mean an external user or contributor.
+- Development activity is contextual evidence, not attribution.
+- Curated event proximity is correlation evidence, not causality.
