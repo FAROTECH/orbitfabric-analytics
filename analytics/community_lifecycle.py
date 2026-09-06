@@ -7,6 +7,7 @@ import argparse
 import csv
 import json
 import os
+from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.error import HTTPError
@@ -34,6 +35,8 @@ KNOWN_SIGNALS = {
     "prs_merged",
     "prs_closed_unmerged",
 }
+
+MERGE_CLOSE_PAIR_TOLERANCE_SECONDS = 5
 
 
 class GitHubApi:
@@ -125,6 +128,33 @@ class GitHubApi:
             page += 1
         return rows
 
+    def issue_events_since(
+        self,
+        repository: str,
+        start_date: date,
+    ) -> list[dict[str, object]]:
+        rows: list[dict[str, object]] = []
+        page = 1
+        start_instant = datetime.combine(start_date, datetime.min.time(), tzinfo=timezone.utc)
+        while True:
+            query = urlencode({"per_page": 100, "page": page})
+            payload = self._request_json(
+                f"https://api.github.com/repos/{repository}/issues/events?{query}"
+            )
+            if not isinstance(payload, list):
+                raise ValueError(f"Unexpected issue-events response for {repository}")
+
+            items = [item for item in payload if isinstance(item, dict)]
+            rows.extend(items)
+            if len(payload) < 100:
+                break
+
+            last_created = items[-1].get("created_at") if items else None
+            if isinstance(last_created, str) and _parse_iso_datetime(last_created) < start_instant:
+                break
+            page += 1
+        return rows
+
 
 def _load_yaml(path: Path) -> dict[str, object]:
     payload = yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -200,12 +230,58 @@ def _event_day(value: object) -> str | None:
     return _parse_iso_datetime(value).date().isoformat()
 
 
+def _event_issue(event: dict[str, object]) -> dict[str, object] | None:
+    issue = event.get("issue")
+    return issue if isinstance(issue, dict) else None
+
+
+def _event_issue_number(event: dict[str, object]) -> int | None:
+    issue = _event_issue(event)
+    number = issue.get("number") if issue else None
+    return int(number) if isinstance(number, int) else None
+
+
+def _event_is_pull_request(event: dict[str, object]) -> bool:
+    issue = _event_issue(event)
+    return bool(issue and isinstance(issue.get("pull_request"), dict))
+
+
+def _merge_event_times(events: list[dict[str, object]]) -> dict[int, list[datetime]]:
+    merged: dict[int, list[datetime]] = defaultdict(list)
+    for event in events:
+        if event.get("event") != "merged" or not _event_is_pull_request(event):
+            continue
+        number = _event_issue_number(event)
+        created_at = event.get("created_at")
+        if number is None or not isinstance(created_at, str):
+            continue
+        merged[number].append(_parse_iso_datetime(created_at))
+    return dict(merged)
+
+
+def _closed_event_is_merge_pair(
+    event: dict[str, object],
+    merged_times: dict[int, list[datetime]],
+) -> bool:
+    number = _event_issue_number(event)
+    created_at = event.get("created_at")
+    if number is None or not isinstance(created_at, str):
+        return False
+    closed_time = _parse_iso_datetime(created_at)
+    return any(
+        abs((closed_time - merged_time).total_seconds())
+        <= MERGE_CLOSE_PAIR_TOLERANCE_SECONDS
+        for merged_time in merged_times.get(number, [])
+    )
+
+
 def build_repository_rows(
     repository: dict[str, object],
     start_date: date,
     end_date: date,
     issues: list[dict[str, object]],
     pull_requests: list[dict[str, object]],
+    lifecycle_events: list[dict[str, object]],
     enabled_signals: set[str],
 ) -> list[dict[str, object]]:
     days: list[str] = []
@@ -214,36 +290,43 @@ def build_repository_rows(
         days.append(cursor.isoformat())
         cursor += timedelta(days=1)
 
-    counters = {
-        day: {signal: 0 for signal in KNOWN_SIGNALS}
-        for day in days
-    }
+    counters = {day: {signal: 0 for signal in KNOWN_SIGNALS} for day in days}
 
     for issue in issues:
         if "pull_request" in issue:
             continue
         created_day = _event_day(issue.get("created_at"))
-        closed_day = _event_day(issue.get("closed_at"))
         if "issues_opened" in enabled_signals and created_day in counters:
             counters[created_day]["issues_opened"] += 1
-        if "issues_closed" in enabled_signals and closed_day in counters:
-            counters[closed_day]["issues_closed"] += 1
 
     for pull_request in pull_requests:
         created_day = _event_day(pull_request.get("created_at"))
-        closed_day = _event_day(pull_request.get("closed_at"))
-        merged_day = _event_day(pull_request.get("merged_at"))
-
         if "prs_opened" in enabled_signals and created_day in counters:
             counters[created_day]["prs_opened"] += 1
-        if "prs_merged" in enabled_signals and merged_day in counters:
-            counters[merged_day]["prs_merged"] += 1
-        if (
-            "prs_closed_unmerged" in enabled_signals
-            and merged_day is None
-            and closed_day in counters
+
+    merged_times = _merge_event_times(lifecycle_events)
+    for event in lifecycle_events:
+        event_name = event.get("event")
+        event_day = _event_day(event.get("created_at"))
+        if event_day not in counters:
+            continue
+
+        is_pull_request = _event_is_pull_request(event)
+        if event_name == "closed":
+            if (
+                is_pull_request
+                and "prs_closed_unmerged" in enabled_signals
+                and not _closed_event_is_merge_pair(event, merged_times)
+            ):
+                counters[event_day]["prs_closed_unmerged"] += 1
+            elif not is_pull_request and "issues_closed" in enabled_signals:
+                counters[event_day]["issues_closed"] += 1
+        elif (
+            event_name == "merged"
+            and is_pull_request
+            and "prs_merged" in enabled_signals
         ):
-            counters[closed_day]["prs_closed_unmerged"] += 1
+            counters[event_day]["prs_merged"] += 1
 
     rows: list[dict[str, object]] = []
     for day in days:
@@ -273,6 +356,7 @@ def collect_lifecycle(
         repo_name = str(repository["repo"])
         issues = api.issues_updated_since(repo_name, start_date)
         pull_requests = api.pull_requests_updated_since(repo_name, start_date)
+        lifecycle_events = api.issue_events_since(repo_name, start_date)
         rows.extend(
             build_repository_rows(
                 repository,
@@ -280,6 +364,7 @@ def collect_lifecycle(
                 end_date,
                 issues,
                 pull_requests,
+                lifecycle_events,
                 enabled_signals,
             )
         )
