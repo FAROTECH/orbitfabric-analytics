@@ -1,141 +1,68 @@
 # OrbitFabric Analytics
 
-Analytics and ecosystem traction monitoring for OrbitFabric projects.
+Analytics and ecosystem observability for OrbitFabric projects.
 
 ## Purpose
 
-OrbitFabric Analytics preserves and interprets ecosystem traction signals that are otherwise difficult to retain over time.
+OrbitFabric Analytics preserves and interprets ecosystem evidence that is otherwise difficult to retain over time.
 
-The project separates collection, configuration, analysis and reporting so that evidence can evolve without mixing acquisition logic with interpretation or presentation.
+The project separates collection, configuration, analysis and reporting so evidence can evolve without mixing acquisition logic with interpretation or presentation.
+
+The governing rule is:
+
+```text
+policy in configuration, logic in tooling
+```
 
 ## Current status
 
-**M0 - Data Retention: complete**
+The first operational analytics milestone is being finalized.
 
-The baseline preserves GitHub traffic history across the configured OrbitFabric repositories.
-
-**M1 - Ecosystem Dashboard: complete**
-
-The current dashboard provides:
-
-- repository-day normalization;
-- ecosystem / core / product / adapter rollups;
-- repository comparison over a common recent window;
-- explicit coverage semantics;
-- daily and rolling snapshot deltas;
-- responsive static PWA deployment through Cloudflare Pages;
-- public-unlisted deployment with anti-indexing controls;
-- validated desktop and mobile usage.
-
-**M2 - Event Correlation: complete**
-
-Curated releases, outreach, upstream discussions and relevant community-contribution events are normalized, projected into the dashboard and inspectable against traffic through a mobile-first interactive event rail.
-
-**M3 - Community Signals: in progress**
-
-M3 now retains daily repository-scoped GitHub community stock, latest-vs-previous stock comparisons, development activity context, direct issue / pull-request lifecycle events, and repository-scoped participation evidence for the official OrbitFabric repositories.
-
-## Architecture
+Completed capability layers:
 
 ```text
-config/repositories.yml
-        |
-        v
-repository matrix builder
-        |
-        v
-GitHub Actions collector
-        |
-        v
-github-repo-stats branch
-(raw history + generated analytics datasets)
-        |
-        v
-analytics semantics
-        |
-        v
-dashboard_data.json
-        |
-        v
-dashboard-site branch
-        |
-        v
-Cloudflare Pages PWA
+M0  Data Retention                 complete
+M1  Ecosystem Dashboard            complete
+M2  Event Correlation              complete
+M3a Community stock baseline       complete
+M3b Community stock deltas         complete
+M3c Development activity context   complete
+M3d Issue / PR lifecycle           complete
+M3e Repository participation       complete
+M3f Ecosystem dashboard context    implementation complete; final E2E validation pending
 ```
 
-Event correlation adds a contextual input:
+Richer engagement features are intentionally deferred after this baseline rather than expanding scope indefinitely.
+
+## Evidence model
+
+OrbitFabric Analytics keeps distinct evidence families distinct:
 
 ```text
-config/events.yml
-        +
-config/event-taxonomy.yml
-        |
-        v
-analytics/events.py
-        |
-        v
-analytics/events_normalized.json
+TRAFFIC
+views / clones
+
+COMMUNITY STOCK
+stars / forks / open issues / open pull requests / repository-scoped contributor records
+
+LIFECYCLE
+issue / pull-request open, close and merge events
+
+PARTICIPATION
+repository-scoped actor-bearing activity
+
+DEVELOPMENT CONTEXT
+commits / workflow runs
+
+CURATED CONTEXT
+releases / outreach / upstream discussions / community contributions
 ```
 
-M3 community collection adds retained evidence streams:
-
-```text
-config/community-signals.yml
-        +
-config/repositories.yml
-        |
-        v
-analytics/community.py
-        |
-        v
-analytics/community_daily.csv
-        |
-        v
-analytics/community_compare.py
-        |
-        v
-analytics/community_comparison_latest.csv
-```
-
-```text
-config/development-activity.yml
-        |
-        v
-analytics/development_activity.py
-        |
-        v
-analytics/development_activity_daily.csv
-```
-
-```text
-config/community-lifecycle.yml
-        |
-        v
-analytics/community_lifecycle.py
-        |
-        v
-analytics/community_lifecycle_daily.csv
-```
-
-```text
-config/community-participation.yml
-        |
-        v
-analytics/community_participation.py
-        |
-        +--> analytics/community_participation_daily.csv
-        |
-        +--> analytics/community_participants.json
-             private repository-scoped actor registry
-```
-
-`main` contains source code, configuration, documentation and dashboard source.
-
-`github-repo-stats` contains retained history and generated analytics datasets.
-
-`dashboard-site` contains the deployable static dashboard snapshot.
+None of these families is treated automatically as a direct count of ecosystem users or as proof of adoption.
 
 ## Repository policy
+
+`config/repositories.yml` is the authoritative ecosystem inventory.
 
 Each repository has two independent switches:
 
@@ -144,118 +71,126 @@ collect: true
 include_in_rollups: true
 ```
 
-`collect` controls whether daily traffic data is fetched and retained.
+`collect` controls retained traffic collection.
 
-`include_in_rollups` controls whether the repository contributes to official OrbitFabric ecosystem rollups.
+`include_in_rollups` controls participation in official OrbitFabric ecosystem analytics. The current official analytics scope contains six repositories: Core, Studio, Reference Mission and the three published adapters.
 
-This allows a repository to be monitored without affecting ecosystem KPIs.
-
-The first M3 community baseline intentionally follows `include_in_rollups: true`, so community interpretation starts from the same six official repositories used by ecosystem rollups.
-
-## Event policy
-
-`config/events.yml` is the authoritative event timeline.
-
-`config/event-taxonomy.yml` defines allowed event types, channels and confidence levels.
-
-Events are context markers only. Temporal correlation is not treated automatically as proof that an event caused a traffic change.
-
-Historical events are added only when their date and meaning are known well enough to be useful. Approximate dates are explicitly marked as such.
-
-See [docs/event-correlation.md](docs/event-correlation.md).
-
-## Community signal policy
-
-`config/community-signals.yml` defines M3 community stock policy.
-
-The retained stock signals are:
+## Data and branch model
 
 ```text
-stars_total
-forks_total
-open_issues_total
-open_pull_requests_total
-contributors_repo_count
+main
+    source code
+    configuration
+    documentation
+    dashboard source
+
+github-repo-stats
+    retained traffic history
+    generated analytics datasets
+    private participation actor registry
+
+dashboard-site
+    deployable static dashboard snapshot
 ```
 
-These are repository-state snapshots, not counts of new events and not counts of unique ecosystem users.
+The browser never talks directly to GitHub and never receives GitHub credentials.
 
-M3b compares the latest available snapshot with the previous available snapshot for each repository. It exposes absolute deltas only and records `snapshot_gap_days` explicitly. When no previous snapshot exists, the row is marked non-comparable and delta fields remain empty.
-
-Percentage deltas are intentionally omitted from the initial low-cardinality community baseline.
-
-M3d adds direct lifecycle counts from GitHub timestamps:
+## Main generated datasets
 
 ```text
-issues_opened
-issues_closed
-prs_opened
-prs_merged
-prs_closed_unmerged
+analytics/ecosystem_daily.csv
+analytics/ecosystem_rollups_daily.csv
+analytics/repository_comparison_latest.csv
+
+analytics/events_normalized.json
+
+analytics/community_daily.csv
+analytics/community_comparison_latest.csv
+analytics/development_activity_daily.csv
+analytics/community_lifecycle_daily.csv
+analytics/community_participation_daily.csv
+analytics/community_participants.json
+
+analytics/dashboard_data.json
 ```
 
-These lifecycle signals are not inferred from stock changes. A single issue or pull request may contribute to more than one event class over its lifetime, including two classes on the same day.
+`community_participants.json` is a private repository-scoped actor registry used to preserve first-observed semantics. It is not copied into the public-unlisted dashboard deployment.
 
-M3e begins repository-scoped participation analysis with issue authors, pull-request authors and issue / pull-request conversation comments. Daily participant counts are deduplicated only inside one repository-day and are classified as first-party, automation or `other` according to policy.
+## Dashboard
 
-The cumulative actor registry is retained privately on the `github-repo-stats` branch. `first_seen` means the earliest observation retained by OrbitFabric Analytics for that login in that repository; it does not mean a new user or a new external contributor. Raw actor logins are not published to the dashboard.
+The presentation layer is a static mobile-friendly PWA deployed through Cloudflare Pages.
 
-See [docs/community-signals.md](docs/community-signals.md), [docs/community-lifecycle.md](docs/community-lifecycle.md) and [docs/community-participation.md](docs/community-participation.md).
+It presents:
 
-## Collector
+- ecosystem traffic pulse and daily deltas;
+- clone and view timelines;
+- curated event correlation with interactive chart guides;
+- community stock and stock deltas;
+- lifecycle, participation and development context aligned to the traffic comparison window;
+- repository-level community and engineering context;
+- traffic repository comparison and signal shape.
 
-Traffic collection uses [`jgehrcke/github-repo-stats`](https://github.com/jgehrcke/github-repo-stats), pinned to `v1.4.2`.
+Community stock may be newer than the latest complete traffic day. That difference is explicit in the dashboard instead of being silently merged into one time boundary.
 
-After the traffic jobs complete, the workflow also executes M3 community stock collection, stock comparison, development activity context, issue / pull-request lifecycle collection and repository participation collection.
+The current production URL is technically public but intentionally unlisted. Anti-indexing controls reduce discoverability but are not treated as security. Cloudflare Access remains an optional future hardening step.
 
-The workflow runs once per day and can also be started manually from GitHub Actions.
+See [docs/dashboard-architecture.md](docs/dashboard-architecture.md).
 
-## Required secret
+## Semantic boundaries
 
-The traffic collector needs one repository secret:
+Important interpretation rules:
+
+- GitHub Traffic unique values are repository-scoped and are not ecosystem-wide unique people.
+- Clone activity is technical-access evidence and may contain substantial first-party / automation contamination.
+- Stock deltas are state changes, not lifecycle event counts.
+- `other` participation means not classified as configured first-party or automation; it does not automatically mean external user or contributor.
+- Participation window totals are repository-day observations, not deduplicated people.
+- Development activity is contextual evidence, not traffic attribution.
+- Curated event proximity is correlation context, not proof of causation.
+
+## Automation
+
+`.github/workflows/collect-github-traffic.yml` runs daily and can also be started manually.
+
+The workflow:
+
+```text
+collects traffic
+    -> collects community / development / lifecycle / participation evidence
+    -> builds traffic normalization and rollups
+    -> builds dashboard payload
+    -> projects curated events
+    -> projects ecosystem context
+    -> persists datasets on github-repo-stats
+    -> assembles dashboard-site
+```
+
+## Secrets
+
+Required baseline secret:
 
 ```text
 GHRS_GITHUB_API_TOKEN
 ```
 
-Use a fine-grained personal access token with access to this analytics repository and to every repository where `collect: true`.
-
-Required repository permissions for the traffic baseline:
-
-```text
-Administration: Read-only
-Contents: Read and write
-```
-
-`Administration: Read-only` is required by GitHub's repository traffic endpoints. `Contents: Read and write` allows `github-repo-stats` to clone this private data repository and push snapshots and generated reports to the data and deployment branches.
-
-For a least-privilege setup, select only `FAROTECH/orbitfabric-analytics` plus the repositories currently enabled for collection. If another repository is enabled later, grant the token access to it as well.
-
-M3 can optionally use a separate secret:
+Optional M3-specific secret:
 
 ```text
 COMMUNITY_GITHUB_TOKEN
 ```
 
-If it is not configured, the collector reuses `GHRS_GITHUB_API_TOKEN`. Public community endpoints can fall back to anonymous access when the fine-grained token does not expose the required permission. A dedicated least-privilege community token can be introduced later if Discussions, review or reaction surfaces require a different permission profile.
+If the community-specific token is absent, public M3 collectors can reuse the traffic token and retain their existing anonymous fallback for public endpoints where appropriate.
 
-## Configuration
+## Deferred work
 
-- `config/repositories.yml`: authoritative repository inventory and collection / rollup policy.
-- `config/events.yml`: authoritative event timeline.
-- `config/event-taxonomy.yml`: event type, channel and confidence policy.
-- `config/community-signals.yml`: M3 community stock and comparison policy.
-- `config/development-activity.yml`: M3c development activity policy.
-- `config/community-lifecycle.yml`: M3d issue / pull-request lifecycle policy.
-- `config/community-participation.yml`: M3e repository participation and actor-classification policy.
-- `tools/build_repository_matrix.py`: validates repository configuration and emits the GitHub Actions matrix.
-- `analytics/events.py`: validates and normalizes event context for M2.
-- `analytics/community.py`: collects and retains repository-scoped M3 community snapshots.
-- `analytics/community_compare.py`: builds latest-vs-previous absolute stock comparisons.
-- `analytics/development_activity.py`: collects repository-scoped commit and workflow-run context.
-- `analytics/community_lifecycle.py`: collects issue and pull-request lifecycle events from GitHub timestamps.
-- `analytics/community_participation.py`: collects repository-scoped actor-bearing participation events and maintains the private first-observed actor registry.
+The first milestone deliberately postpones richer analytics surfaces such as:
 
-## Roadmap
+- longer rolling trend semantics beyond the current adjacent snapshots and common comparison window;
+- pull-request review participation;
+- GitHub Discussions;
+- reactions where event timestamps can be retained without reconstructing history from current stock;
+- richer contributor / participant analysis;
+- web and documentation analytics;
+- automated intelligence, anomaly detection and periodic reporting.
 
-See [ROADMAP.md](ROADMAP.md).
+These remain tracked in [ROADMAP.md](ROADMAP.md) rather than being required for the initial operational baseline.
