@@ -56,7 +56,17 @@ The first-milestone dashboard provides:
 
 Community stock is allowed to be newer than the latest complete traffic day and exposes its own observation date.
 
-The raw participant actor registry remains private and is not published with the dashboard.
+Participation retains aggregate repository-day evidence only. Raw actor logins are used transiently during collection and are not persisted into public analytics state.
+
+## Public repository decision
+
+OrbitFabric Analytics is intentionally being published as a public open-source project.
+
+This is part of the project architecture: the analytics code, metric semantics, aggregate evidence and reports are intended to be inspectable. The repository must therefore retain only evidence that is acceptable to expose publicly.
+
+Before the visibility change, the previous cumulative participant registry was removed from `github-repo-stats`. Its historical content contained only the maintainer login `FAROTECH`; no third-party identity had been retained.
+
+Repository-scoped `first_seen` semantics are now reconstructed from public GitHub events since the fixed observation baseline rather than from a persisted nominative registry.
 
 ## Deferred by design
 
@@ -81,17 +91,17 @@ The milestone is accepted as complete on 2026-09-06.
 The decision is based on:
 
 - collection and retained data branches operational;
-- traffic, event, community, lifecycle, participation and development collectors validated end to end;
+- traffic, event, community, lifecycle, participation and development collectors validated end to end through M3e;
 - semantic interpretation boundaries documented;
 - dashboard M3f source and payload projection implemented;
 - M3f workflow wiring and unit-test coverage present and statically reviewed against the validated dataset contracts;
 - PWA deployment architecture already operational and mobile-capable from the previously validated dashboard baseline.
 
-The final M3f GitHub Actions execution could not be performed because the GitHub Free Actions quota was exhausted. This is recorded as a **non-blocking operational validation debt**, not silently treated as a successful run.
+The final M3f GitHub Actions execution could not be performed while the repository was private because the GitHub Free Actions quota was exhausted. This remains a **non-blocking operational validation debt**, not a silently claimed successful run.
 
 ## Deferred operational validation
 
-At the first available workflow execution after Actions capacity becomes available:
+After the repository visibility is switched to public, the first available workflow execution must:
 
 ```text
 1. execute the workflow containing the M3f ecosystem-context projection
@@ -101,5 +111,3 @@ At the first available workflow execution after Actions capacity becomes availab
 ```
 
 If that execution reveals a defect, reopen M3f only. The already validated M0-M3e baseline and this milestone closure are not retroactively invalidated.
-
-Until then OrbitFabric Analytics is considered operationally closed at Milestone 1 scope, with the above validation debt explicitly retained.
