@@ -8,7 +8,7 @@ The dashboard intentionally uses an Italian technical style with familiar Englis
 
 ## Runtime model
 
-The dashboard is a static PWA. It has no application backend and never calls the private GitHub repository or GitHub API from the browser.
+The dashboard is a static PWA. It has no application backend and never calls GitHub APIs from the browser.
 
 Its only analytics input is:
 
@@ -31,7 +31,7 @@ LIFECYCLE
 issue and pull-request open / close / merge events
 
 PARTICIPATION
-repository-scoped actor-bearing activity and first-observed records
+repository-scoped aggregate actor-bearing activity
 
 DEVELOPMENT CONTEXT
 commits / workflow runs
@@ -61,7 +61,7 @@ data/.gitignore
 
 Charts are rendered with Chart.js. Metric meaning is not implemented in JavaScript; the frontend only presents data produced by the analytics layer.
 
-The raw participation actor registry is intentionally not copied into the deployable dashboard. Only generated aggregate evidence enters `dashboard_data.json`.
+Participation actor logins are not retained or copied into the deployable dashboard. Only aggregate evidence enters `dashboard_data.json`.
 
 ## Local preview
 
@@ -72,11 +72,11 @@ Local preview is optional and intended only for development. Copy a generated `d
 The current deployment path is:
 
 ```text
-main
+public main
     dashboard source
 
-+ github-repo-stats
-    generated dashboard_data.json
++ public github-repo-stats
+    generated public-safe dashboard_data.json
 
         ↓ GitHub Actions
 
