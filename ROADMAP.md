@@ -156,22 +156,36 @@ M3c development activity context:
 - [x] First automated development-activity backfill validated end to end.
 - [x] Initial development context reviewed against known high-clone days.
 
+M3d issue / pull-request lifecycle:
+
+- [x] Lifecycle events explicitly separated from stock deltas.
+- [x] Lifecycle policy defined in `config/community-lifecycle.yml`.
+- [x] Initial scope aligned with the six official repositories.
+- [x] Rolling 21-day lifecycle recollection window defined.
+- [x] Daily lifecycle contract defined for issue open/close and pull-request open/merge/close-unmerged events.
+- [x] Pull requests excluded from issue lifecycle counts despite GitHub issues API overlap.
+- [x] `analytics/community_lifecycle.py` implemented with idempotent repository-day history merging.
+- [x] Lifecycle unit coverage added.
+- [x] Post-collection generation of `analytics/community_lifecycle_daily.csv` configured.
+- [ ] First automated lifecycle backfill validated end to end.
+- [ ] Initial lifecycle evidence reviewed across the retained traffic window.
+
 Planned M3 increments:
 
 - [ ] Rolling trend semantics beyond adjacent observed snapshots.
-- [ ] Event-oriented issue lifecycle signals.
-- [ ] Event-oriented pull-request lifecycle signals.
 - [ ] Contributor arrival / participation signals without ecosystem-wide identity assumptions.
 - [ ] GitHub Discussions signals.
 - [ ] Comments and reactions where useful.
 - [ ] Community signals projected into the dashboard.
-- [ ] Cross-reading of traffic, community, development context and curated events.
+- [ ] Cross-reading of traffic, community, lifecycle, development context and curated events.
 
 A stock change is not automatically a count of new events. For example, an open-issue delta can be affected by both issue creation and issue closure between snapshots. Community metrics remain repository-scoped unless an explicitly deduplicated semantic is introduced later.
 
 The first retained community baseline is dated 2026-09-05. The first cross-date comparison, 2026-09-05 to 2026-09-06, is valid and currently shows zero stock changes across all six official repositories.
 
 Development activity context is explanatory evidence only. High first-party commit or workflow-run activity can make first-party/automation contamination more plausible, but does not prove that those activities caused GitHub traffic. The initial clone-spike review is retained in `reports/development-context/2026-09-02-to-04-clone-spikes.md`.
+
+Lifecycle signals are direct counts of observed GitHub timestamps, not user counts. An issue or pull request may legitimately contribute to more than one lifecycle class over time or on the same day.
 
 ## M4 - Web Analytics
 
