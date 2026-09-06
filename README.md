@@ -29,11 +29,11 @@ The current dashboard provides:
 
 **M2 - Event Correlation: complete**
 
-Curated releases, outreach and upstream discussion events are normalized, projected into the dashboard and inspectable against traffic through a mobile-first interactive event rail.
+Curated releases, outreach, upstream discussions and relevant community-contribution events are normalized, projected into the dashboard and inspectable against traffic through a mobile-first interactive event rail.
 
 **M3 - Community Signals: in progress**
 
-M3 now retains daily repository-scoped GitHub community stock, latest-vs-previous stock comparisons, development activity context, and direct issue / pull-request lifecycle event counts for the official OrbitFabric repositories.
+M3 now retains daily repository-scoped GitHub community stock, latest-vs-previous stock comparisons, development activity context, direct issue / pull-request lifecycle events, and repository-scoped participation evidence for the official OrbitFabric repositories.
 
 ## Architecture
 
@@ -117,6 +117,18 @@ analytics/community_lifecycle.py
 analytics/community_lifecycle_daily.csv
 ```
 
+```text
+config/community-participation.yml
+        |
+        v
+analytics/community_participation.py
+        |
+        +--> analytics/community_participation_daily.csv
+        |
+        +--> analytics/community_participants.json
+             private repository-scoped actor registry
+```
+
 `main` contains source code, configuration, documentation and dashboard source.
 
 `github-repo-stats` contains retained history and generated analytics datasets.
@@ -184,13 +196,17 @@ prs_closed_unmerged
 
 These lifecycle signals are not inferred from stock changes. A single issue or pull request may contribute to more than one event class over its lifetime, including two classes on the same day.
 
-See [docs/community-signals.md](docs/community-signals.md) and [docs/community-lifecycle.md](docs/community-lifecycle.md).
+M3e begins repository-scoped participation analysis with issue authors, pull-request authors and issue / pull-request conversation comments. Daily participant counts are deduplicated only inside one repository-day and are classified as first-party, automation or `other` according to policy.
+
+The cumulative actor registry is retained privately on the `github-repo-stats` branch. `first_seen` means the earliest observation retained by OrbitFabric Analytics for that login in that repository; it does not mean a new user or a new external contributor. Raw actor logins are not published to the dashboard.
+
+See [docs/community-signals.md](docs/community-signals.md), [docs/community-lifecycle.md](docs/community-lifecycle.md) and [docs/community-participation.md](docs/community-participation.md).
 
 ## Collector
 
 Traffic collection uses [`jgehrcke/github-repo-stats`](https://github.com/jgehrcke/github-repo-stats), pinned to `v1.4.2`.
 
-After the traffic jobs complete, the workflow also executes M3 community stock collection, stock comparison, development activity context, and issue / pull-request lifecycle collection.
+After the traffic jobs complete, the workflow also executes M3 community stock collection, stock comparison, development activity context, issue / pull-request lifecycle collection and repository participation collection.
 
 The workflow runs once per day and can also be started manually from GitHub Actions.
 
@@ -221,7 +237,7 @@ M3 can optionally use a separate secret:
 COMMUNITY_GITHUB_TOKEN
 ```
 
-If it is not configured, the collector reuses `GHRS_GITHUB_API_TOKEN`. Public community endpoints can fall back to anonymous access when the fine-grained token does not expose the required permission. A dedicated least-privilege community token can be introduced later when M3 expands to discussions, comments and reactions.
+If it is not configured, the collector reuses `GHRS_GITHUB_API_TOKEN`. Public community endpoints can fall back to anonymous access when the fine-grained token does not expose the required permission. A dedicated least-privilege community token can be introduced later if Discussions, review or reaction surfaces require a different permission profile.
 
 ## Configuration
 
@@ -231,12 +247,14 @@ If it is not configured, the collector reuses `GHRS_GITHUB_API_TOKEN`. Public co
 - `config/community-signals.yml`: M3 community stock and comparison policy.
 - `config/development-activity.yml`: M3c development activity policy.
 - `config/community-lifecycle.yml`: M3d issue / pull-request lifecycle policy.
+- `config/community-participation.yml`: M3e repository participation and actor-classification policy.
 - `tools/build_repository_matrix.py`: validates repository configuration and emits the GitHub Actions matrix.
 - `analytics/events.py`: validates and normalizes event context for M2.
 - `analytics/community.py`: collects and retains repository-scoped M3 community snapshots.
 - `analytics/community_compare.py`: builds latest-vs-previous absolute stock comparisons.
 - `analytics/development_activity.py`: collects repository-scoped commit and workflow-run context.
 - `analytics/community_lifecycle.py`: collects issue and pull-request lifecycle events from GitHub timestamps.
+- `analytics/community_participation.py`: collects repository-scoped actor-bearing participation events and maintains the private first-observed actor registry.
 
 ## Roadmap
 
