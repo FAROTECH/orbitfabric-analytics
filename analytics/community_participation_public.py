@@ -15,13 +15,23 @@ from pathlib import Path
 
 import yaml
 
-from analytics.community_participation import (
-    GitHubApi,
-    _empty_registry,
-    build_repository_rows,
-    load_policy,
-    merge_and_write,
-)
+try:
+    from analytics.community_participation import (
+        GitHubApi,
+        _empty_registry,
+        build_repository_rows,
+        load_policy,
+        merge_and_write,
+    )
+except ModuleNotFoundError:
+    # Direct script execution, e.g. `python app/analytics/community_participation_public.py`.
+    from community_participation import (  # type: ignore
+        GitHubApi,
+        _empty_registry,
+        build_repository_rows,
+        load_policy,
+        merge_and_write,
+    )
 
 
 def load_observation_start(policy_path: Path) -> date:
