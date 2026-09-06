@@ -5,3 +5,9 @@ date,repository_id,repository,category,stars_total,forks_total,open_issues_total
 2026-09-05,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,0,0,0,0,1
 2026-09-05,reference-mission,FAROTECH/orbitfabric-reference-mission,product,0,0,0,0,1
 2026-09-05,studio,FAROTECH/orbitfabric-studio,product,0,0,2,0,2
+2026-09-06,core,FAROTECH/orbitfabric,core,6,1,3,0,1
+2026-09-06,fprime-adapter,FAROTECH/orbitfabric-fprime-adapter,adapter,0,0,0,0,1
+2026-09-06,openc3-cosmos-adapter,FAROTECH/orbitfabric-openc3-cosmos-adapter,adapter,0,0,0,0,1
+2026-09-06,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,0,0,0,0,1
+2026-09-06,reference-mission,FAROTECH/orbitfabric-reference-mission,product,0,0,0,0,1
+2026-09-06,studio,FAROTECH/orbitfabric-studio,product,0,0,2,0,2
