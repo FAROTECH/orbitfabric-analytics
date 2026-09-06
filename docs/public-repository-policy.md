@@ -1,14 +1,16 @@
-# Public repository policy
+# Repository visibility and public-safe evidence policy
 
 Status: accepted on 2026-09-06.
 
 ## Decision
 
-`FAROTECH/orbitfabric-analytics` is an intentionally public OrbitFabric project.
+`FAROTECH/orbitfabric-analytics` retains **public-safe evidence by design**.
 
-The decision is architectural, not merely operational. Analytics is part of the open ecosystem and its collection model, metric semantics, interpretation boundaries and dashboard tooling are intended to be inspectable.
+Repository visibility is an operational choice and may change between public and private without changing the analytics data contract. The project must therefore remain safe to expose even when a public interval is used for validation, collaboration or GitHub Actions execution.
 
-## Public evidence boundary
+The public interval used during Operational Milestone 1 is not a permanent commitment that the repository must remain public.
+
+## Public-safe evidence boundary
 
 The repository may retain:
 
@@ -32,13 +34,15 @@ confidential OrbitFabric information
 private third-party data
 ```
 
+This boundary remains in force even while the repository is private. That keeps future public intervals reversible without another data migration.
+
 ## Participation decision
 
 The original M3e implementation used a cumulative repository-scoped actor registry to preserve `first_seen` semantics.
 
-Before public publication, that retained registry was removed. At the time of removal it contained only the maintainer login `FAROTECH`; no third-party identity had been retained.
+Before the first public interval, that retained registry was removed. At the time of removal it contained only the maintainer login `FAROTECH`; no third-party identity had been retained.
 
-The public-safe design now uses:
+The current design uses:
 
 ```text
 fixed observation baseline
@@ -52,19 +56,23 @@ aggregate repository-day participation metrics
 
 No raw login registry is persisted.
 
-The current observation baseline is configured in:
+The observation baseline is configured in:
 
 ```text
 config/community-participation.yml
 ```
 
+A private persistent participant registry may be reconsidered later only if event reconstruction becomes materially inefficient and repository visibility is intentionally kept private. It is not required for the current milestone or current analytics semantics.
+
 ## Branch policy
 
-All branches of a public repository must be assumed public.
+When the repository is public, all branches must be assumed public.
+
+When the repository is private, branches may be access-controlled by GitHub, but Analytics still applies the same public-safe retention policy:
 
 ```text
 main
-    public source, policy, reports and dashboard source
+    source, policy, reports and dashboard source
 
 github-repo-stats
     public-safe retained evidence and generated analytics
@@ -73,7 +81,7 @@ dashboard-site
     public-safe deployable dashboard artifact
 ```
 
-No branch is treated as a confidentiality boundary.
+Repository privacy is therefore not relied upon as the sole protection for retained analytics data.
 
 ## Secrets boundary
 
@@ -92,8 +100,14 @@ but secret values must never be written to source, datasets, logs intentionally 
 
 Repository visibility and dashboard discoverability are separate decisions.
 
-The repository is public by project policy. The Cloudflare Pages dashboard remains public but intentionally unlisted, with anti-indexing controls. `noindex` is a discoverability control, not authentication.
+The Cloudflare Pages dashboard remains public but intentionally unlisted, with anti-indexing controls. `noindex` is a discoverability control, not authentication.
+
+## Licensing
+
+Repository visibility does not by itself imply an open-source license grant.
+
+No LICENSE is introduced merely because the repository is temporarily public. Licensing remains a separate future decision if external reuse or redistribution of Analytics is intentionally offered.
 
 ## Future changes
 
-Any future analytics feature that introduces identity-bearing or otherwise sensitive retained state must define its public-data boundary before implementation.
+Any future analytics feature that introduces identity-bearing or otherwise sensitive retained state must define its exposure boundary before implementation.
