@@ -86,3 +86,16 @@ events:
     confidence: confirmed
     label: OrbitFabric Analytics baseline collection begins
     notes: Internal observability milestone; not an explanatory external event.
+
+  - id: openc3-fprime-qualified-array-parser-issue
+    date: 2026-09-07
+    type: upstream-discussion
+    channel: github
+    scope:
+      - reference-mission
+      - fprime-adapter
+      - ecosystem
+    confidence: confirmed
+    label: OpenC3 F Prime upstream issue on qualified enum and struct array parsing
+    url: https://github.com/OpenC3/openc3-cosmos-fprime/issues/1
+    notes: Evidence-led upstream issue filed after the R1 F Prime to OpenC3 integration exposed a repeatable KeyError when the plugin parser consumes arrays whose elementType is a qualified enum or struct. The report includes native F Prime provenance, discriminating controls, minimal standalone reproducers, exact parser boundary, and retained public CI evidence. OrbitFabric is provenance for the integration exercise, not the requested behavior.
