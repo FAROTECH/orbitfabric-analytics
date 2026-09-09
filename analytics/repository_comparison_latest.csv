@@ -1,7 +1,7 @@
 window_start,window_end,window_days,repository_id,repository,category,days_expected,days_available,coverage_pct,coverage_complete,clones_total,views_total,clones_unique_repo_day_sum,views_unique_repo_day_sum,clone_active_days,view_active_days,clone_only_days,view_only_days,mixed_days,inactive_days,clones_per_repo_day_unique,views_per_repo_day_unique,clone_to_view_ratio
-2026-08-25,2026-09-07,14,core,FAROTECH/orbitfabric,core,14,14,100.0,True,6289,161,2109,14,14,10,4,0,10,0,2.98,11.5,39.06
-2026-08-25,2026-09-07,14,studio,FAROTECH/orbitfabric-studio,product,14,14,100.0,True,726,88,216,5,14,5,9,0,5,0,3.36,17.6,8.25
-2026-08-25,2026-09-07,14,reference-mission,FAROTECH/orbitfabric-reference-mission,product,14,14,100.0,True,410,84,114,5,9,5,5,1,4,4,3.6,16.8,4.88
-2026-08-25,2026-09-07,14,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,14,14,100.0,True,618,16,70,3,6,1,5,0,1,8,8.83,5.33,38.62
-2026-08-25,2026-09-07,14,openc3-cosmos-adapter,FAROTECH/orbitfabric-openc3-cosmos-adapter,adapter,14,14,100.0,True,236,9,20,1,5,1,4,0,1,9,11.8,9.0,26.22
-2026-08-25,2026-09-07,14,fprime-adapter,FAROTECH/orbitfabric-fprime-adapter,adapter,14,14,100.0,True,512,44,43,3,5,2,3,0,2,9,11.91,14.67,11.64
+2026-08-26,2026-09-08,14,core,FAROTECH/orbitfabric,core,14,14,100.0,True,6601,171,2150,16,14,11,3,0,11,0,3.07,10.69,38.6
+2026-08-26,2026-09-08,14,studio,FAROTECH/orbitfabric-studio,product,14,14,100.0,True,968,93,266,7,14,6,8,0,6,0,3.64,13.29,10.41
+2026-08-26,2026-09-08,14,reference-mission,FAROTECH/orbitfabric-reference-mission,product,14,14,100.0,True,465,85,135,6,10,6,5,1,5,3,3.44,14.17,5.47
+2026-08-26,2026-09-08,14,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,14,14,100.0,True,659,16,85,3,7,1,6,0,1,7,7.75,5.33,41.19
+2026-08-26,2026-09-08,14,openc3-cosmos-adapter,FAROTECH/orbitfabric-openc3-cosmos-adapter,adapter,14,14,100.0,True,260,10,26,2,6,2,4,0,2,8,10.0,5.0,26.0
+2026-08-26,2026-09-08,14,fprime-adapter,FAROTECH/orbitfabric-fprime-adapter,adapter,14,14,100.0,True,514,45,44,4,6,3,3,0,3,8,11.68,11.25,11.42
