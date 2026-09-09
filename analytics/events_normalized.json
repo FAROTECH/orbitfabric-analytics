@@ -91,6 +91,35 @@
       ],
       "type": "upstream-discussion",
       "url": "https://community.libre.space/t/phasma-keeping-xtce-packet-layouts-aligned-with-c-serializers/15277"
+    },
+    {
+      "channel": "github",
+      "confidence": "confirmed",
+      "date": "2026-09-07",
+      "id": "edslib-derived-dispatch-semantics-issue",
+      "label": "NASA EdsLib upstream issue on unmatched-derived position-zero dispatch semantics",
+      "notes": "Evidence-led semantics clarification filed after the EDS-cFS P3 characterization showed that an undefined Function Code can fall through an unmatched derived-type lookup to dispatch position zero. The report includes exact frozen cFS/cFE/EdsLib baselines, FC 0 and FC 1 positive controls, the FC 127 negative probe, exact packet bytes, a causal pressure test, a genuinely non-derived NASA SAMPLE_APP control, pre-Draco historical context, and a curated evidence bundle. It deliberately does not classify the behavior as a bug pending maintainer clarification.",
+      "scope": [
+        "eds-cfs-adapter",
+        "ecosystem"
+      ],
+      "type": "upstream-discussion",
+      "url": "https://github.com/nasa/EdsLib/issues/120"
+    },
+    {
+      "channel": "github",
+      "confidence": "confirmed",
+      "date": "2026-09-07",
+      "id": "openc3-fprime-qualified-array-parser-issue",
+      "label": "OpenC3 F Prime upstream issue on qualified enum and struct array parsing",
+      "notes": "Evidence-led upstream issue filed after the R1 F Prime to OpenC3 integration exposed a repeatable KeyError when the plugin parser consumes arrays whose elementType is a qualified enum or struct. The report includes native F Prime provenance, discriminating controls, minimal standalone reproducers, exact parser boundary, and retained public CI evidence. OrbitFabric is provenance for the integration exercise, not the requested behavior.",
+      "scope": [
+        "reference-mission",
+        "fprime-adapter",
+        "ecosystem"
+      ],
+      "type": "upstream-discussion",
+      "url": "https://github.com/OpenC3/openc3-cosmos-fprime/issues/1"
     }
   ],
   "schema_version": 1

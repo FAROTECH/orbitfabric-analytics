@@ -131,3 +131,15 @@ date,repository_id,repository,category,issue_author_events,pr_author_events,comm
 2026-09-07,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,0,0,0,0,0,0,0,0,0
 2026-09-07,reference-mission,FAROTECH/orbitfabric-reference-mission,product,0,1,0,1,1,0,0,0,0
 2026-09-07,studio,FAROTECH/orbitfabric-studio,product,0,0,0,0,0,0,0,0,0
+2026-09-08,core,FAROTECH/orbitfabric,core,0,2,0,1,1,0,0,0,0
+2026-09-08,fprime-adapter,FAROTECH/orbitfabric-fprime-adapter,adapter,0,0,0,0,0,0,0,0,0
+2026-09-08,openc3-cosmos-adapter,FAROTECH/orbitfabric-openc3-cosmos-adapter,adapter,0,1,0,1,1,0,0,0,0
+2026-09-08,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,0,1,0,1,1,0,0,0,0
+2026-09-08,reference-mission,FAROTECH/orbitfabric-reference-mission,product,0,1,0,1,1,0,0,0,0
+2026-09-08,studio,FAROTECH/orbitfabric-studio,product,0,7,0,1,1,0,0,0,0
+2026-09-09,core,FAROTECH/orbitfabric,core,0,0,0,0,0,0,0,0,0
+2026-09-09,fprime-adapter,FAROTECH/orbitfabric-fprime-adapter,adapter,0,0,0,0,0,0,0,0,0
+2026-09-09,openc3-cosmos-adapter,FAROTECH/orbitfabric-openc3-cosmos-adapter,adapter,0,0,0,0,0,0,0,0,0
+2026-09-09,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,0,0,0,0,0,0,0,0,0
+2026-09-09,reference-mission,FAROTECH/orbitfabric-reference-mission,product,0,0,0,0,0,0,0,0,0
+2026-09-09,studio,FAROTECH/orbitfabric-studio,product,0,0,0,0,0,0,0,0,0
