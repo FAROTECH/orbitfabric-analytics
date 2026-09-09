@@ -32,6 +32,14 @@ jobs:
       - name: Install configuration dependencies
         run: python -m pip install --disable-pip-version-check -r requirements.txt
 
+      - name: Validate analytics configuration
+        run: |
+          python analytics/events.py \
+            --events config/events.yml \
+            --taxonomy config/event-taxonomy.yml \
+            --repositories config/repositories.yml \
+            --output /tmp/events_normalized.json
+
       - name: Verify collector token
         env:
           GHRS_TOKEN: ${{ secrets.GHRS_GITHUB_API_TOKEN }}
