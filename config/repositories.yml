@@ -47,6 +47,12 @@ repositories:
     collect: true
     include_in_rollups: true
 
+  - id: eds-cfs-adapter
+    repo: FAROTECH/orbitfabric-eds-cfs-adapter
+    category: adapter
+    collect: true
+    include_in_rollups: false
+
   - id: adapter-template
     repo: FAROTECH/orbitfabric-adapter-template
     category: ecosystem
