@@ -1,7 +1,7 @@
 repository_id,repository,category,current_date,previous_date,snapshot_gap_days,comparable,stars_total,stars_total_delta,forks_total,forks_total_delta,open_issues_total,open_issues_total_delta,open_pull_requests_total,open_pull_requests_total_delta,contributors_repo_count,contributors_repo_count_delta
-core,FAROTECH/orbitfabric,core,2026-09-11,2026-09-10,1,true,7,0,1,0,3,0,0,0,1,0
-fprime-adapter,FAROTECH/orbitfabric-fprime-adapter,adapter,2026-09-11,2026-09-10,1,true,0,0,0,0,0,0,0,0,1,0
-openc3-cosmos-adapter,FAROTECH/orbitfabric-openc3-cosmos-adapter,adapter,2026-09-11,2026-09-10,1,true,1,0,0,0,0,0,0,-1,1,0
-openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,2026-09-11,2026-09-10,1,true,0,0,0,0,0,0,0,0,1,0
-reference-mission,FAROTECH/orbitfabric-reference-mission,product,2026-09-11,2026-09-10,1,true,1,0,0,0,0,0,0,0,2,0
-studio,FAROTECH/orbitfabric-studio,product,2026-09-11,2026-09-10,1,true,0,0,0,0,2,0,1,0,2,0
+core,FAROTECH/orbitfabric,core,2026-09-12,2026-09-11,1,true,7,0,1,0,3,0,0,0,1,0
+fprime-adapter,FAROTECH/orbitfabric-fprime-adapter,adapter,2026-09-12,2026-09-11,1,true,0,0,0,0,0,0,0,0,1,0
+openc3-cosmos-adapter,FAROTECH/orbitfabric-openc3-cosmos-adapter,adapter,2026-09-12,2026-09-11,1,true,1,0,0,0,0,0,0,0,1,0
+openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,2026-09-12,2026-09-11,1,true,0,0,0,0,0,0,0,0,1,0
+reference-mission,FAROTECH/orbitfabric-reference-mission,product,2026-09-12,2026-09-11,1,true,1,0,0,0,0,0,0,0,2,0
+studio,FAROTECH/orbitfabric-studio,product,2026-09-12,2026-09-11,1,true,0,0,0,0,2,0,0,-1,3,1

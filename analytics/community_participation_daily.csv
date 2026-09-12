@@ -155,3 +155,9 @@ date,repository_id,repository,category,issue_author_events,pr_author_events,comm
 2026-09-11,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,0,0,0,0,0,0,0,0,0
 2026-09-11,reference-mission,FAROTECH/orbitfabric-reference-mission,product,0,1,0,1,1,0,0,0,0
 2026-09-11,studio,FAROTECH/orbitfabric-studio,product,0,2,0,1,1,0,0,0,0
+2026-09-12,core,FAROTECH/orbitfabric,core,0,0,0,0,0,0,0,0,0
+2026-09-12,fprime-adapter,FAROTECH/orbitfabric-fprime-adapter,adapter,0,0,0,0,0,0,0,0,0
+2026-09-12,openc3-cosmos-adapter,FAROTECH/orbitfabric-openc3-cosmos-adapter,adapter,0,0,0,0,0,0,0,0,0
+2026-09-12,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,0,0,0,0,0,0,0,0,0
+2026-09-12,reference-mission,FAROTECH/orbitfabric-reference-mission,product,0,0,0,0,0,0,0,0,0
+2026-09-12,studio,FAROTECH/orbitfabric-studio,product,0,0,0,0,0,0,0,0,0
