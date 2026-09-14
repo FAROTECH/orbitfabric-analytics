@@ -111,3 +111,50 @@ events:
     label: NASA EdsLib upstream issue on unmatched-derived position-zero dispatch semantics
     url: https://github.com/nasa/EdsLib/issues/120
     notes: Evidence-led semantics clarification filed after the EDS-cFS P3 characterization showed that an undefined Function Code can fall through an unmatched derived-type lookup to dispatch position zero. The report includes exact frozen cFS/cFE/EdsLib baselines, FC 0 and FC 1 positive controls, the FC 127 negative probe, exact packet bytes, a causal pressure test, a genuinely non-derived NASA SAMPLE_APP control, pre-Draco historical context, and a curated evidence bundle. It deliberately does not classify the behavior as a bug pending maintainer clarification.
+
+  - id: cfs-osal-mqueue-community-contribution
+    date: 2026-09-10
+    type: community-contribution
+    channel: github
+    scope:
+      - eds-cfs-adapter
+      - ecosystem
+    confidence: confirmed
+    label: NASA cFS contribution on residual OSAL CI message-queue limits
+    url: https://github.com/nasa/cFS/pull/1117#issuecomment-5621630126
+    notes: Technical upstream contribution tracing the residual cFS native test failure to POSIX message-queue limits already handled by OSAL standalone CI, with a concrete workflow-level sysctl alignment proposal. The contribution itself is not an OrbitFabric change; its relevance is through cFS integration expertise and the EDS-cFS ecosystem.
+
+  - id: openobsw-s9-runtime-upstream-discussion
+    date: 2026-09-11
+    type: upstream-discussion
+    channel: github
+    scope:
+      - openobsw-opensvf-adapter
+      - ecosystem
+    confidence: confirmed
+    label: OpenOBSW S9 runtime evidence on missing TC(9,128) route
+    url: https://github.com/lipofefeyt/openobsw/issues/73#issuecomment-5634099678
+    notes: Bounded OpenSVF/OpenOBSW runtime experiment showed TC(9,128) reaching the real OpenOBSW dispatcher with no route, while TC(17,1) passed as a positive control. The evidence separated simulator-side OBT from real-binary OBT effects and led to maintainer confirmation that S9 belongs in the real OpenOBSW scope, with S11/S12/S19 split for separate evaluation.
+
+  - id: fprime-xtce-installed-validation-community-contribution
+    date: 2026-09-11
+    type: community-contribution
+    channel: github
+    scope:
+      - fprime-adapter
+      - ecosystem
+    confidence: confirmed
+    label: F Prime XTCE upstream PR for installed-package validation and CI
+    url: https://github.com/fprime-community/fprime-xtce/pull/7
+    notes: Upstream code contribution adds installed-package XTCE schema lookup, post-generation XSD validation, regression coverage and Python 3.8/3.11 CI. The validated candidate passed 14/14 tests on each supported Python endpoint. The contribution is upstream F Prime tooling work rather than an OrbitFabric product change.
+
+  - id: fprime-baremetal-tlmlinearchan-deinit-community-contribution
+    date: 2026-09-14
+    type: community-contribution
+    channel: github
+    scope:
+      - ecosystem
+    confidence: confirmed
+    label: F Prime bare-metal upstream PR for TlmLinearChan allocator-safe deinit
+    url: https://github.com/fprime-community/fprime-baremetal/pull/48
+    notes: Upstream code contribution moves allocator-dependent TlmLinearChan cleanup from the C++ destructor into the explicit F Prime deinit lifecycle, removes the destruction-order workaround, and adds a tracking-allocator regression proving one deallocation during deinit and none during component destruction. Real local validation passed the complete TlmLinearChan 5/5 suite and the broader relevant 3/3 regression set.
