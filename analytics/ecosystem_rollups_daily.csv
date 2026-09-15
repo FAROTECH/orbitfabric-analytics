@@ -91,3 +91,7 @@ date,scope_type,scope_id,repositories_expected,repositories_available,coverage_p
 2026-09-12,category,adapter,3,3,100.0,True,16,0,10,0
 2026-09-12,category,core,1,1,100.0,True,14,0,6,0
 2026-09-12,category,product,2,2,100.0,True,60,0,25,0
+2026-09-13,ecosystem,ecosystem,6,6,100.0,True,21,0,17,0
+2026-09-13,category,adapter,3,3,100.0,True,4,0,4,0
+2026-09-13,category,core,1,1,100.0,True,3,0,3,0
+2026-09-13,category,product,2,2,100.0,True,14,0,10,0
