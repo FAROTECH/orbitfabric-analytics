@@ -158,3 +158,15 @@ events:
     label: F Prime bare-metal upstream PR for TlmLinearChan allocator-safe deinit
     url: https://github.com/fprime-community/fprime-baremetal/pull/48
     notes: Upstream code contribution moves allocator-dependent TlmLinearChan cleanup from the C++ destructor into the explicit F Prime deinit lifecycle, removes the destruction-order workaround, and adds a tracking-allocator regression proving one deallocation during deinit and none during component destruction. Real local validation passed the complete TlmLinearChan 5/5 suite and the broader relevant 3/3 regression set.
+
+  - id: cfs-osal-mqueue-upstream-incorporation
+    date: 2026-09-15
+    type: community-contribution
+    channel: github
+    scope:
+      - eds-cfs-adapter
+      - ecosystem
+    confidence: confirmed
+    label: NASA cFS incorporates FAROTECH OSAL message-queue CI proposal
+    url: https://github.com/nasa/cFS/pull/1117
+    notes: NASA merged cFS PR #1117 with the workflow container settings proposed in the earlier FAROTECH technical contribution: retain the existing nofile ulimit and add fs.mqueue.queues_max=512 plus fs.mqueue.msg_max=512. This records upstream incorporation of a concrete contribution, not authorship of the NASA PR. The merge also closed cFS issue #1116.
