@@ -182,3 +182,15 @@ events:
     label: OpenOBSW incorporates orbital-aliasing evidence into B-dot fix and validation handoff
     url: https://github.com/lipofefeyt/openobsw/pull/81
     notes: OpenOBSW merged PR #81 after the earlier FAROTECH OpenSVF/OpenOBSW experiment isolated orbit-induced magnetic-field gradient aliasing under opensvf-kde OrbitalEnvironment. The merged fix adds a B-dot dB/dt high-pass filter, and its repository handoff document carries forward the experiment baseline of approximately 4.11e-08 T/s and 4.11e-04 Am2 while defining the remaining opensvf-kde validation. This records upstream incorporation of concrete diagnostic evidence and validation guidance, not authorship of the OpenOBSW PR.
+
+  - id: fprime-python-model-documentation-upstream-discussion
+    date: 2026-09-16
+    type: upstream-discussion
+    channel: github
+    scope:
+      - fprime-adapter
+      - ecosystem
+    confidence: confirmed
+    label: F Prime Python Model discussion on semantic-model navigation documentation
+    url: https://github.com/fprime-community/fprime-python-model/issues/23#issuecomment-5699801029
+    notes: Evidence-based contribution from the public OrbitFabric F Prime semantic-reconciliation example identifies concrete model-navigation friction around ast_id_map versus annotated_ast_id_map, component semantic maps, source provenance and telemetry packet membership, and offers a focused documentation PR if maintainers consider the direction useful.
