@@ -170,3 +170,15 @@ events:
     label: NASA cFS incorporates FAROTECH OSAL message-queue CI proposal
     url: https://github.com/nasa/cFS/pull/1117
     notes: NASA merged cFS PR #1117 with the workflow container settings proposed in the earlier FAROTECH technical contribution: retain the existing nofile ulimit and add fs.mqueue.queues_max=512 plus fs.mqueue.msg_max=512. This records upstream incorporation of a concrete contribution, not authorship of the NASA PR. The merge also closed cFS issue #1116.
+
+  - id: openobsw-bdot-orbital-aliasing-upstream-incorporation
+    date: 2026-09-15
+    type: community-contribution
+    channel: github
+    scope:
+      - openobsw-opensvf-adapter
+      - ecosystem
+    confidence: confirmed
+    label: OpenOBSW incorporates orbital-aliasing evidence into B-dot fix and validation handoff
+    url: https://github.com/lipofefeyt/openobsw/pull/81
+    notes: OpenOBSW merged PR #81 after the earlier FAROTECH OpenSVF/OpenOBSW experiment isolated orbit-induced magnetic-field gradient aliasing under opensvf-kde OrbitalEnvironment. The merged fix adds a B-dot dB/dt high-pass filter, and its repository handoff document carries forward the experiment baseline of approximately 4.11e-08 T/s and 4.11e-04 Am2 while defining the remaining opensvf-kde validation. This records upstream incorporation of concrete diagnostic evidence and validation guidance, not authorship of the OpenOBSW PR.
