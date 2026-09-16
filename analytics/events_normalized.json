@@ -175,6 +175,48 @@
       ],
       "type": "community-contribution",
       "url": "https://github.com/fprime-community/fprime-baremetal/pull/48"
+    },
+    {
+      "channel": "github",
+      "confidence": "confirmed",
+      "date": "2026-09-15",
+      "id": "cfs-osal-mqueue-upstream-incorporation",
+      "label": "NASA cFS incorporates FAROTECH OSAL message-queue CI proposal",
+      "notes": "NASA merged cFS PR",
+      "scope": [
+        "eds-cfs-adapter",
+        "ecosystem"
+      ],
+      "type": "community-contribution",
+      "url": "https://github.com/nasa/cFS/pull/1117"
+    },
+    {
+      "channel": "github",
+      "confidence": "confirmed",
+      "date": "2026-09-15",
+      "id": "openobsw-bdot-orbital-aliasing-upstream-incorporation",
+      "label": "OpenOBSW incorporates orbital-aliasing evidence into B-dot fix and validation handoff",
+      "notes": "OpenOBSW merged PR",
+      "scope": [
+        "openobsw-opensvf-adapter",
+        "ecosystem"
+      ],
+      "type": "community-contribution",
+      "url": "https://github.com/lipofefeyt/openobsw/pull/81"
+    },
+    {
+      "channel": "github",
+      "confidence": "confirmed",
+      "date": "2026-09-16",
+      "id": "fprime-python-model-documentation-upstream-discussion",
+      "label": "F Prime Python Model discussion on semantic-model navigation documentation",
+      "notes": "Evidence-based contribution from the public OrbitFabric F Prime semantic-reconciliation example identifies concrete model-navigation friction around ast_id_map versus annotated_ast_id_map, component semantic maps, source provenance and telemetry packet membership, and offers a focused documentation PR if maintainers consider the direction useful.",
+      "scope": [
+        "fprime-adapter",
+        "ecosystem"
+      ],
+      "type": "upstream-discussion",
+      "url": "https://github.com/fprime-community/fprime-python-model/issues/23#issuecomment-5699801029"
     }
   ],
   "schema_version": 1

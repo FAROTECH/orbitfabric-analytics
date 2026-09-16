@@ -179,3 +179,9 @@ date,repository_id,repository,category,default_branch,commits_total,first_party_
 2026-09-15,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,main,0,0,0,0,0,0,0,0
 2026-09-15,reference-mission,FAROTECH/orbitfabric-reference-mission,product,main,0,0,0,0,0,0,0,0
 2026-09-15,studio,FAROTECH/orbitfabric-studio,product,main,0,0,0,0,0,0,0,0
+2026-09-16,core,FAROTECH/orbitfabric,core,main,0,0,0,0,0,0,0,0
+2026-09-16,fprime-adapter,FAROTECH/orbitfabric-fprime-adapter,adapter,main,4,4,0,0,12,12,0,0
+2026-09-16,openc3-cosmos-adapter,FAROTECH/orbitfabric-openc3-cosmos-adapter,adapter,main,0,0,0,0,0,0,0,0
+2026-09-16,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,main,0,0,0,0,0,0,0,0
+2026-09-16,reference-mission,FAROTECH/orbitfabric-reference-mission,product,main,0,0,0,0,0,0,0,0
+2026-09-16,studio,FAROTECH/orbitfabric-studio,product,main,0,0,0,0,0,0,0,0
