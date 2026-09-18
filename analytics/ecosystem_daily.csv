@@ -263,3 +263,13 @@ date,repository_id,repository,category,include_in_rollups,clones_total,clones_un
 2026-09-16,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,True,0,0,0,0
 2026-09-16,reference-mission,FAROTECH/orbitfabric-reference-mission,product,True,4,2,0,0
 2026-09-16,studio,FAROTECH/orbitfabric-studio,product,True,78,31,0,0
+2026-09-17,adapter-catalog,FAROTECH/orbitfabric-adapter-catalog,ecosystem,False,11,7,0,0
+2026-09-17,adapter-template,FAROTECH/orbitfabric-adapter-template,ecosystem,False,2,2,3,1
+2026-09-17,core,FAROTECH/orbitfabric,core,True,31,2,7,1
+2026-09-17,eds-cfs-adapter,FAROTECH/orbitfabric-eds-cfs-adapter,adapter,False,3,3,0,0
+2026-09-17,fprime-adapter,FAROTECH/orbitfabric-fprime-adapter,adapter,True,19,12,3,1
+2026-09-17,github-release-source,FAROTECH/orbitfabric-github-release-source,infrastructure,False,0,0,0,0
+2026-09-17,openc3-cosmos-adapter,FAROTECH/orbitfabric-openc3-cosmos-adapter,adapter,True,1,1,0,0
+2026-09-17,openobsw-opensvf-adapter,FAROTECH/orbitfabric-openobsw-opensvf-adapter,adapter,True,0,0,3,1
+2026-09-17,reference-mission,FAROTECH/orbitfabric-reference-mission,product,True,6,1,3,1
+2026-09-17,studio,FAROTECH/orbitfabric-studio,product,True,99,30,3,1
