@@ -194,3 +194,15 @@ events:
     label: F Prime Python Model discussion on semantic-model navigation documentation
     url: https://github.com/fprime-community/fprime-python-model/issues/23#issuecomment-5699801029
     notes: Evidence-based contribution from the public OrbitFabric F Prime semantic-reconciliation example identifies concrete model-navigation friction around ast_id_map versus annotated_ast_id_map, component semantic maps, source provenance and telemetry packet membership, and offers a focused documentation PR if maintainers consider the direction useful.
+
+  - id: linkedin-r1-one-mission-contract-two-systems
+    date: 2026-09-21
+    type: outreach
+    channel: linkedin
+    scope:
+      - reference-mission
+      - ecosystem
+    confidence: confirmed
+    label: LinkedIn post on R1 one mission contract across F Prime and OpenC3 COSMOS
+    notes: Public post presenting the R1 Engineering Story as one canonical mission-level semantic root driving independently owned F Prime and OpenC3 COSMOS paths through a live flight-ground verification loop. Retained as outreach context that may correlate with subsequent visits to the Reference Mission and OrbitFabric ecosystem.
+
