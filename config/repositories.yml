@@ -12,61 +12,61 @@ version: 1
 
 repositories:
   - id: core
-    repo: FAROTECH/orbitfabric
+    repo: OrbitFabric/orbitfabric
     category: core
     collect: true
     include_in_rollups: true
 
   - id: studio
-    repo: FAROTECH/orbitfabric-studio
+    repo: OrbitFabric/orbitfabric-studio
     category: product
     collect: true
     include_in_rollups: true
 
   - id: reference-mission
-    repo: FAROTECH/orbitfabric-reference-mission
+    repo: OrbitFabric/orbitfabric-reference-mission
     category: product
     collect: true
     include_in_rollups: true
 
   - id: openobsw-opensvf-adapter
-    repo: FAROTECH/orbitfabric-openobsw-opensvf-adapter
+    repo: OrbitFabric/orbitfabric-openobsw-opensvf-adapter
     category: adapter
     collect: true
     include_in_rollups: true
 
   - id: openc3-cosmos-adapter
-    repo: FAROTECH/orbitfabric-openc3-cosmos-adapter
+    repo: OrbitFabric/orbitfabric-openc3-cosmos-adapter
     category: adapter
     collect: true
     include_in_rollups: true
 
   - id: fprime-adapter
-    repo: FAROTECH/orbitfabric-fprime-adapter
+    repo: OrbitFabric/orbitfabric-fprime-adapter
     category: adapter
     collect: true
     include_in_rollups: true
 
   - id: eds-cfs-adapter
-    repo: FAROTECH/orbitfabric-eds-cfs-adapter
+    repo: OrbitFabric/orbitfabric-eds-cfs-adapter
     category: adapter
     collect: true
     include_in_rollups: false
 
   - id: adapter-template
-    repo: FAROTECH/orbitfabric-adapter-template
+    repo: OrbitFabric/orbitfabric-adapter-template
     category: ecosystem
     collect: true
     include_in_rollups: false
 
   - id: adapter-catalog
-    repo: FAROTECH/orbitfabric-adapter-catalog
+    repo: OrbitFabric/orbitfabric-adapter-catalog
     category: ecosystem
     collect: true
     include_in_rollups: false
 
   - id: github-release-source
-    repo: FAROTECH/orbitfabric-github-release-source
+    repo: OrbitFabric/orbitfabric-github-release-source
     category: infrastructure
     collect: true
     include_in_rollups: false
