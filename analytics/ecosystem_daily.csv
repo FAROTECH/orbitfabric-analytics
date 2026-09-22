@@ -310,3 +310,6 @@ date,repository_id,repository,category,include_in_rollups,clones_total,clones_un
 2026-09-21,fprime-adapter,OrbitFabric/orbitfabric-fprime-adapter,adapter,True,15,6,2,1
 2026-09-21,github-release-source,OrbitFabric/orbitfabric-github-release-source,infrastructure,False,231,77,0,0
 2026-09-21,openc3-cosmos-adapter,OrbitFabric/orbitfabric-openc3-cosmos-adapter,adapter,True,87,25,0,0
+2026-09-21,openobsw-opensvf-adapter,OrbitFabric/orbitfabric-openobsw-opensvf-adapter,adapter,True,13,5,0,0
+2026-09-21,reference-mission,OrbitFabric/orbitfabric-reference-mission,product,True,63,26,1,1
+2026-09-21,studio,OrbitFabric/orbitfabric-studio,product,True,45,20,0,0

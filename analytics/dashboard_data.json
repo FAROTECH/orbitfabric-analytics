@@ -1,51 +1,51 @@
 {
   "comparison": {
-    "previous_window_end": "2026-09-19",
-    "previous_window_start": "2026-09-06",
+    "previous_window_end": "2026-09-20",
+    "previous_window_start": "2026-09-07",
     "repositories": [
       {
         "category": "core",
         "clone_active_days": 14,
         "clone_only_days": 10,
-        "clone_to_view_ratio": 53.43,
-        "clones_per_repo_day_unique": 3.91,
-        "clones_total": 1870,
-        "clones_unique_repo_day_sum": 478,
+        "clone_to_view_ratio": 64.26,
+        "clones_per_repo_day_unique": 4.54,
+        "clones_total": 2185,
+        "clones_unique_repo_day_sum": 481,
         "coverage_complete": true,
         "coverage_pct": 100.0,
         "days_available": 14,
         "days_expected": 14,
         "delta": {
           "clones_total": {
-            "absolute": -311,
-            "current": 1870,
-            "pct": -14.3,
-            "previous": 2181,
-            "state": "decrease"
+            "absolute": 315,
+            "current": 2185,
+            "pct": 16.8,
+            "previous": 1870,
+            "state": "increase"
           },
           "clones_unique_repo_day_sum": {
-            "absolute": -200,
-            "current": 478,
-            "pct": -29.5,
-            "previous": 678,
-            "state": "decrease"
+            "absolute": 3,
+            "current": 481,
+            "pct": 0.6,
+            "previous": 478,
+            "state": "increase"
           },
           "comparable": true,
           "previous_coverage_pct": 100.0,
           "previous_days_available": 14,
           "views_total": {
             "absolute": -1,
-            "current": 35,
-            "pct": -2.8,
-            "previous": 36,
+            "current": 34,
+            "pct": -2.9,
+            "previous": 35,
             "state": "decrease"
           },
           "views_unique_repo_day_sum": {
-            "absolute": -1,
-            "current": 6,
-            "pct": -14.3,
-            "previous": 7,
-            "state": "decrease"
+            "absolute": 1,
+            "current": 7,
+            "pct": 16.7,
+            "previous": 6,
+            "state": "increase"
           }
         },
         "inactive_days": 0,
@@ -54,38 +54,38 @@
         "repository_id": "core",
         "view_active_days": 4,
         "view_only_days": 0,
-        "views_per_repo_day_unique": 5.83,
-        "views_total": 35,
-        "views_unique_repo_day_sum": 6,
+        "views_per_repo_day_unique": 4.86,
+        "views_total": 34,
+        "views_unique_repo_day_sum": 7,
         "window_days": 14,
-        "window_end": "2026-09-20",
-        "window_start": "2026-09-07"
+        "window_end": "2026-09-21",
+        "window_start": "2026-09-08"
       },
       {
         "category": "adapter",
         "clone_active_days": 13,
         "clone_only_days": 9,
-        "clone_to_view_ratio": 10.12,
-        "clones_per_repo_day_unique": 3.33,
-        "clones_total": 486,
-        "clones_unique_repo_day_sum": 146,
+        "clone_to_view_ratio": 9.5,
+        "clones_per_repo_day_unique": 3.08,
+        "clones_total": 456,
+        "clones_unique_repo_day_sum": 148,
         "coverage_complete": true,
         "coverage_pct": 100.0,
         "days_available": 14,
         "days_expected": 14,
         "delta": {
           "clones_total": {
-            "absolute": -14,
-            "current": 486,
-            "pct": -2.8,
-            "previous": 500,
+            "absolute": -30,
+            "current": 456,
+            "pct": -6.2,
+            "previous": 486,
             "state": "decrease"
           },
           "clones_unique_repo_day_sum": {
-            "absolute": 8,
-            "current": 146,
-            "pct": 5.8,
-            "previous": 138,
+            "absolute": 2,
+            "current": 148,
+            "pct": 1.4,
+            "previous": 146,
             "state": "increase"
           },
           "comparable": true,
@@ -116,34 +116,34 @@
         "views_total": 48,
         "views_unique_repo_day_sum": 4,
         "window_days": 14,
-        "window_end": "2026-09-20",
-        "window_start": "2026-09-07"
+        "window_end": "2026-09-21",
+        "window_start": "2026-09-08"
       },
       {
         "category": "adapter",
         "clone_active_days": 10,
         "clone_only_days": 9,
-        "clone_to_view_ratio": 167.0,
-        "clones_per_repo_day_unique": 3.15,
-        "clones_total": 167,
-        "clones_unique_repo_day_sum": 53,
+        "clone_to_view_ratio": 215.0,
+        "clones_per_repo_day_unique": 2.83,
+        "clones_total": 215,
+        "clones_unique_repo_day_sum": 76,
         "coverage_complete": true,
         "coverage_pct": 100.0,
         "days_available": 14,
         "days_expected": 14,
         "delta": {
           "clones_total": {
-            "absolute": -5,
-            "current": 167,
-            "pct": -2.9,
-            "previous": 172,
-            "state": "decrease"
+            "absolute": 48,
+            "current": 215,
+            "pct": 28.7,
+            "previous": 167,
+            "state": "increase"
           },
           "clones_unique_repo_day_sum": {
-            "absolute": 14,
-            "current": 53,
-            "pct": 35.9,
-            "previous": 39,
+            "absolute": 23,
+            "current": 76,
+            "pct": 43.4,
+            "previous": 53,
             "state": "increase"
           },
           "comparable": true,
@@ -174,34 +174,34 @@
         "views_total": 1,
         "views_unique_repo_day_sum": 1,
         "window_days": 14,
-        "window_end": "2026-09-20",
-        "window_start": "2026-09-07"
+        "window_end": "2026-09-21",
+        "window_start": "2026-09-08"
       },
       {
         "category": "adapter",
         "clone_active_days": 9,
         "clone_only_days": 9,
-        "clone_to_view_ratio": 25.75,
-        "clones_per_repo_day_unique": 2.19,
-        "clones_total": 103,
-        "clones_unique_repo_day_sum": 47,
+        "clone_to_view_ratio": 28.25,
+        "clones_per_repo_day_unique": 2.31,
+        "clones_total": 113,
+        "clones_unique_repo_day_sum": 49,
         "coverage_complete": true,
         "coverage_pct": 100.0,
         "days_available": 14,
         "days_expected": 14,
         "delta": {
           "clones_total": {
-            "absolute": 44,
-            "current": 103,
-            "pct": 74.6,
-            "previous": 59,
+            "absolute": 10,
+            "current": 113,
+            "pct": 9.7,
+            "previous": 103,
             "state": "increase"
           },
           "clones_unique_repo_day_sum": {
-            "absolute": 14,
-            "current": 47,
-            "pct": 42.4,
-            "previous": 33,
+            "absolute": 2,
+            "current": 49,
+            "pct": 4.3,
+            "previous": 47,
             "state": "increase"
           },
           "comparable": true,
@@ -232,45 +232,45 @@
         "views_total": 4,
         "views_unique_repo_day_sum": 2,
         "window_days": 14,
-        "window_end": "2026-09-20",
-        "window_start": "2026-09-07"
+        "window_end": "2026-09-21",
+        "window_start": "2026-09-08"
       },
       {
         "category": "product",
         "clone_active_days": 13,
         "clone_only_days": 10,
-        "clone_to_view_ratio": 7.21,
-        "clones_per_repo_day_unique": 2.69,
-        "clones_total": 404,
-        "clones_unique_repo_day_sum": 150,
+        "clone_to_view_ratio": 57.6,
+        "clones_per_repo_day_unique": 2.12,
+        "clones_total": 288,
+        "clones_unique_repo_day_sum": 136,
         "coverage_complete": true,
         "coverage_pct": 100.0,
         "days_available": 14,
         "days_expected": 14,
         "delta": {
           "clones_total": {
-            "absolute": -132,
-            "current": 404,
-            "pct": -24.6,
-            "previous": 536,
+            "absolute": -116,
+            "current": 288,
+            "pct": -28.7,
+            "previous": 404,
             "state": "decrease"
           },
           "clones_unique_repo_day_sum": {
             "absolute": -14,
-            "current": 150,
-            "pct": -8.5,
-            "previous": 164,
+            "current": 136,
+            "pct": -9.3,
+            "previous": 150,
             "state": "decrease"
           },
           "comparable": true,
           "previous_coverage_pct": 100.0,
           "previous_days_available": 14,
           "views_total": {
-            "absolute": 0,
-            "current": 56,
-            "pct": 0.0,
+            "absolute": -51,
+            "current": 5,
+            "pct": -91.1,
             "previous": 56,
-            "state": "unchanged"
+            "state": "decrease"
           },
           "views_unique_repo_day_sum": {
             "absolute": 0,
@@ -286,38 +286,38 @@
         "repository_id": "reference-mission",
         "view_active_days": 3,
         "view_only_days": 0,
-        "views_per_repo_day_unique": 18.67,
-        "views_total": 56,
+        "views_per_repo_day_unique": 1.67,
+        "views_total": 5,
         "views_unique_repo_day_sum": 3,
         "window_days": 14,
-        "window_end": "2026-09-20",
-        "window_start": "2026-09-07"
+        "window_end": "2026-09-21",
+        "window_start": "2026-09-08"
       },
       {
         "category": "product",
         "clone_active_days": 14,
         "clone_only_days": 10,
-        "clone_to_view_ratio": 75.58,
-        "clones_per_repo_day_unique": 3.15,
-        "clones_total": 907,
-        "clones_unique_repo_day_sum": 288,
+        "clone_to_view_ratio": 78.83,
+        "clones_per_repo_day_unique": 3.13,
+        "clones_total": 946,
+        "clones_unique_repo_day_sum": 302,
         "coverage_complete": true,
         "coverage_pct": 100.0,
         "days_available": 14,
         "days_expected": 14,
         "delta": {
           "clones_total": {
-            "absolute": 52,
-            "current": 907,
-            "pct": 6.1,
-            "previous": 855,
+            "absolute": 39,
+            "current": 946,
+            "pct": 4.3,
+            "previous": 907,
             "state": "increase"
           },
           "clones_unique_repo_day_sum": {
-            "absolute": 19,
-            "current": 288,
-            "pct": 7.1,
-            "previous": 269,
+            "absolute": 14,
+            "current": 302,
+            "pct": 4.9,
+            "previous": 288,
             "state": "increase"
           },
           "comparable": true,
@@ -348,29 +348,29 @@
         "views_total": 12,
         "views_unique_repo_day_sum": 5,
         "window_days": 14,
-        "window_end": "2026-09-20",
-        "window_start": "2026-09-07"
+        "window_end": "2026-09-21",
+        "window_start": "2026-09-08"
       }
     ],
     "window_days": 14,
-    "window_end": "2026-09-20",
-    "window_start": "2026-09-07"
+    "window_end": "2026-09-21",
+    "window_start": "2026-09-08"
   },
   "ecosystem_context": {
     "aligned_window": {
       "development": {
         "automation_commits": 0,
-        "commits_total": 114,
+        "commits_total": 106,
         "coverage_complete": true,
         "coverage_pct": 100.0,
-        "first_party_commits": 108,
-        "other_commits": 6,
+        "first_party_commits": 102,
+        "other_commits": 4,
         "rows_available": 84,
         "rows_expected": 84,
-        "workflow_runs_failure": 3,
+        "workflow_runs_failure": 5,
         "workflow_runs_other": 0,
-        "workflow_runs_success": 58,
-        "workflow_runs_total": 61
+        "workflow_runs_success": 69,
+        "workflow_runs_total": 74
       },
       "lifecycle": {
         "coverage_complete": true,
@@ -378,8 +378,8 @@
         "issues_closed": 0,
         "issues_opened": 0,
         "prs_closed_unmerged": 0,
-        "prs_merged": 39,
-        "prs_opened": 38,
+        "prs_merged": 43,
+        "prs_opened": 43,
         "rows_available": 84,
         "rows_expected": 84
       },
@@ -388,13 +388,13 @@
         "comment_events": 0,
         "coverage_complete": true,
         "coverage_pct": 100.0,
-        "first_party_participants_repo_count": 23,
+        "first_party_participants_repo_count": 26,
         "issue_author_events": 0,
         "other_participants_first_seen_repo_count": 0,
         "other_participants_repo_count": 0,
         "participants_first_seen_repo_count": 0,
-        "participants_repo_count": 23,
-        "pr_author_events": 38,
+        "participants_repo_count": 26,
+        "pr_author_events": 43,
         "rows_available": 84,
         "rows_expected": 84
       },
@@ -403,31 +403,31 @@
           "category": "core",
           "development": {
             "automation_commits": 0,
-            "commits_total": 4,
-            "first_party_commits": 4,
+            "commits_total": 5,
+            "first_party_commits": 5,
             "other_commits": 0,
             "workflow_runs_failure": 0,
             "workflow_runs_other": 0,
-            "workflow_runs_success": 8,
-            "workflow_runs_total": 8
+            "workflow_runs_success": 11,
+            "workflow_runs_total": 11
           },
           "lifecycle": {
             "issues_closed": 0,
             "issues_opened": 0,
             "prs_closed_unmerged": 0,
-            "prs_merged": 4,
-            "prs_opened": 4
+            "prs_merged": 5,
+            "prs_opened": 5
           },
           "participation": {
             "automation_participants_repo_count": 0,
             "comment_events": 0,
-            "first_party_participants_repo_count": 3,
+            "first_party_participants_repo_count": 4,
             "issue_author_events": 0,
             "other_participants_first_seen_repo_count": 0,
             "other_participants_repo_count": 0,
             "participants_first_seen_repo_count": 0,
-            "participants_repo_count": 3,
-            "pr_author_events": 4
+            "participants_repo_count": 4,
+            "pr_author_events": 5
           },
           "repository": "OrbitFabric/orbitfabric",
           "repository_id": "core",
@@ -499,31 +499,31 @@
           "category": "adapter",
           "development": {
             "automation_commits": 0,
-            "commits_total": 7,
-            "first_party_commits": 7,
+            "commits_total": 17,
+            "first_party_commits": 17,
             "other_commits": 0,
-            "workflow_runs_failure": 3,
+            "workflow_runs_failure": 5,
             "workflow_runs_other": 0,
-            "workflow_runs_success": 3,
-            "workflow_runs_total": 6
+            "workflow_runs_success": 5,
+            "workflow_runs_total": 10
           },
           "lifecycle": {
             "issues_closed": 0,
             "issues_opened": 0,
             "prs_closed_unmerged": 0,
-            "prs_merged": 3,
-            "prs_opened": 3
+            "prs_merged": 5,
+            "prs_opened": 5
           },
           "participation": {
             "automation_participants_repo_count": 0,
             "comment_events": 0,
-            "first_party_participants_repo_count": 3,
+            "first_party_participants_repo_count": 4,
             "issue_author_events": 0,
             "other_participants_first_seen_repo_count": 0,
             "other_participants_repo_count": 0,
             "participants_first_seen_repo_count": 0,
-            "participants_repo_count": 3,
-            "pr_author_events": 3
+            "participants_repo_count": 4,
+            "pr_author_events": 5
           },
           "repository": "OrbitFabric/orbitfabric-openc3-cosmos-adapter",
           "repository_id": "openc3-cosmos-adapter",
@@ -552,8 +552,8 @@
             "other_commits": 0,
             "workflow_runs_failure": 0,
             "workflow_runs_other": 0,
-            "workflow_runs_success": 5,
-            "workflow_runs_total": 5
+            "workflow_runs_success": 6,
+            "workflow_runs_total": 6
           },
           "lifecycle": {
             "issues_closed": 0,
@@ -595,20 +595,20 @@
           "category": "product",
           "development": {
             "automation_commits": 0,
-            "commits_total": 31,
-            "first_party_commits": 29,
-            "other_commits": 2,
+            "commits_total": 11,
+            "first_party_commits": 11,
+            "other_commits": 0,
             "workflow_runs_failure": 0,
             "workflow_runs_other": 0,
-            "workflow_runs_success": 8,
-            "workflow_runs_total": 8
+            "workflow_runs_success": 11,
+            "workflow_runs_total": 11
           },
           "lifecycle": {
             "issues_closed": 0,
             "issues_opened": 0,
             "prs_closed_unmerged": 0,
             "prs_merged": 6,
-            "prs_opened": 5
+            "prs_opened": 6
           },
           "participation": {
             "automation_participants_repo_count": 0,
@@ -619,7 +619,7 @@
             "other_participants_repo_count": 0,
             "participants_first_seen_repo_count": 0,
             "participants_repo_count": 5,
-            "pr_author_events": 5
+            "pr_author_events": 6
           },
           "repository": "OrbitFabric/orbitfabric-reference-mission",
           "repository_id": "reference-mission",
@@ -643,31 +643,31 @@
           "category": "product",
           "development": {
             "automation_commits": 0,
-            "commits_total": 57,
-            "first_party_commits": 53,
+            "commits_total": 58,
+            "first_party_commits": 54,
             "other_commits": 4,
             "workflow_runs_failure": 0,
             "workflow_runs_other": 0,
-            "workflow_runs_success": 19,
-            "workflow_runs_total": 19
+            "workflow_runs_success": 21,
+            "workflow_runs_total": 21
           },
           "lifecycle": {
             "issues_closed": 0,
             "issues_opened": 0,
             "prs_closed_unmerged": 0,
-            "prs_merged": 19,
-            "prs_opened": 19
+            "prs_merged": 20,
+            "prs_opened": 20
           },
           "participation": {
             "automation_participants_repo_count": 0,
             "comment_events": 0,
-            "first_party_participants_repo_count": 8,
+            "first_party_participants_repo_count": 9,
             "issue_author_events": 0,
             "other_participants_first_seen_repo_count": 0,
             "other_participants_repo_count": 0,
             "participants_first_seen_repo_count": 0,
-            "participants_repo_count": 8,
-            "pr_author_events": 19
+            "participants_repo_count": 9,
+            "pr_author_events": 20
           },
           "repository": "OrbitFabric/orbitfabric-studio",
           "repository_id": "studio",
@@ -689,8 +689,8 @@
         }
       ],
       "window_days": 14,
-      "window_end": "2026-09-20",
-      "window_start": "2026-09-07"
+      "window_end": "2026-09-21",
+      "window_start": "2026-09-08"
     },
     "semantics": {
       "development_activity_is_context_not_attribution": true,
@@ -812,10 +812,10 @@
   },
   "event_context": {
     "events_before_timeline": 0,
-    "events_in_timeline": 16,
-    "events_pending": 1,
+    "events_in_timeline": 17,
+    "events_pending": 0,
     "events_total": 17,
-    "timeline_end": "2026-09-20",
+    "timeline_end": "2026-09-21",
     "timeline_start": "2026-08-21"
   },
   "events": [
@@ -1053,80 +1053,80 @@
   ],
   "latest_categories": [
     {
-      "clones_total": 164,
-      "clones_unique_repo_sum": 58,
+      "clones_total": 115,
+      "clones_unique_repo_sum": 36,
       "coverage_complete": true,
       "coverage_pct": 100.0,
       "repositories_available": 3,
       "repositories_expected": 3,
       "scope_id": "adapter",
-      "views_total": 0,
-      "views_unique_repo_sum": 0
+      "views_total": 2,
+      "views_unique_repo_sum": 1
     },
     {
-      "clones_total": 402,
-      "clones_unique_repo_sum": 100,
+      "clones_total": 823,
+      "clones_unique_repo_sum": 194,
       "coverage_complete": true,
       "coverage_pct": 100.0,
       "repositories_available": 1,
       "repositories_expected": 1,
       "scope_id": "core",
-      "views_total": 0,
-      "views_unique_repo_sum": 0
+      "views_total": 3,
+      "views_unique_repo_sum": 2
     },
     {
-      "clones_total": 121,
-      "clones_unique_repo_sum": 52,
+      "clones_total": 108,
+      "clones_unique_repo_sum": 46,
       "coverage_complete": true,
       "coverage_pct": 100.0,
       "repositories_available": 2,
       "repositories_expected": 2,
       "scope_id": "product",
-      "views_total": 0,
-      "views_unique_repo_sum": 0
+      "views_total": 1,
+      "views_unique_repo_sum": 1
     }
   ],
-  "latest_complete_day": "2026-09-20",
+  "latest_complete_day": "2026-09-21",
   "overview": {
-    "clones_total": 687,
-    "clones_unique_repo_sum": 210,
+    "clones_total": 1046,
+    "clones_unique_repo_sum": 276,
     "coverage_complete": true,
     "coverage_pct": 100.0,
     "repositories_available": 6,
     "repositories_expected": 6,
     "scope_id": "ecosystem",
-    "views_total": 0,
-    "views_unique_repo_sum": 0
+    "views_total": 6,
+    "views_unique_repo_sum": 4
   },
   "overview_delta": {
     "clones_total": {
-      "absolute": 671,
-      "current": 687,
-      "pct": 4193.8,
-      "previous": 16,
+      "absolute": 359,
+      "current": 1046,
+      "pct": 52.3,
+      "previous": 687,
       "state": "increase"
     },
     "clones_unique_repo_sum": {
-      "absolute": 198,
-      "current": 210,
-      "pct": 1650.0,
-      "previous": 12,
+      "absolute": 66,
+      "current": 276,
+      "pct": 31.4,
+      "previous": 210,
       "state": "increase"
     },
-    "reference_day": "2026-09-19",
+    "reference_day": "2026-09-20",
     "views_total": {
-      "absolute": -1,
-      "current": 0,
-      "pct": -100.0,
-      "previous": 1,
-      "state": "decrease"
+      "absolute": 6,
+      "current": 6,
+      "pct": null,
+      "previous": 0,
+      "state": "new"
     },
     "views_unique_repo_sum": {
-      "absolute": -1,
-      "current": 0,
-      "pct": -100.0,
-      "previous": 1,
-      "state": "decrease"
+      "absolute": 4,
+      "current": 4,
+      "pct": null,
+      "previous": 0,
+      "state": "new"
     }
   },
   "schema_version": 1,
@@ -2906,6 +2906,70 @@
         "views_unique_repo_sum": 0
       },
       "events": []
+    },
+    {
+      "categories": {
+        "adapter": {
+          "clones_total": 115,
+          "clones_unique_repo_sum": 36,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 3,
+          "repositories_expected": 3,
+          "scope_id": "adapter",
+          "views_total": 2,
+          "views_unique_repo_sum": 1
+        },
+        "core": {
+          "clones_total": 823,
+          "clones_unique_repo_sum": 194,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 1,
+          "repositories_expected": 1,
+          "scope_id": "core",
+          "views_total": 3,
+          "views_unique_repo_sum": 2
+        },
+        "product": {
+          "clones_total": 108,
+          "clones_unique_repo_sum": 46,
+          "coverage_complete": true,
+          "coverage_pct": 100.0,
+          "repositories_available": 2,
+          "repositories_expected": 2,
+          "scope_id": "product",
+          "views_total": 1,
+          "views_unique_repo_sum": 1
+        }
+      },
+      "date": "2026-09-21",
+      "ecosystem": {
+        "clones_total": 1046,
+        "clones_unique_repo_sum": 276,
+        "coverage_complete": true,
+        "coverage_pct": 100.0,
+        "repositories_available": 6,
+        "repositories_expected": 6,
+        "scope_id": "ecosystem",
+        "views_total": 6,
+        "views_unique_repo_sum": 4
+      },
+      "events": [
+        {
+          "channel": "linkedin",
+          "confidence": "confirmed",
+          "date": "2026-09-21",
+          "id": "linkedin-r1-one-mission-contract-two-systems",
+          "label": "LinkedIn post on R1 one mission contract across F Prime and OpenC3 COSMOS",
+          "notes": "Public post presenting the R1 Engineering Story as one canonical mission-level semantic root driving independently owned F Prime and OpenC3 COSMOS paths through a live flight-ground verification loop. Retained as outreach context that may correlate with subsequent visits to the Reference Mission and OrbitFabric ecosystem.",
+          "scope": [
+            "reference-mission",
+            "ecosystem"
+          ],
+          "type": "outreach"
+        }
+      ]
     }
   ]
 }
