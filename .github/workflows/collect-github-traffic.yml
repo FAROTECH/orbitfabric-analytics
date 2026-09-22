@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   prepare:
@@ -70,6 +70,15 @@ jobs:
         target: ${{ fromJSON(needs.prepare.outputs.matrix) }}
 
     steps:
+      - name: Create Analytics writer token
+        id: analytics-app
+        uses: actions/create-github-app-token@v2
+        with:
+          client-id: ${{ vars.ANALYTICS_APP_CLIENT_ID }}
+          private-key: ${{ secrets.ANALYTICS_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: orbitfabric-analytics
+
       - name: Check out analytics collector
         uses: actions/checkout@v4
         with:
@@ -80,7 +89,7 @@ jobs:
         with:
           ref: github-repo-stats
           path: data
-          token: ${{ github.token }}
+          token: ${{ steps.analytics-app.outputs.token }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -119,6 +128,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Create Analytics writer token
+        id: analytics-app
+        uses: actions/create-github-app-token@v2
+        with:
+          client-id: ${{ vars.ANALYTICS_APP_CLIENT_ID }}
+          private-key: ${{ secrets.ANALYTICS_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: orbitfabric-analytics
+
       - name: Check out analytics code
         uses: actions/checkout@v4
         with:
@@ -129,7 +147,7 @@ jobs:
         with:
           ref: github-repo-stats
           path: data
-          token: ${{ secrets.GHRS_GITHUB_API_TOKEN }}
+          token: ${{ steps.analytics-app.outputs.token }}
 
       - name: Check out dashboard deployment branch
         uses: actions/checkout@v4
