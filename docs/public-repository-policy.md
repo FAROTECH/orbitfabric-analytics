@@ -4,7 +4,7 @@ Status: accepted on 2026-09-06.
 
 ## Decision
 
-`FAROTECH/orbitfabric-analytics` retains **public-safe evidence by design**.
+`OrbitFabric/orbitfabric-analytics` retains **public-safe evidence by design**.
 
 Repository visibility is an operational choice and may change between public and private without changing the analytics data contract. The project must therefore remain safe to expose even when a public interval is used for validation, collaboration or GitHub Actions execution.
 
