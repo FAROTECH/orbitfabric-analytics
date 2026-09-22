@@ -115,3 +115,15 @@ date,scope_type,scope_id,repositories_expected,repositories_available,coverage_p
 2026-09-18,category,adapter,3,3,100.0,True,51,0,27,0
 2026-09-18,category,core,1,1,100.0,True,22,0,6,0
 2026-09-18,category,product,2,2,100.0,True,41,0,22,0
+2026-09-19,ecosystem,ecosystem,6,6,100.0,True,16,1,12,1
+2026-09-19,category,adapter,3,3,100.0,True,2,1,2,1
+2026-09-19,category,core,1,1,100.0,True,1,0,1,0
+2026-09-19,category,product,2,2,100.0,True,13,0,9,0
+2026-09-20,ecosystem,ecosystem,6,6,100.0,True,687,0,210,0
+2026-09-20,category,adapter,3,3,100.0,True,164,0,58,0
+2026-09-20,category,core,1,1,100.0,True,402,0,100,0
+2026-09-20,category,product,2,2,100.0,True,121,0,52,0
+2026-09-21,ecosystem,ecosystem,6,3,50.0,False,925,5,225,3
+2026-09-21,category,adapter,3,2,66.67,False,102,2,31,1
+2026-09-21,category,core,1,1,100.0,True,823,3,194,2
+2026-09-21,category,product,2,0,0.0,False,0,0,0,0

@@ -217,6 +217,19 @@
       ],
       "type": "upstream-discussion",
       "url": "https://github.com/fprime-community/fprime-python-model/issues/23#issuecomment-5699801029"
+    },
+    {
+      "channel": "linkedin",
+      "confidence": "confirmed",
+      "date": "2026-09-21",
+      "id": "linkedin-r1-one-mission-contract-two-systems",
+      "label": "LinkedIn post on R1 one mission contract across F Prime and OpenC3 COSMOS",
+      "notes": "Public post presenting the R1 Engineering Story as one canonical mission-level semantic root driving independently owned F Prime and OpenC3 COSMOS paths through a live flight-ground verification loop. Retained as outreach context that may correlate with subsequent visits to the Reference Mission and OrbitFabric ecosystem.",
+      "scope": [
+        "reference-mission",
+        "ecosystem"
+      ],
+      "type": "outreach"
     }
   ],
   "schema_version": 1
