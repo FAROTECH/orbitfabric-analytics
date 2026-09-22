@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   prepare:
@@ -70,12 +70,46 @@ jobs:
         target: ${{ fromJSON(needs.prepare.outputs.matrix) }}
 
     steps:
-      - name: Collect repository traffic and generate report
-        uses: jgehrcke/github-repo-stats@v1.4.2
+      - name: Check out analytics collector
+        uses: actions/checkout@v4
         with:
-          repository: ${{ matrix.target.repository }}
-          ghtoken: ${{ secrets.GHRS_GITHUB_API_TOKEN }}
-          databranch: github-repo-stats
+          path: app
+
+      - name: Check out retained traffic data
+        uses: actions/checkout@v4
+        with:
+          ref: github-repo-stats
+          path: data
+          token: ${{ github.token }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Collect repository traffic
+        env:
+          GHRS_GITHUB_API_TOKEN: ${{ secrets.GHRS_GITHUB_API_TOKEN }}
+        run: |
+          python app/tools/collect_traffic.py \
+            --repository "${{ matrix.target.repository }}" \
+            --data-root data
+
+      - name: Persist repository traffic
+        working-directory: data
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+
+          TARGET="${{ matrix.target.repository }}/ghrs-data/views_clones_aggregate.csv"
+          git add "$TARGET"
+
+          if git diff --cached --quiet; then
+            echo "Traffic dataset unchanged for ${{ matrix.target.repository }}."
+          else
+            git commit -m "analytics: refresh traffic for ${{ matrix.target.repository }}"
+            git push origin HEAD:github-repo-stats
+          fi
 
   aggregate:
     name: Build ecosystem analytics datasets
