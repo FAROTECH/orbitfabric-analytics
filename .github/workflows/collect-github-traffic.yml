@@ -154,7 +154,7 @@ jobs:
         with:
           ref: dashboard-site
           path: site
-          token: ${{ secrets.GHRS_GITHUB_API_TOKEN }}
+          token: ${{ steps.analytics-app.outputs.token }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
