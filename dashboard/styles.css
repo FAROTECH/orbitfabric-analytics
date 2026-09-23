@@ -451,3 +451,18 @@ footer {
     height: 410px;
   }
 }
+
+
+.referrers-table {
+  min-width: 560px;
+}
+
+.referrers-table th:not(:first-child),
+.referrers-table td:not(:first-child) {
+  text-align: right;
+}
+
+.referrers-table td:first-child strong {
+  color: var(--text);
+  font-weight: 700;
+}
