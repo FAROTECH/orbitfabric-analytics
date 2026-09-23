@@ -279,7 +279,46 @@ function renderComparison(data) {
   }
 }
 
-function renderReferrers(data) {\n  const body = document.querySelector("#referrers-body");\n  const note = document.querySelector("#referrers-window");\n  if (!body || !note) {\n    return;\n  }\n\n  body.replaceChildren();\n  const referrers = data.referrers;\n  if (!referrers || !Array.isArray(referrers.rows)) {\n    note.textContent = "Referrer data unavailable.";\n    return;\n  }\n\n  const snapshot = referrers.snapshot_date_max\n    ? ` · snapshot ${formatFullDate(referrers.snapshot_date_max)}`\n    : "";\n  note.textContent =\n    `GitHub rolling ${referrers.window_days}-day window · ` +\n    `${referrers.repositories_available}/${referrers.repositories_expected} repositories available` +\n    snapshot;\n\n  if (!referrers.rows.length) {\n    const row = document.createElement("tr");\n    row.innerHTML = '<td colspan="3">No referring sites reported in the current GitHub traffic window.</td>';\n    body.appendChild(row);\n    return;\n  }\n\n  for (const referrer of referrers.rows) {\n    const row = document.createElement("tr");\n    row.innerHTML = `\n      <td><strong>${referrer.site}</strong></td>\n      <td>${formatNumber(referrer.views)}</td>\n      <td>${formatNumber(referrer.unique_visitors_repo_sum)}</td>\n    `;\n    body.appendChild(row);\n  }\n}\nfunction renderSignalShape(data) {
+function renderReferrers(data) {
+  const body = document.querySelector("#referrers-body");
+  const note = document.querySelector("#referrers-window");
+  if (!body || !note) {
+    return;
+  }
+
+  body.replaceChildren();
+  const referrers = data.referrers;
+  if (!referrers || !Array.isArray(referrers.rows)) {
+    note.textContent = "Referrer data unavailable.";
+    return;
+  }
+
+  const snapshot = referrers.snapshot_date_max
+    ? ` · snapshot ${formatFullDate(referrers.snapshot_date_max)}`
+    : "";
+  note.textContent =
+    `GitHub rolling ${referrers.window_days}-day window · ` +
+    `${referrers.repositories_available}/${referrers.repositories_expected} repositories available` +
+    snapshot;
+
+  if (!referrers.rows.length) {
+    const row = document.createElement("tr");
+    row.innerHTML = '<td colspan="3">No referring sites reported in the current GitHub traffic window.</td>';
+    body.appendChild(row);
+    return;
+  }
+
+  for (const referrer of referrers.rows) {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td><strong>${referrer.site}</strong></td>
+      <td>${formatNumber(referrer.views)}</td>
+      <td>${formatNumber(referrer.unique_visitors_repo_sum)}</td>
+    `;
+    body.appendChild(row);
+  }
+}
+function renderSignalShape(data) {
   const repositories = data.comparison.repositories;
   const labels = repositories.map(repositoryLabel);
 
@@ -351,6 +390,7 @@ async function loadDashboard() {
 
   renderOverview(data);
   renderTimelineCharts(data);
+  renderReferrers(data);
   renderComparison(data);
   renderSignalShape(data);
 }
