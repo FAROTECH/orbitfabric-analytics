@@ -5,7 +5,7 @@ This collector intentionally separates credentials:
 - GHRS_GITHUB_API_TOKEN reads traffic from target repositories.
 - repository-scoped GITHUB_TOKEN is used by the workflow checkout/push path.
 
-Only the views/clones aggregate consumed by OrbitFabric Analytics is updated.
+Views/clones and rolling referring-site snapshots are retained for OrbitFabric Analytics.
 Historical github-repo-stats artifacts remain untouched.
 """
 
