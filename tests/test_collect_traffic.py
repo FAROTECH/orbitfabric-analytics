@@ -3,7 +3,14 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tools.collect_traffic import _read_existing, merge_metric, write_rows
+from tools.collect_traffic import (
+    _read_existing,
+    _read_referrer_history,
+    merge_metric,
+    merge_referrer_snapshot,
+    write_referrer_history,
+    write_rows,
+)
 
 
 class CollectTrafficTests(unittest.TestCase):
@@ -61,6 +68,36 @@ class CollectTrafficTests(unittest.TestCase):
             self.assertEqual(result[1]["views_total"], "20")
             self.assertEqual(result[2]["clones_unique"], "3")
             self.assertEqual(result[2]["views_unique"], "5")
+
+    def test_referrer_history_retains_daily_snapshots(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "referrers_history.json"
+            history = _read_referrer_history(path)
+            merge_referrer_snapshot(
+                history,
+                "2026-09-22",
+                [
+                    {"referrer": "github.com", "count": 22, "uniques": 2},
+                    {"referrer": "reddit.com", "count": 1, "uniques": 1},
+                ],
+            )
+            merge_referrer_snapshot(
+                history,
+                "2026-09-23",
+                [{"referrer": "github.com", "count": 24, "uniques": 3}],
+            )
+            write_referrer_history(path, history)
+
+            loaded = _read_referrer_history(path)
+            self.assertEqual(loaded["window_days"], 14)
+            self.assertEqual(
+                loaded["snapshots"]["2026-09-22"][0]["referrer"],
+                "github.com",
+            )
+            self.assertEqual(
+                loaded["snapshots"]["2026-09-23"][0]["unique_visitors"],
+                3,
+            )
 
 
 if __name__ == "__main__":
