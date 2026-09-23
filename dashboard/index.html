@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -34,14 +34,14 @@
             <div class="eyebrow">OVERVIEW</div>
             <h2>Ecosystem pulse</h2>
           </div>
-          <p class="section-note">Latest complete day, con coverage esplicita e delta rispetto al previous complete snapshot.</p>
+          <p class="section-note">Latest complete day, explicit coverage and delta against the previous complete snapshot.</p>
         </div>
 
         <div class="metric-grid">
           <article class="metric-card">
             <span class="metric-label">Latest complete day</span>
             <strong class="metric-value metric-value-date" id="latest-day">—</strong>
-            <span class="metric-detail">ultimo giorno confrontabile</span>
+            <span class="metric-detail">latest comparable day</span>
           </article>
           <article class="metric-card">
             <span class="metric-label">Coverage</span>
@@ -68,14 +68,6 @@
           </article>
         </div>
 
-        <aside class="context-note">
-          <div class="context-note-title">Context note</div>
-          <p>
-            Periodo caratterizzato da intensa first-party activity su Core, Studio e adapter.
-            I clone sono un technical-access signal, non una misura diretta di utenti esterni o adoption.
-            Le unique metric restano repository-scoped e non rappresentano persone deduplicate nell'ecosistema.
-          </p>
-        </aside>
       </section>
 
       <section class="section-block">
@@ -84,7 +76,7 @@
             <div class="eyebrow">ACTIVITY TIMELINE</div>
             <h2>Core, Product, Adapters</h2>
           </div>
-          <p class="section-note">Composition giornaliera dei rollup ufficiali.</p>
+          <p class="section-note">Daily composition of the official ecosystem rollups.</p>
         </div>
 
         <div class="chart-grid">
@@ -122,13 +114,39 @@
         </article>
       </section>
 
+
+      <section class="section-block">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">TRAFFIC SOURCES</div>
+            <h2>Referring sites</h2>
+          </div>
+          <p class="section-note" id="referrers-window">Loading GitHub referrer data…</p>
+        </div>
+
+        <article class="panel table-panel">
+          <div class="table-scroll">
+            <table class="referrers-table">
+              <thead>
+                <tr>
+                  <th>Site</th>
+                  <th>Views</th>
+                  <th>Repo-scoped unique visitors</th>
+                </tr>
+              </thead>
+              <tbody id="referrers-body"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
       <section class="section-block">
         <div class="section-heading">
           <div>
             <div class="eyebrow">ECOSYSTEM CONTEXT</div>
             <h2>Community & engineering</h2>
           </div>
-          <p class="section-note">Stock corrente e activity context allineato alla stessa finestra del traffic comparison.</p>
+          <p class="section-note">Current stock and engineering activity aligned to the traffic comparison window.</p>
         </div>
 
         <p class="context-window-note" id="context-window-note">Loading community & engineering context…</p>
@@ -181,13 +199,6 @@
           </div>
         </article>
 
-        <aside class="context-note context-semantics-note">
-          <div class="context-note-title">Semantics</div>
-          <p>
-            Community stock può essere più recente dell'ultimo traffic day. Lifecycle, participation e development context sono invece aggregati sulla finestra traffic comune.
-            Participant counts sono repository-scoped; i totali mostrati sulla finestra sono participant repo-days. `other` non significa automaticamente utente o contributor esterno.
-          </p>
-        </aside>
       </section>
 
       <section class="section-block">
@@ -227,7 +238,7 @@
             <div class="eyebrow">SIGNAL SHAPE</div>
             <h2>How activity appears</h2>
           </div>
-          <p class="section-note">Non dice chi c’è dietro al segnale. Dice come il segnale si presenta.</p>
+          <p class="section-note">Does not identify who is behind the signal. It shows how the signal appears.</p>
         </div>
 
         <article class="panel">
@@ -244,7 +255,7 @@
 
   <div class="fatal-error" id="fatal-error" hidden>
     <strong>Dashboard data unavailable</strong>
-    <span id="fatal-error-detail">Impossibile caricare il payload analytics.</span>
+    <span id="fatal-error-detail">Unable to load the analytics payload.</span>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
