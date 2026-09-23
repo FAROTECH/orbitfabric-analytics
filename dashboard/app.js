@@ -29,17 +29,17 @@ const palette = {
   line: css.getPropertyValue("--line").trim(),
 };
 
-const numberFormat = new Intl.NumberFormat("it-IT");
-const fullDateFormat = new Intl.DateTimeFormat("it-IT", {
+const numberFormat = new Intl.NumberFormat("en-GB");
+const fullDateFormat = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
   month: "short",
   year: "numeric",
 });
-const shortDateFormat = new Intl.DateTimeFormat("it-IT", {
+const shortDateFormat = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
   month: "short",
 });
-const percentFormat = new Intl.NumberFormat("it-IT", {
+const percentFormat = new Intl.NumberFormat("en-GB", {
   maximumFractionDigits: 1,
 });
 
@@ -103,7 +103,7 @@ function renderOverview(data) {
   );
   document.querySelector("#coverage").textContent = `${overview.coverage_pct}%`;
   document.querySelector("#coverage-detail").textContent =
-    `${overview.repositories_available}/${overview.repositories_expected} repository disponibili`;
+    `${overview.repositories_available}/${overview.repositories_expected} repositories available`;
   document.querySelector("#clones-total").textContent = formatNumber(
     overview.clones_total,
   );
@@ -111,7 +111,7 @@ function renderOverview(data) {
     overview.views_total,
   );
   document.querySelector("#data-status").textContent =
-    `Data complete fino al ${formatFullDate(data.latest_complete_day)}`;
+    `Data complete through ${formatFullDate(data.latest_complete_day)}`;
 
   const reference = deltas?.reference_day
     ? `vs ${formatShortDate(deltas.reference_day)}`
@@ -247,7 +247,7 @@ function renderComparison(data) {
     ? ` · Δ vs previous snapshot ${formatShortDate(comparison.previous_window_end)}`
     : "";
   document.querySelector("#comparison-window").textContent =
-    `${formatFullDate(comparison.window_start)} → ${formatFullDate(comparison.window_end)} · ${comparison.window_days} giorni${previous}`;
+    `${formatFullDate(comparison.window_start)} → ${formatFullDate(comparison.window_end)} · ${comparison.window_days} days${previous}`;
 
   const body = document.querySelector("#comparison-body");
   body.replaceChildren();
@@ -272,9 +272,57 @@ function renderComparison(data) {
       <td>${formatNumber(repository.clone_only_days)}</td>
       <td>${formatNumber(repository.mixed_days)}</td>
       <td>${formatNumber(repository.view_only_days)}</td>
-      <td>${ratio === null ? "—" : ratio.toLocaleString("it-IT")}</td>
+      <td>${ratio === null ? "—" : ratio.toLocaleString("en-GB")}</td>
       <td><span class="coverage-pill ${coverageClass}">${repository.coverage_pct}%</span></td>
     `;
+    body.appendChild(row);
+  }
+}
+
+function renderReferrers(data) {
+  const body = document.querySelector("#referrers-body");
+  const note = document.querySelector("#referrers-window");
+  if (!body || !note) {
+    return;
+  }
+
+  body.replaceChildren();
+  const referrers = data.referrers;
+  if (!referrers || !Array.isArray(referrers.rows)) {
+    note.textContent = "Referrer data unavailable.";
+    return;
+  }
+
+  const snapshot = referrers.snapshot_date_max
+    ? ` · snapshot ${formatFullDate(referrers.snapshot_date_max)}`
+    : "";
+  note.textContent =
+    `GitHub rolling ${referrers.window_days}-day window · ` +
+    `${referrers.repositories_available}/${referrers.repositories_expected} repositories available` +
+    snapshot;
+
+  if (!referrers.rows.length) {
+    const row = document.createElement("tr");
+    row.innerHTML = '<td colspan="3">No referring sites reported in the current GitHub traffic window.</td>';
+    body.appendChild(row);
+    return;
+  }
+
+  for (const referrer of referrers.rows) {
+    const row = document.createElement("tr");
+
+    const siteCell = document.createElement("td");
+    const site = document.createElement("strong");
+    site.textContent = referrer.site;
+    siteCell.appendChild(site);
+
+    const viewsCell = document.createElement("td");
+    viewsCell.textContent = formatNumber(referrer.views);
+
+    const uniquesCell = document.createElement("td");
+    uniquesCell.textContent = formatNumber(referrer.unique_visitors_repo_sum);
+
+    row.append(siteCell, viewsCell, uniquesCell);
     body.appendChild(row);
   }
 }
@@ -351,6 +399,7 @@ async function loadDashboard() {
 
   renderOverview(data);
   renderTimelineCharts(data);
+  renderReferrers(data);
   renderComparison(data);
   renderSignalShape(data);
 }
