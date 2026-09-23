@@ -111,7 +111,8 @@ jobs:
           git config user.name "GitHub Action"
 
           TARGET="${{ matrix.target.repository }}/ghrs-data/views_clones_aggregate.csv"
-          git add "$TARGET"
+          REFERRERS_TARGET="${{ matrix.target.repository }}/ghrs-data/referrers_history.json"
+          git add "$TARGET" "$REFERRERS_TARGET"
 
           if git diff --cached --quiet; then
             echo "Traffic dataset unchanged for ${{ matrix.target.repository }}."
@@ -257,6 +258,13 @@ jobs:
             --days 14 \
             --output data/analytics/repository_comparison_latest.csv
 
+      - name: Build ecosystem referring-sites snapshot
+        run: |
+          python app/analytics/referrers.py \
+            --config app/config/repositories.yml \
+            --data-root data \
+            --output data/analytics/referrers_latest.json
+
       - name: Build static dashboard payload
         run: |
           python app/analytics/dashboard_data.py \
@@ -280,6 +288,12 @@ jobs:
             --lifecycle data/analytics/community_lifecycle_daily.csv \
             --participation data/analytics/community_participation_daily.csv
 
+      - name: Project referring sites into dashboard payload
+        run: |
+          python app/analytics/dashboard_referrers.py \
+            --dashboard data/analytics/dashboard_data.json \
+            --referrers data/analytics/referrers_latest.json
+
       - name: Persist analytics datasets
         working-directory: data
         run: |
@@ -295,6 +309,7 @@ jobs:
             analytics/ecosystem_daily.csv \
             analytics/ecosystem_rollups_daily.csv \
             analytics/repository_comparison_latest.csv \
+            analytics/referrers_latest.json \
             analytics/dashboard_data.json
 
           if git diff --cached --quiet; then
