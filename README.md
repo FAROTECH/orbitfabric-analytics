@@ -123,6 +123,7 @@ analytics/development_activity_daily.csv
 analytics/community_lifecycle_daily.csv
 analytics/community_participation_daily.csv
 
+analytics/referrers_latest.json
 analytics/dashboard_data.json
 ```
 
@@ -136,6 +137,7 @@ It presents:
 
 - ecosystem traffic pulse and daily deltas;
 - clone and view timelines;
+- aggregated GitHub referring sites over the current 14-day traffic window;
 - curated event correlation with interactive chart guides;
 - community stock and stock deltas;
 - lifecycle, participation and development context aligned to the traffic comparison window;
