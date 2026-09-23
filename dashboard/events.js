@@ -1,11 +1,11 @@
 const EVENT_DATA_URL = "./data/dashboard_data.json";
 
-const eventDateFormat = new Intl.DateTimeFormat("it-IT", {
+const eventDateFormat = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
   month: "short",
   year: "numeric",
 });
-const eventShortDateFormat = new Intl.DateTimeFormat("it-IT", {
+const eventShortDateFormat = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
   month: "short",
 });
