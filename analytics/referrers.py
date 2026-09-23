@@ -109,7 +109,8 @@ def build_referrer_aggregate(config_path: Path, data_root: Path) -> dict[str, ob
         "repositories_available": available,
         "snapshot_date_min": min(snapshot_dates) if snapshot_dates else None,
         "snapshot_date_max": max(snapshot_dates) if snapshot_dates else None,
-        "rows": rows,
+        "sites_observed": len(rows),
+        "rows": rows[:10],
     }
 
 
