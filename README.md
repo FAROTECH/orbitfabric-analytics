@@ -54,7 +54,7 @@ OrbitFabric Analytics keeps distinct evidence families distinct:
 
 ```text
 TRAFFIC
-views / clones
+views / clones / referring sites
 
 COMMUNITY STOCK
 stars / forks / open issues / open pull requests / repository-scoped contributor records
