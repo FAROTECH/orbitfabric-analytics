@@ -1,7 +1,7 @@
 const CONTEXT_DATA_URL = "./data/dashboard_data.json";
 
-const contextNumberFormat = new Intl.NumberFormat("it-IT");
-const contextDateFormat = new Intl.DateTimeFormat("it-IT", {
+const contextNumberFormat = new Intl.NumberFormat("en-GB");
+const contextDateFormat = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
   month: "short",
   year: "numeric",
