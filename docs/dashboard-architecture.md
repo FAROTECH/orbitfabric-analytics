@@ -12,22 +12,7 @@ Repository visibility is an operational choice. The dashboard deployment policy 
 
 ## UI language
 
-The dashboard is primarily for the maintainer and intentionally uses an Italian technical style with familiar English analytics/software terms.
-
-Examples:
-
-```text
-Overview
-Latest complete day
-Coverage
-Activity timeline
-Event context
-Ecosystem context
-Repository comparison
-Signal shape
-```
-
-Explanatory notes remain in Italian. No internationalization framework is introduced at this stage.
+The dashboard uses English consistently for labels, explanatory text, dates and runtime messages. No internationalization framework is introduced at this stage.
 
 ## Frontend stack
 
@@ -79,6 +64,7 @@ Cloudflare Pages watches `dashboard-site` and serves the `dashboard/` directory.
 ```text
 GitHub repositories
     -> traffic collection
+    -> referring-site collection
     -> community stock collection
     -> lifecycle collection
     -> participation collection
@@ -115,6 +101,7 @@ The first operational dashboard presents six evidence families without collapsin
 ```text
 TRAFFIC
     clone / view activity
+    referring-site snapshots
 
 COMMUNITY STOCK
     stars / forks / open issues / open pull requests / contributor records
@@ -194,6 +181,7 @@ The frontend is responsible for:
 
 - rendering overview metrics and deltas;
 - rendering traffic charts;
+- rendering the aggregated referring-sites table;
 - rendering curated event context;
 - rendering community and engineering context already computed by analytics;
 - rendering repository comparison tables;

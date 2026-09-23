@@ -5,7 +5,7 @@ This collector intentionally separates credentials:
 - GHRS_GITHUB_API_TOKEN reads traffic from target repositories.
 - repository-scoped GITHUB_TOKEN is used by the workflow checkout/push path.
 
-Only the views/clones aggregate consumed by OrbitFabric Analytics is updated.
+Views/clones and rolling referring-site snapshots are retained for OrbitFabric Analytics.
 Historical github-repo-stats artifacts remain untouched.
 """
 
@@ -15,7 +15,7 @@ import argparse
 import csv
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.request import Request, urlopen
 
@@ -27,15 +27,18 @@ FIELDNAMES = [
     "views_unique",
 ]
 
+REFERRER_SCHEMA_VERSION = 1
+REFERRER_WINDOW_DAYS = 14
+
 
 def _normalize_timestamp(value: str) -> str:
     instant = datetime.fromisoformat(value.replace("Z", "+00:00"))
     return instant.isoformat(sep=" ")
 
 
-def _request_json(repository: str, metric: str, token: str) -> list[dict[str, object]]:
+def _request(repository: str, path: str, token: str) -> object:
     request = Request(
-        f"https://api.github.com/repos/{repository}/traffic/{metric}",
+        f"https://api.github.com/repos/{repository}/traffic/{path}",
         headers={
             "Accept": "application/vnd.github+json",
             "Authorization": f"Bearer {token}",
@@ -44,11 +47,24 @@ def _request_json(repository: str, metric: str, token: str) -> list[dict[str, ob
         },
     )
     with urlopen(request, timeout=30) as response:
-        payload = json.load(response)
+        return json.load(response)
+
+
+def _request_json(repository: str, metric: str, token: str) -> list[dict[str, object]]:
+    payload = _request(repository, metric, token)
+    if not isinstance(payload, dict):
+        raise ValueError(f"Unexpected GitHub traffic response for {repository}/{metric}")
     rows = payload.get(metric)
     if not isinstance(rows, list):
         raise ValueError(f"Unexpected GitHub traffic response for {repository}/{metric}")
     return [row for row in rows if isinstance(row, dict)]
+
+
+def _request_referrers(repository: str, token: str) -> list[dict[str, object]]:
+    payload = _request(repository, "popular/referrers", token)
+    if not isinstance(payload, list):
+        raise ValueError(f"Unexpected GitHub referrer response for {repository}")
+    return [row for row in payload if isinstance(row, dict)]
 
 
 def _read_existing(path: Path) -> dict[str, dict[str, int | str]]:
@@ -107,11 +123,68 @@ def write_rows(path: Path, rows: dict[str, dict[str, int | str]]) -> None:
         writer.writerows(ordered)
 
 
-def collect(repository: str, output: Path, token: str) -> None:
-    rows = _read_existing(output)
+def _read_referrer_history(path: Path) -> dict[str, object]:
+    if not path.exists():
+        return {
+            "schema_version": REFERRER_SCHEMA_VERSION,
+            "window_days": REFERRER_WINDOW_DAYS,
+            "snapshots": {},
+        }
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("schema_version") != REFERRER_SCHEMA_VERSION:
+        raise ValueError(f"Unsupported referrer history schema in {path}")
+    snapshots = payload.get("snapshots")
+    if not isinstance(snapshots, dict):
+        raise ValueError(f"{path} is missing referrer snapshots")
+    return payload
+
+
+def merge_referrer_snapshot(
+    history: dict[str, object],
+    snapshot_date: str,
+    snapshots: list[dict[str, object]],
+) -> None:
+    normalized: list[dict[str, int | str]] = []
+    for item in snapshots:
+        referrer = item.get("referrer")
+        if not isinstance(referrer, str) or not referrer.strip():
+            continue
+        normalized.append(
+            {
+                "referrer": referrer.strip(),
+                "views": int(item.get("count", 0)),
+                "unique_visitors": int(item.get("uniques", 0)),
+            }
+        )
+    normalized.sort(key=lambda row: (-int(row["views"]), str(row["referrer"]).lower()))
+    history["schema_version"] = REFERRER_SCHEMA_VERSION
+    history["window_days"] = REFERRER_WINDOW_DAYS
+    snapshots_by_date = history.setdefault("snapshots", {})
+    if not isinstance(snapshots_by_date, dict):
+        raise ValueError("Referrer history snapshots must be a mapping")
+    snapshots_by_date[snapshot_date] = normalized
+
+
+def write_referrer_history(path: Path, history: dict[str, object]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(history, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def collect(
+    repository: str,
+    traffic_output: Path,
+    referrer_output: Path,
+    token: str,
+) -> None:
+    rows = _read_existing(traffic_output)
     merge_metric(rows, "clones", _request_json(repository, "clones", token))
     merge_metric(rows, "views", _request_json(repository, "views", token))
-    write_rows(output, rows)
+    write_rows(traffic_output, rows)
+
+    history = _read_referrer_history(referrer_output)
+    snapshot_date = datetime.now(timezone.utc).date().isoformat()
+    merge_referrer_snapshot(history, snapshot_date, _request_referrers(repository, token))
+    write_referrer_history(referrer_output, history)
 
 
 def main() -> int:
@@ -125,14 +198,13 @@ def main() -> int:
     if not token:
         raise SystemExit(f"{args.token_env} is not configured")
 
-    output = (
-        args.data_root
-        / args.repository
-        / "ghrs-data"
-        / "views_clones_aggregate.csv"
-    )
-    collect(args.repository, output, token)
-    print(f"Updated traffic dataset for {args.repository}: {output}")
+    repository_data = args.data_root / args.repository / "ghrs-data"
+    traffic_output = repository_data / "views_clones_aggregate.csv"
+    referrer_output = repository_data / "referrers_history.json"
+
+    collect(args.repository, traffic_output, referrer_output, token)
+    print(f"Updated traffic dataset for {args.repository}: {traffic_output}")
+    print(f"Updated referrer history for {args.repository}: {referrer_output}")
     return 0
 
 

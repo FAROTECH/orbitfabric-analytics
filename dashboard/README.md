@@ -4,7 +4,7 @@ Static presentation layer for OrbitFabric Analytics.
 
 ## Language style
 
-The dashboard intentionally uses an Italian technical style with familiar English software/analytics terms. Labels such as `Overview`, `Coverage`, `Repository comparison`, `Signal shape`, `Clone activity`, `View activity` and `Ecosystem context` remain in English where that is the natural engineering vocabulary. Explanatory text is in Italian.
+The dashboard uses English consistently for labels, explanatory text, dates and runtime messages. No internationalization framework is introduced at this stage.
 
 ## Runtime model
 
@@ -23,6 +23,7 @@ The payload presents multiple evidence families while preserving their semantics
 ```text
 TRAFFIC
 clone / view activity
+referring-site snapshots
 
 COMMUNITY STOCK
 stars / forks / open issues / open pull requests / repository-scoped contributor records

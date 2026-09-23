@@ -2,7 +2,7 @@
   "name": "OrbitFabric Analytics",
   "short_name": "OF Analytics",
   "description": "OrbitFabric ecosystem observability dashboard",
-  "lang": "it",
+  "lang": "en",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
