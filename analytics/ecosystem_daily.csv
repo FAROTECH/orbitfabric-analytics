@@ -313,7 +313,13 @@ date,repository_id,repository,category,include_in_rollups,clones_total,clones_un
 2026-09-21,openobsw-opensvf-adapter,OrbitFabric/orbitfabric-openobsw-opensvf-adapter,adapter,True,13,5,0,0
 2026-09-21,reference-mission,OrbitFabric/orbitfabric-reference-mission,product,True,63,26,1,1
 2026-09-21,studio,OrbitFabric/orbitfabric-studio,product,True,45,20,0,0
+2026-09-22,adapter-catalog,OrbitFabric/orbitfabric-adapter-catalog,ecosystem,False,68,28,0,0
+2026-09-22,adapter-template,OrbitFabric/orbitfabric-adapter-template,ecosystem,False,43,22,0,0
+2026-09-22,core,OrbitFabric/orbitfabric,core,True,450,112,0,0
 2026-09-22,eds-cfs-adapter,OrbitFabric/orbitfabric-eds-cfs-adapter,adapter,False,54,17,0,0
 2026-09-22,fprime-adapter,OrbitFabric/orbitfabric-fprime-adapter,adapter,True,45,18,0,0
 2026-09-22,github-release-source,OrbitFabric/orbitfabric-github-release-source,infrastructure,False,67,23,0,0
+2026-09-22,openc3-cosmos-adapter,OrbitFabric/orbitfabric-openc3-cosmos-adapter,adapter,True,47,19,0,0
+2026-09-22,openobsw-opensvf-adapter,OrbitFabric/orbitfabric-openobsw-opensvf-adapter,adapter,True,50,21,0,0
+2026-09-22,reference-mission,OrbitFabric/orbitfabric-reference-mission,product,True,10,7,0,0
 2026-09-22,studio,OrbitFabric/orbitfabric-studio,product,True,12,8,0,0

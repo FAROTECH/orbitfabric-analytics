@@ -3,10 +3,10 @@
   "repositories_expected": 6,
   "rows": [
     {
-      "repositories": 6,
+      "repositories": 5,
       "site": "github.com",
-      "unique_visitors_repo_sum": 8,
-      "views": 39
+      "unique_visitors_repo_sum": 5,
+      "views": 27
     },
     {
       "repositories": 1,
