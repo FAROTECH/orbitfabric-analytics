@@ -310,14 +310,23 @@ function renderReferrers(data) {
 
   for (const referrer of referrers.rows) {
     const row = document.createElement("tr");
-    row.innerHTML = `
-      <td><strong>${referrer.site}</strong></td>
-      <td>${formatNumber(referrer.views)}</td>
-      <td>${formatNumber(referrer.unique_visitors_repo_sum)}</td>
-    `;
+
+    const siteCell = document.createElement("td");
+    const site = document.createElement("strong");
+    site.textContent = referrer.site;
+    siteCell.appendChild(site);
+
+    const viewsCell = document.createElement("td");
+    viewsCell.textContent = formatNumber(referrer.views);
+
+    const uniquesCell = document.createElement("td");
+    uniquesCell.textContent = formatNumber(referrer.unique_visitors_repo_sum);
+
+    row.append(siteCell, viewsCell, uniquesCell);
     body.appendChild(row);
   }
 }
+
 function renderSignalShape(data) {
   const repositories = data.comparison.repositories;
   const labels = repositories.map(repositoryLabel);
