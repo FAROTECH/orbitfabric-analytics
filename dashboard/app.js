@@ -29,17 +29,17 @@ const palette = {
   line: css.getPropertyValue("--line").trim(),
 };
 
-const numberFormat = new Intl.NumberFormat("it-IT");
-const fullDateFormat = new Intl.DateTimeFormat("it-IT", {
+const numberFormat = new Intl.NumberFormat("en-GB");
+const fullDateFormat = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
   month: "short",
   year: "numeric",
 });
-const shortDateFormat = new Intl.DateTimeFormat("it-IT", {
+const shortDateFormat = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
   month: "short",
 });
-const percentFormat = new Intl.NumberFormat("it-IT", {
+const percentFormat = new Intl.NumberFormat("en-GB", {
   maximumFractionDigits: 1,
 });
 
@@ -103,7 +103,7 @@ function renderOverview(data) {
   );
   document.querySelector("#coverage").textContent = `${overview.coverage_pct}%`;
   document.querySelector("#coverage-detail").textContent =
-    `${overview.repositories_available}/${overview.repositories_expected} repository disponibili`;
+    `${overview.repositories_available}/${overview.repositories_expected} repositories available`;
   document.querySelector("#clones-total").textContent = formatNumber(
     overview.clones_total,
   );
@@ -111,7 +111,7 @@ function renderOverview(data) {
     overview.views_total,
   );
   document.querySelector("#data-status").textContent =
-    `Data complete fino al ${formatFullDate(data.latest_complete_day)}`;
+    `Data complete through ${formatFullDate(data.latest_complete_day)}`;
 
   const reference = deltas?.reference_day
     ? `vs ${formatShortDate(deltas.reference_day)}`
@@ -247,7 +247,7 @@ function renderComparison(data) {
     ? ` · Δ vs previous snapshot ${formatShortDate(comparison.previous_window_end)}`
     : "";
   document.querySelector("#comparison-window").textContent =
-    `${formatFullDate(comparison.window_start)} → ${formatFullDate(comparison.window_end)} · ${comparison.window_days} giorni${previous}`;
+    `${formatFullDate(comparison.window_start)} → ${formatFullDate(comparison.window_end)} · ${comparison.window_days} days${previous}`;
 
   const body = document.querySelector("#comparison-body");
   body.replaceChildren();
@@ -272,14 +272,14 @@ function renderComparison(data) {
       <td>${formatNumber(repository.clone_only_days)}</td>
       <td>${formatNumber(repository.mixed_days)}</td>
       <td>${formatNumber(repository.view_only_days)}</td>
-      <td>${ratio === null ? "—" : ratio.toLocaleString("it-IT")}</td>
+      <td>${ratio === null ? "—" : ratio.toLocaleString("en-GB")}</td>
       <td><span class="coverage-pill ${coverageClass}">${repository.coverage_pct}%</span></td>
     `;
     body.appendChild(row);
   }
 }
 
-function renderSignalShape(data) {
+function renderReferrers(data) {\n  const body = document.querySelector("#referrers-body");\n  const note = document.querySelector("#referrers-window");\n  if (!body || !note) {\n    return;\n  }\n\n  body.replaceChildren();\n  const referrers = data.referrers;\n  if (!referrers || !Array.isArray(referrers.rows)) {\n    note.textContent = "Referrer data unavailable.";\n    return;\n  }\n\n  const snapshot = referrers.snapshot_date_max\n    ? ` · snapshot ${formatFullDate(referrers.snapshot_date_max)}`\n    : "";\n  note.textContent =\n    `GitHub rolling ${referrers.window_days}-day window · ` +\n    `${referrers.repositories_available}/${referrers.repositories_expected} repositories available` +\n    snapshot;\n\n  if (!referrers.rows.length) {\n    const row = document.createElement("tr");\n    row.innerHTML = '<td colspan="3">No referring sites reported in the current GitHub traffic window.</td>';\n    body.appendChild(row);\n    return;\n  }\n\n  for (const referrer of referrers.rows) {\n    const row = document.createElement("tr");\n    row.innerHTML = `\n      <td><strong>${referrer.site}</strong></td>\n      <td>${formatNumber(referrer.views)}</td>\n      <td>${formatNumber(referrer.unique_visitors_repo_sum)}</td>\n    `;\n    body.appendChild(row);\n  }\n}\nfunction renderSignalShape(data) {
   const repositories = data.comparison.repositories;
   const labels = repositories.map(repositoryLabel);
 
