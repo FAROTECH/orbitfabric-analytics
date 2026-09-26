@@ -23,8 +23,8 @@
   ],
   "schema_version": 1,
   "sites_observed": 3,
-  "snapshot_date_max": "2026-09-24",
-  "snapshot_date_min": "2026-09-24",
+  "snapshot_date_max": "2026-09-26",
+  "snapshot_date_min": "2026-09-26",
   "source": "github_traffic_popular_referrers",
   "window_days": 14
 }

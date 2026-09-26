@@ -1,7 +1,7 @@
 repository_id,repository,category,current_date,previous_date,snapshot_gap_days,comparable,stars_total,stars_total_delta,forks_total,forks_total_delta,open_issues_total,open_issues_total_delta,open_pull_requests_total,open_pull_requests_total_delta,contributors_repo_count,contributors_repo_count_delta
-core,OrbitFabric/orbitfabric,core,2026-09-24,2026-09-23,1,true,8,0,1,0,3,0,1,1,1,0
-fprime-adapter,OrbitFabric/orbitfabric-fprime-adapter,adapter,2026-09-24,2026-09-23,1,true,0,0,0,0,0,0,1,1,1,0
-openc3-cosmos-adapter,OrbitFabric/orbitfabric-openc3-cosmos-adapter,adapter,2026-09-24,2026-09-23,1,true,1,0,0,0,0,0,1,1,1,0
-openobsw-opensvf-adapter,OrbitFabric/orbitfabric-openobsw-opensvf-adapter,adapter,2026-09-24,2026-09-23,1,true,0,0,0,0,0,0,1,1,1,0
-reference-mission,OrbitFabric/orbitfabric-reference-mission,product,2026-09-24,2026-09-23,1,true,1,0,0,0,0,0,0,0,2,0
-studio,OrbitFabric/orbitfabric-studio,product,2026-09-24,2026-09-23,1,true,0,0,0,0,2,0,0,0,3,0
+core,OrbitFabric/orbitfabric,core,2026-09-25,2026-09-24,1,true,8,0,1,0,3,0,0,-1,1,0
+fprime-adapter,OrbitFabric/orbitfabric-fprime-adapter,adapter,2026-09-25,2026-09-24,1,true,0,0,0,0,0,0,0,-1,1,0
+openc3-cosmos-adapter,OrbitFabric/orbitfabric-openc3-cosmos-adapter,adapter,2026-09-25,2026-09-24,1,true,1,0,0,0,0,0,0,-1,1,0
+openobsw-opensvf-adapter,OrbitFabric/orbitfabric-openobsw-opensvf-adapter,adapter,2026-09-25,2026-09-24,1,true,0,0,0,0,0,0,0,-1,1,0
+reference-mission,OrbitFabric/orbitfabric-reference-mission,product,2026-09-25,2026-09-24,1,true,1,0,0,0,0,0,0,0,2,0
+studio,OrbitFabric/orbitfabric-studio,product,2026-09-25,2026-09-24,1,true,0,0,0,0,2,0,0,0,3,0
